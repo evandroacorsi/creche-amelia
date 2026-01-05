@@ -33,8 +33,7 @@ const CTASection = () => {
             </Button>
             <Button
               size="lg"
-              variant="outline"
-              className="border-2 border-primary-foreground text-primary-foreground hover:bg-primary-foreground/10 font-semibold px-8 h-14 text-base rounded-xl"
+              className="bg-block-blue hover:bg-block-blue/90 text-white font-semibold px-8 h-14 text-base rounded-xl"
               asChild
             >
               <Link to="/contato">Entre em Contato</Link>

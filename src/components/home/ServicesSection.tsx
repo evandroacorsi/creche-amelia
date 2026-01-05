@@ -66,11 +66,6 @@ const ServicesSection = () => {
           ))}
         </div>
 
-        <div className="text-center mt-12">
-          <Button size="lg" variant="outline" className="font-semibold rounded-xl" asChild>
-            <Link to="/servicos">Ver Todos os Serviços</Link>
-          </Button>
-        </div>
       </div>
     </section>
   );

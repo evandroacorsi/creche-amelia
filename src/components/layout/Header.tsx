@@ -6,8 +6,6 @@ import logo from "@/assets/logo-creche-amelia.png";
 const navLinks = [
   { name: "Início", path: "/" },
   { name: "Sobre", path: "/sobre" },
-  { name: "Serviços", path: "/servicos" },
-  { name: "Estrutura", path: "/estrutura" },
   { name: "Para os Pais", path: "/pais" },
   { name: "Transparência", path: "/transparencia" },
   { name: "Notícias", path: "/noticias" },
@@ -26,6 +24,10 @@ const Header = () => {
           {/* Logo */}
           <Link to="/" className="flex items-center gap-3">
             <img src={logo} alt="Creche Amélia" className="h-14 w-auto" />
+            <div className="hidden sm:block">
+              <p className="font-display text-lg font-bold text-foreground leading-tight">Creche Amélia Teixeira Lins</p>
+              <p className="text-xs text-muted-foreground">Rancharia/SP</p>
+            </div>
           </Link>
 
           {/* Desktop Navigation */}
