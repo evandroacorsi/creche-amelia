@@ -2,6 +2,10 @@ import Layout from "@/components/layout/Layout";
 import SectionHeader from "@/components/ui/SectionHeader";
 import { Heart, Target, Shield, Users, Award, Clock } from "lucide-react";
 import heroImage from "@/assets/hero-creche.jpg";
+import salaAula from "@/assets/sala-aula.jpg";
+import playground from "@/assets/playground.jpg";
+import bercario from "@/assets/bercario.jpg";
+import refeitorio from "@/assets/refeitorio.jpg";
 
 const values = [
   {
@@ -34,6 +38,40 @@ const values = [
     title: "Dedicação Integral",
     description: "Atendimento em período integral com atenção individualizada.",
   },
+];
+
+const spaces = [
+  {
+    image: salaAula,
+    title: "Salas de Aula",
+    description: "Espaços amplos, bem iluminados e equipados com materiais pedagógicos adequados para cada faixa etária.",
+  },
+  {
+    image: playground,
+    title: "Playground",
+    description: "Área de lazer ao ar livre com brinquedos seguros e coloridos, piso emborrachado para amortecer quedas.",
+  },
+  {
+    image: bercario,
+    title: "Berçário",
+    description: "Ambiente tranquilo e acolhedor com berços individuais e espaço climatizado para o conforto dos bebês.",
+  },
+  {
+    image: refeitorio,
+    title: "Refeitório",
+    description: "Espaço limpo e organizado para as refeições, com mobiliário adequado para crianças.",
+  },
+];
+
+const features = [
+  "Salas climatizadas e bem ventiladas",
+  "Banheiros adaptados para crianças",
+  "Cozinha industrial equipada",
+  "Área verde e pátio coberto",
+  "Sistema de segurança e monitoramento",
+  "Acessibilidade para pessoas com deficiência",
+  "Fraldário e lactário equipados",
+  "Espaço para eventos e apresentações",
 ];
 
 const Sobre = () => {
@@ -127,6 +165,61 @@ const Sobre = () => {
                 </div>
                 <h3 className="font-display text-xl font-bold mb-2">{value.title}</h3>
                 <p className="text-muted-foreground text-sm">{value.description}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Estrutura - Galeria */}
+      <section className="py-20 bg-card">
+        <div className="container-custom">
+          <SectionHeader
+            title="Nossa Estrutura"
+            subtitle="Conheça os espaços cuidadosamente preparados para proporcionar conforto e segurança."
+            colorAccent="blue"
+          />
+
+          <div className="grid md:grid-cols-2 gap-6">
+            {spaces.map((space, index) => (
+              <div
+                key={space.title}
+                className="rounded-2xl overflow-hidden shadow-card bg-background animate-fade-in"
+                style={{ animationDelay: `${index * 0.1}s` }}
+              >
+                <img
+                  src={space.image}
+                  alt={space.title}
+                  className="w-full h-[250px] object-cover"
+                />
+                <div className="p-6">
+                  <h3 className="font-display text-xl font-bold mb-2">{space.title}</h3>
+                  <p className="text-muted-foreground text-sm">{space.description}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Diferenciais */}
+      <section className="py-20">
+        <div className="container-custom">
+          <SectionHeader
+            title="Diferenciais da Nossa Estrutura"
+            subtitle="Instalações pensadas para o bem-estar e desenvolvimento das crianças."
+            colorAccent="yellow"
+          />
+
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-4">
+            {features.map((feature, index) => (
+              <div
+                key={feature}
+                className="flex items-center gap-3 bg-card p-4 rounded-xl shadow-soft animate-fade-in"
+                style={{ animationDelay: `${index * 0.05}s` }}
+              >
+                <div className="w-3 h-3 rounded-full bg-block-green flex-shrink-0" />
+                <span className="text-sm font-medium">{feature}</span>
               </div>
             ))}
           </div>

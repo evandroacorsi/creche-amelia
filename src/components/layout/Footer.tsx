@@ -22,9 +22,6 @@ const Footer = () => {
               <Link to="/sobre" className="text-primary-foreground/80 hover:text-primary-foreground transition-colors text-sm">
                 Sobre a Creche
               </Link>
-              <Link to="/servicos" className="text-primary-foreground/80 hover:text-primary-foreground transition-colors text-sm">
-                Nossos Serviços
-              </Link>
               <Link to="/transparencia" className="text-primary-foreground/80 hover:text-primary-foreground transition-colors text-sm">
                 Transparência
               </Link>

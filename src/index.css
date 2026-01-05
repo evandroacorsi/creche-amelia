@@ -186,17 +186,7 @@
     background-clip: text;
   }
 
-  /* Playful decorative elements */
-  .decorative-dots::before {
-    content: '';
-    position: absolute;
-    width: 12px;
-    height: 12px;
-    background: hsl(var(--accent));
-    border-radius: 50%;
-    top: -6px;
-    right: -6px;
-  }
+  /* Playful decorative elements - removed dots */
 
   /* WhatsApp floating button */
   .whatsapp-float {
