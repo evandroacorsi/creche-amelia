@@ -1,7 +1,7 @@
 import Layout from "@/components/layout/Layout";
 import SectionHeader from "@/components/ui/SectionHeader";
 import { Button } from "@/components/ui/button";
-import { Heart, Gift, Banknote, Package, HandHeart, ArrowRight } from "lucide-react";
+import { Heart, Gift, Banknote, Package, HandHeart, ArrowRight, Sparkles } from "lucide-react";
 import { Link } from "react-router-dom";
 
 const formasDoacao = [
@@ -9,7 +9,7 @@ const formasDoacao = [
     icon: Banknote,
     title: "PIX",
     description: "Faça uma doação via PIX de forma rápida e segura.",
-    destaque: "00.000.000/0001-00",
+    destaque: "Chave PIX disponível",
     cor: "bg-block-green/10 text-block-green border-block-green/20",
   },
   {
@@ -58,8 +58,8 @@ const Doacoes = () => {
               Faça a Diferença na Vida de uma Criança
             </h1>
             <p className="text-lg text-primary-foreground/90 mb-8 max-w-2xl mx-auto">
-              Sua doação ajuda a manter nossos serviços e proporciona melhores condições 
-              de atendimento para as crianças da Creche Amélia.
+              Sua doação ajuda a manter nossos serviços gratuitos e proporciona melhores condições 
+              de atendimento para as crianças da Creche Amélia há 56 anos.
             </p>
             <Button
               size="lg"
@@ -117,29 +117,35 @@ const Doacoes = () => {
             <div className="block-card">
               <div className="space-y-4">
                 <div className="flex justify-between py-3 border-b border-border">
-                  <span className="text-muted-foreground">Banco</span>
-                  <span className="font-semibold">Banco do Brasil</span>
+                  <span className="text-muted-foreground">Razão Social</span>
+                  <span className="font-semibold text-right">Escola de Educação Infantil "Amélia Teixeira Lins"</span>
                 </div>
                 <div className="flex justify-between py-3 border-b border-border">
-                  <span className="text-muted-foreground">Agência</span>
-                  <span className="font-semibold">0000-0</span>
+                  <span className="text-muted-foreground">Telefone</span>
+                  <span className="font-semibold">(18) 3265-6789</span>
                 </div>
                 <div className="flex justify-between py-3 border-b border-border">
-                  <span className="text-muted-foreground">Conta Corrente</span>
-                  <span className="font-semibold">00000-0</span>
+                  <span className="text-muted-foreground">WhatsApp</span>
+                  <span className="font-semibold">(18) 99787-6081</span>
                 </div>
                 <div className="flex justify-between py-3 border-b border-border">
-                  <span className="text-muted-foreground">CNPJ</span>
-                  <span className="font-semibold">00.000.000/0001-00</span>
-                </div>
-                <div className="flex justify-between py-3 border-b border-border">
-                  <span className="text-muted-foreground">PIX (CNPJ)</span>
-                  <span className="font-semibold font-mono">00000000000100</span>
+                  <span className="text-muted-foreground">E-mail</span>
+                  <span className="font-semibold">crecheamelia@hotmail.com</span>
                 </div>
                 <div className="flex justify-between py-3">
-                  <span className="text-muted-foreground">Titular</span>
-                  <span className="font-semibold">Associação Creche Amélia</span>
+                  <span className="text-muted-foreground">Endereço</span>
+                  <span className="font-semibold text-right">Rua Allan Kardec, nº 778 - Vila Righeti, Rancharia/SP</span>
                 </div>
+              </div>
+              <div className="mt-6 p-4 bg-block-green/10 rounded-xl text-center">
+                <p className="text-sm text-muted-foreground">
+                  Para informações sobre PIX e dados bancários, entre em contato pelo WhatsApp
+                </p>
+                <Button className="mt-4 gradient-primary text-primary-foreground" asChild>
+                  <a href="https://wa.me/5518997876081" target="_blank" rel="noopener noreferrer">
+                    Falar no WhatsApp
+                  </a>
+                </Button>
               </div>
             </div>
           </div>
@@ -179,7 +185,7 @@ const Doacoes = () => {
             </h2>
             <p className="text-primary-foreground/90 mb-8">
               Entre em contato para saber mais sobre como você pode contribuir 
-              com a Creche Amélia e fazer parte dessa história de amor e cuidado.
+              com a Creche Amélia e fazer parte dessa história de amor e cuidado há 56 anos.
             </p>
             <Button
               size="lg"

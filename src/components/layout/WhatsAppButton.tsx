@@ -1,8 +1,8 @@
 import { MessageCircle } from "lucide-react";
 
 const WhatsAppButton = () => {
-  const phoneNumber = "5518999999999";
-  const message = "Olá! Gostaria de saber mais informações sobre a Creche Amélia.";
+  const phoneNumber = "5518997876081";
+  const message = "Olá! Gostaria de saber mais informações sobre a Creche Berçário Espírita de Rancharia 'Amélia Teixeira Lins'.";
   const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
 
   return (

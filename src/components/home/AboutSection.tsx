@@ -6,26 +6,26 @@ import { Heart, Target, Shield, Users } from "lucide-react";
 const values = [
   {
     icon: Heart,
-    title: "Amor e Carinho",
-    description: "Tratamos cada criança com o amor e atenção que ela merece.",
+    title: "Afeto e Segurança",
+    description: "Cada criança é vista em sua individualidade, recebendo afeto e segurança.",
     color: "bg-block-red/10 text-block-red",
   },
   {
     icon: Target,
-    title: "Compromisso",
-    description: "Comprometidos com o desenvolvimento integral de cada criança.",
+    title: "Desenvolvimento",
+    description: "Desenvolvimento emocional lado a lado com segurança física e nutrição.",
     color: "bg-block-blue/10 text-block-blue",
   },
   {
     icon: Shield,
-    title: "Segurança",
-    description: "Ambiente seguro e acolhedor para o bem-estar das crianças.",
+    title: "Rede de Apoio",
+    description: "Mais do que um lugar de cuidado, somos uma rede de apoio familiar.",
     color: "bg-block-green/10 text-block-green",
   },
   {
     icon: Users,
-    title: "Família",
-    description: "Parceria constante com as famílias no processo educativo.",
+    title: "56 Anos de Tradição",
+    description: "Desde 1969 mantendo nosso foco no cuidado e educação infantil.",
     color: "bg-block-yellow/10 text-block-yellow",
   },
 ];
@@ -46,19 +46,19 @@ const AboutSection = () => {
 
             <div className="space-y-4 text-muted-foreground mb-8">
               <p>
-                Fundada há mais de 10 anos, a Creche Amélia nasceu do sonho de oferecer 
-                às crianças de Rancharia um espaço onde pudessem crescer com amor, 
-                segurança e educação de qualidade.
+                Fundada em 26 de janeiro de 1969, a Creche Berçário Espírita de Rancharia 
+                "Amélia Teixeira Lins" nasceu do sonho de oferecer às crianças um espaço 
+                onde pudessem crescer com amor, segurança e educação de qualidade.
               </p>
               <p>
-                Nossa missão é promover o desenvolvimento integral das crianças, 
-                respeitando suas individualidades e potencialidades, em parceria 
-                constante com as famílias.
+                Nossa missão é realizar um trabalho de caráter educativo, buscando a autonomia 
+                e o desenvolvimento pessoal e social da criança através de ações voltadas para 
+                o desenvolvimento social e cultural, com vagas oferecidas gratuitamente.
               </p>
               <p>
-                Atendemos crianças de 0 a 5 anos, oferecendo berçário, educação 
-                infantil, alimentação balanceada e atividades pedagógicas e recreativas 
-                que estimulam o aprendizado de forma lúdica e prazerosa.
+                Atendemos crianças de 4 meses a 3 anos e 11 meses, oferecendo berçário, maternal, 
+                educação infantil, alimentação balanceada e atividades pedagógicas e recreativas 
+                em período integral.
               </p>
             </div>
 
