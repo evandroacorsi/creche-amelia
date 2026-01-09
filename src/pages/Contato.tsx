@@ -40,38 +40,36 @@ const Contato = () => {
   return (
     <Layout>
       {/* Hero */}
-      <section className="relative py-20 gradient-hero">
+      <section className="relative py-16 bg-primary/5 border-b border-primary/10">
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
-          <Sparkles className="absolute top-10 right-10 text-block-yellow/30 w-8 h-8" />
-          <div className="absolute bottom-10 left-10 w-12 h-12 bg-block-green/20 rounded-xl rotate-12" />
+          <Sparkles className="absolute top-6 right-10 text-block-yellow/20 w-6 h-6" />
+          <div className="absolute bottom-6 left-10 w-8 h-8 bg-block-green/10 rounded-lg rotate-12" />
         </div>
         <div className="container-custom relative z-10">
-          <div className="max-w-3xl">
-            <SectionHeader
-              title="Entre em Contato"
-              subtitle="Estamos prontos para atender você e esclarecer todas as suas dúvidas sobre a Creche Amélia."
-              centered={false}
-              colorAccent="orange"
-              isPageHeader
-            />
-          </div>
+          <SectionHeader
+            title="Entre em Contato"
+            subtitle="Estamos prontos para atender você e esclarecer todas as suas dúvidas sobre a Creche Amélia."
+            centered={true}
+            colorAccent="orange"
+            isPageHeader
+          />
         </div>
       </section>
 
       {/* Contato */}
-      <section className="py-20">
+      <section className="py-16">
         <div className="container-custom">
-          <div className="grid lg:grid-cols-2 gap-12">
+          <div className="grid lg:grid-cols-2 gap-8 items-start">
             {/* Formulário */}
-            <div>
-              <h2 className="font-display text-2xl font-bold mb-6">Envie sua Mensagem</h2>
-              <form onSubmit={handleSubmit} className="space-y-6">
+            <div className="block-card">
+              <h2 className="font-display text-xl font-bold mb-5">Envie sua Mensagem</h2>
+              <form onSubmit={handleSubmit} className="space-y-4">
                 <div>
                   <label className="block text-sm font-semibold mb-2">Nome completo</label>
                   <Input
                     type="text"
                     placeholder="Seu nome"
-                    className="h-12 rounded-xl"
+                    className="h-11 rounded-xl"
                     value={formData.nome}
                     onChange={(e) => setFormData({ ...formData, nome: e.target.value })}
                   />
@@ -81,7 +79,7 @@ const Contato = () => {
                   <Input
                     type="tel"
                     placeholder="(00) 00000-0000"
-                    className="h-12 rounded-xl"
+                    className="h-11 rounded-xl"
                     value={formData.telefone}
                     onChange={(e) => setFormData({ ...formData, telefone: e.target.value })}
                   />
@@ -90,12 +88,12 @@ const Contato = () => {
                   <label className="block text-sm font-semibold mb-2">Mensagem</label>
                   <Textarea
                     placeholder="Como podemos ajudar?"
-                    className="min-h-32 rounded-xl resize-none"
+                    className="min-h-24 rounded-xl resize-none"
                     value={formData.mensagem}
                     onChange={(e) => setFormData({ ...formData, mensagem: e.target.value })}
                   />
                 </div>
-                <Button type="submit" size="lg" className="w-full gradient-primary text-primary-foreground font-semibold h-14 rounded-xl">
+                <Button type="submit" size="lg" className="w-full gradient-primary text-primary-foreground font-semibold h-12 rounded-xl">
                   <MessageCircle className="mr-2" size={20} />
                   Enviar via WhatsApp
                 </Button>
@@ -104,8 +102,8 @@ const Contato = () => {
 
             {/* Informações */}
             <div>
-              <h2 className="font-display text-2xl font-bold mb-6">Informações de Contato</h2>
-              <div className="space-y-6">
+              <h2 className="font-display text-xl font-bold mb-5">Informações de Contato</h2>
+              <div className="space-y-4">
                 <div className="block-card flex items-start gap-4">
                   <div className="w-12 h-12 rounded-xl bg-block-green/10 flex items-center justify-center flex-shrink-0">
                     <MapPin size={24} className="text-block-green" />

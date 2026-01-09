@@ -31,21 +31,19 @@ const Pais = () => {
   return (
     <Layout>
       {/* Hero */}
-      <section className="relative py-20 gradient-hero">
+      <section className="relative py-16 bg-primary/5 border-b border-primary/10">
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
-          <Sparkles className="absolute top-10 right-10 text-block-yellow/30 w-8 h-8" />
-          <div className="absolute bottom-10 left-10 w-12 h-12 bg-block-blue/20 rounded-xl rotate-12" />
+          <Sparkles className="absolute top-6 right-10 text-block-yellow/20 w-6 h-6" />
+          <div className="absolute bottom-6 left-10 w-8 h-8 bg-block-blue/10 rounded-lg rotate-12" />
         </div>
         <div className="container-custom relative z-10">
-          <div className="max-w-3xl">
-            <SectionHeader
-              title="Informações para Pais"
-              subtitle="Tudo o que você precisa saber sobre a rotina, cuidados e parceria entre família e creche."
-              centered={false}
-              colorAccent="yellow"
-              isPageHeader
-            />
-          </div>
+          <SectionHeader
+            title="Informações para Pais"
+            subtitle="Tudo o que você precisa saber sobre a rotina, cuidados e parceria entre família e creche."
+            centered={true}
+            colorAccent="yellow"
+            isPageHeader
+          />
         </div>
       </section>
 
