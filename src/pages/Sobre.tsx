@@ -1,6 +1,6 @@
 import Layout from "@/components/layout/Layout";
 import SectionHeader from "@/components/ui/SectionHeader";
-import { Heart, Target, Shield, Users, Award, Clock } from "lucide-react";
+import { Heart, Target, Shield, Users, Award, Clock, Sparkles } from "lucide-react";
 import heroImage from "@/assets/hero-creche.jpg";
 import salaAula from "@/assets/sala-aula.jpg";
 import playground from "@/assets/playground.jpg";
@@ -15,8 +15,8 @@ const values = [
   },
   {
     icon: Target,
-    title: "Compromisso com a Educação",
-    description: "Buscamos excelência no processo educativo, respeitando o ritmo de cada criança.",
+    title: "Autonomia e Desenvolvimento",
+    description: "Buscamos a autonomia e o desenvolvimento pessoal e social de cada criança.",
   },
   {
     icon: Shield,
@@ -25,18 +25,18 @@ const values = [
   },
   {
     icon: Users,
-    title: "Parceria com as Famílias",
-    description: "Trabalhamos em conjunto com os pais para o melhor desenvolvimento das crianças.",
+    title: "Rede de Apoio Familiar",
+    description: "Mais do que um lugar de cuidado, somos uma rede de apoio para as famílias.",
   },
   {
     icon: Award,
-    title: "Excelência e Qualidade",
-    description: "Equipe qualificada e dedicada ao desenvolvimento integral infantil.",
+    title: "56 Anos de Tradição",
+    description: "Desde 1969, mantendo nosso foco no cuidado e educação infantil de qualidade.",
   },
   {
     icon: Clock,
     title: "Dedicação Integral",
-    description: "Atendimento em período integral com atenção individualizada.",
+    description: "Atendimento em período integral com atenção individualizada para cada criança.",
   },
 ];
 
@@ -79,13 +79,18 @@ const Sobre = () => {
     <Layout>
       {/* Hero */}
       <section className="relative py-20 gradient-hero">
-        <div className="container-custom">
+        <div className="absolute inset-0 overflow-hidden pointer-events-none">
+          <Sparkles className="absolute top-10 right-10 text-block-yellow/30 w-8 h-8" />
+          <div className="absolute bottom-10 left-10 w-12 h-12 bg-block-blue/20 rounded-xl rotate-12" />
+        </div>
+        <div className="container-custom relative z-10">
           <div className="max-w-3xl">
             <SectionHeader
               title="Sobre a Creche Amélia"
-              subtitle="Há mais de uma década cuidando, educando e acolhendo as crianças de Rancharia/SP com todo amor e dedicação."
+              subtitle="Há 56 anos cuidando, educando e acolhendo as crianças de Rancharia/SP com todo amor e dedicação."
               centered={false}
               colorAccent="red"
+              isPageHeader
             />
           </div>
         </div>
@@ -99,20 +104,20 @@ const Sobre = () => {
               <h2 className="font-display text-3xl font-bold mb-6">Nossa História</h2>
               <div className="space-y-4 text-muted-foreground">
                 <p>
-                  A Creche Amélia nasceu do sonho de oferecer às crianças de Rancharia 
-                  um espaço onde pudessem crescer com amor, segurança e educação de qualidade. 
-                  Fundada há mais de 10 anos, nossa instituição se tornou referência em 
-                  educação infantil na região.
+                  A Creche Berçário Espírita de Rancharia "Amélia Teixeira Lins" foi fundada 
+                  em 26 de janeiro de 1969, nascendo do sonho de oferecer às crianças um espaço 
+                  onde pudessem crescer com amor, segurança e educação de qualidade.
                 </p>
                 <p>
-                  Ao longo dos anos, crescemos e evoluímos, sempre mantendo nosso 
-                  compromisso original: proporcionar um ambiente acolhedor onde cada 
-                  criança possa desenvolver todo o seu potencial.
+                  Ao longo dos 56 anos de existência, nossa creche manteve seu foco principal: 
+                  ser mais do que um lugar de cuidado. Somos uma rede de apoio familiar onde o 
+                  desenvolvimento emocional da criança caminha lado a lado com a segurança física 
+                  e a nutrição de qualidade.
                 </p>
                 <p>
-                  Hoje, atendemos mais de 150 crianças de 0 a 5 anos, oferecendo 
-                  berçário, educação infantil, alimentação balanceada e diversas 
-                  atividades pedagógicas e recreativas.
+                  Atendemos crianças de 4 meses a 3 anos e 11 meses, oferecendo berçário, maternal, 
+                  educação infantil, alimentação balanceada e atividades pedagógicas e recreativas 
+                  em período integral, de forma totalmente gratuita.
                 </p>
               </div>
             </div>
@@ -123,25 +128,27 @@ const Sobre = () => {
         </div>
       </section>
 
-      {/* Missão e Visão */}
+      {/* Missão */}
       <section className="py-20 bg-card">
         <div className="container-custom">
           <div className="grid md:grid-cols-2 gap-8">
             <div className="block-card border-l-4 border-primary">
               <h3 className="font-display text-2xl font-bold mb-4 text-primary">Nossa Missão</h3>
               <p className="text-muted-foreground">
-                Promover o desenvolvimento integral das crianças, respeitando suas 
-                individualidades e potencialidades, através de uma educação de qualidade, 
-                em um ambiente seguro, acolhedor e estimulante, em parceria constante 
-                com as famílias.
+                Realizar um trabalho de caráter educativo, buscando a autonomia e o desenvolvimento 
+                pessoal e social da criança através das ações voltadas para o desenvolvimento social 
+                e cultural com vagas oferecidas gratuitamente, sem distinção de raça, cor, sexo, 
+                credo religioso ou qualquer outra forma de discriminação, não tendo caráter político 
+                e nem finalidade lucrativa.
               </p>
             </div>
             <div className="block-card border-l-4 border-block-blue">
-              <h3 className="font-display text-2xl font-bold mb-4 text-block-blue">Nossa Visão</h3>
+              <h3 className="font-display text-2xl font-bold mb-4 text-block-blue">O Que Nos Torna Especiais</h3>
               <p className="text-muted-foreground">
-                Ser reconhecida como uma instituição de excelência em educação infantil, 
-                formando cidadãos conscientes, criativos e preparados para enfrentar 
-                os desafios do futuro, contribuindo para uma sociedade mais justa e humana.
+                Nossa creche é especial porque aqui, cada criança é vista em sua individualidade, 
+                recebendo o afeto e a segurança necessários para que se sinta encorajada a explorar 
+                o mundo. O desenvolvimento emocional da criança caminha lado a lado com a segurança 
+                física e a nutrição de qualidade.
               </p>
             </div>
           </div>

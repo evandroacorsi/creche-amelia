@@ -4,7 +4,7 @@ import SectionHeader from "@/components/ui/SectionHeader";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
-import { MapPin, Phone, Mail, Clock, MessageCircle } from "lucide-react";
+import { MapPin, Phone, Mail, Clock, MessageCircle, Sparkles } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 
 const Contato = () => {
@@ -28,7 +28,7 @@ const Contato = () => {
     }
 
     const whatsappMessage = `Olá! Meu nome é ${formData.nome}.\n\nTelefone: ${formData.telefone}\n\nMensagem: ${formData.mensagem}`;
-    const whatsappUrl = `https://wa.me/5518999999999?text=${encodeURIComponent(whatsappMessage)}`;
+    const whatsappUrl = `https://wa.me/5518997876081?text=${encodeURIComponent(whatsappMessage)}`;
     window.open(whatsappUrl, "_blank");
 
     toast({
@@ -41,13 +41,18 @@ const Contato = () => {
     <Layout>
       {/* Hero */}
       <section className="relative py-20 gradient-hero">
-        <div className="container-custom">
+        <div className="absolute inset-0 overflow-hidden pointer-events-none">
+          <Sparkles className="absolute top-10 right-10 text-block-yellow/30 w-8 h-8" />
+          <div className="absolute bottom-10 left-10 w-12 h-12 bg-block-green/20 rounded-xl rotate-12" />
+        </div>
+        <div className="container-custom relative z-10">
           <div className="max-w-3xl">
             <SectionHeader
               title="Entre em Contato"
               subtitle="Estamos prontos para atender você e esclarecer todas as suas dúvidas sobre a Creche Amélia."
               centered={false}
               colorAccent="orange"
+              isPageHeader
             />
           </div>
         </div>
@@ -108,9 +113,8 @@ const Contato = () => {
                   <div>
                     <h3 className="font-semibold mb-1">Endereço</h3>
                     <p className="text-muted-foreground text-sm">
-                      Rua das Flores, 123<br />
-                      Centro - Rancharia/SP<br />
-                      CEP: 19600-000
+                      Rua Allan Kardec, nº 778<br />
+                      Vila Righeti - Rancharia/SP
                     </p>
                   </div>
                 </div>
@@ -122,8 +126,8 @@ const Contato = () => {
                   <div>
                     <h3 className="font-semibold mb-1">Telefone</h3>
                     <p className="text-muted-foreground text-sm">
-                      (18) 99999-9999<br />
-                      (18) 3265-0000
+                      (18) 3265-6789<br />
+                      (18) 99787-6081 (WhatsApp)
                     </p>
                   </div>
                 </div>
@@ -135,7 +139,7 @@ const Contato = () => {
                   <div>
                     <h3 className="font-semibold mb-1">E-mail</h3>
                     <p className="text-muted-foreground text-sm">
-                      contato@crecheamelia.com.br
+                      crecheamelia@hotmail.com
                     </p>
                   </div>
                 </div>
@@ -163,14 +167,14 @@ const Contato = () => {
         <div className="container-custom">
           <div className="rounded-2xl overflow-hidden shadow-card">
             <iframe
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d14828.731234567890!2d-50.8933!3d-22.2364!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94912345678901234%3A0x1234567890abcdef!2sRancharia%2C%20SP!5e0!3m2!1spt-BR!2sbr!4v1234567890123"
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3702.5!2d-50.89!3d-22.23!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMjLCsDEzJzQ4LjAiUyA1MMKwNTMnMjQuMCJX!5e0!3m2!1spt-BR!2sbr!4v1234567890123"
               width="100%"
               height="400"
               style={{ border: 0 }}
               allowFullScreen
               loading="lazy"
               referrerPolicy="no-referrer-when-downgrade"
-              title="Localização Creche Amélia"
+              title="Localização Creche Amélia - Rua Allan Kardec, 778 - Vila Righeti, Rancharia/SP"
             />
           </div>
         </div>

@@ -1,6 +1,6 @@
 import Layout from "@/components/layout/Layout";
 import SectionHeader from "@/components/ui/SectionHeader";
-import { Clock, Calendar, Backpack, AlertCircle, Heart, Phone } from "lucide-react";
+import { Clock, Calendar, Backpack, AlertCircle, Heart, Phone, Sparkles } from "lucide-react";
 
 const rotina = [
   { hora: "7:00", atividade: "Recepção das crianças" },
@@ -32,14 +32,39 @@ const Pais = () => {
     <Layout>
       {/* Hero */}
       <section className="relative py-20 gradient-hero">
-        <div className="container-custom">
+        <div className="absolute inset-0 overflow-hidden pointer-events-none">
+          <Sparkles className="absolute top-10 right-10 text-block-yellow/30 w-8 h-8" />
+          <div className="absolute bottom-10 left-10 w-12 h-12 bg-block-blue/20 rounded-xl rotate-12" />
+        </div>
+        <div className="container-custom relative z-10">
           <div className="max-w-3xl">
             <SectionHeader
               title="Informações para Pais"
               subtitle="Tudo o que você precisa saber sobre a rotina, cuidados e parceria entre família e creche."
               centered={false}
               colorAccent="yellow"
+              isPageHeader
             />
+          </div>
+        </div>
+      </section>
+
+      {/* Informações sobre idades */}
+      <section className="py-12 bg-card">
+        <div className="container-custom">
+          <div className="bg-block-blue/10 border-2 border-block-blue/30 rounded-2xl p-6 flex items-start gap-4">
+            <div className="w-12 h-12 rounded-xl bg-block-blue/20 flex items-center justify-center flex-shrink-0">
+              <Heart className="text-block-blue" size={24} />
+            </div>
+            <div>
+              <h3 className="font-display text-lg font-bold mb-2">Idades Atendidas</h3>
+              <p className="text-muted-foreground text-sm">
+                Atendemos crianças de <strong>4 meses a 3 anos e 11 meses</strong> em período integral, 
+                oferecendo berçário, maternal e educação infantil de forma totalmente gratuita. 
+                Todas as vagas são oferecidas sem distinção de raça, cor, sexo, credo religioso ou 
+                qualquer outra forma de discriminação.
+              </p>
+            </div>
           </div>
         </div>
       </section>
@@ -117,7 +142,8 @@ const Pais = () => {
               </div>
               <h3 className="font-display text-xl font-bold mb-2">Cuidado Integral</h3>
               <p className="text-muted-foreground text-sm">
-                Zelamos pela saúde física e emocional de cada criança com atenção e carinho.
+                Cada criança é vista em sua individualidade, recebendo afeto e segurança 
+                para explorar o mundo com confiança.
               </p>
             </div>
             <div className="block-card text-center">
@@ -133,9 +159,10 @@ const Pais = () => {
               <div className="w-14 h-14 rounded-xl bg-block-yellow/10 flex items-center justify-center mx-auto mb-4">
                 <Calendar size={28} className="text-block-yellow" />
               </div>
-              <h3 className="font-display text-xl font-bold mb-2">Eventos e Reuniões</h3>
+              <h3 className="font-display text-xl font-bold mb-2">Rede de Apoio</h3>
               <p className="text-muted-foreground text-sm">
-                Realizamos reuniões periódicas e eventos para fortalecer a parceria família-escola.
+                Mais do que um lugar de cuidado, somos uma rede de apoio familiar 
+                para todas as famílias.
               </p>
             </div>
           </div>

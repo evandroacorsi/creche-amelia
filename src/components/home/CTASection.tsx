@@ -12,12 +12,12 @@ const CTASection = () => {
           </div>
 
           <h2 className="font-display text-3xl md:text-4xl lg:text-5xl font-bold text-primary-foreground mb-6">
-            Faça Parte da Nossa Família
+            Juntas Escrevendo os Primeiros Capítulos
           </h2>
 
           <p className="text-lg text-primary-foreground/90 mb-8 max-w-2xl mx-auto">
             Agende uma visita e conheça de perto todo o carinho e dedicação que 
-            oferecemos às nossas crianças. Estamos esperando você!
+            oferecemos às nossas crianças há 56 anos. Estamos esperando você!
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
@@ -26,14 +26,14 @@ const CTASection = () => {
               className="bg-primary-foreground text-primary hover:bg-primary-foreground/90 font-semibold px-8 h-14 text-base rounded-xl"
               asChild
             >
-              <a href="https://wa.me/5518999999999" target="_blank" rel="noopener noreferrer">
+              <a href="https://wa.me/5518997876081" target="_blank" rel="noopener noreferrer">
                 Agende uma Visita
                 <ArrowRight className="ml-2" size={20} />
               </a>
             </Button>
             <Button
               size="lg"
-              className="bg-block-blue hover:bg-block-blue/90 text-white font-semibold px-8 h-14 text-base rounded-xl"
+              className="bg-block-green hover:bg-block-green/90 text-white font-semibold px-8 h-14 text-base rounded-xl"
               asChild
             >
               <Link to="/contato">Entre em Contato</Link>
