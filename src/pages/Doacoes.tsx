@@ -43,27 +43,26 @@ const Doacoes = () => {
   return (
     <Layout>
       {/* Hero */}
-      <section className="relative py-20 gradient-primary overflow-hidden">
+      <section className="relative py-16 bg-primary/5 border-b border-primary/10 overflow-hidden">
         <div className="absolute inset-0 opacity-10">
-          <div className="absolute top-10 left-10 w-32 h-32 border-4 border-primary-foreground rounded-3xl rotate-12" />
-          <div className="absolute bottom-10 right-10 w-24 h-24 border-4 border-primary-foreground rounded-2xl -rotate-12" />
-          <div className="absolute top-1/2 right-1/4 w-16 h-16 border-4 border-primary-foreground rounded-xl rotate-45" />
+          <div className="absolute top-6 left-10 w-16 h-16 border-2 border-primary rounded-2xl rotate-12" />
+          <div className="absolute bottom-6 right-10 w-12 h-12 border-2 border-primary rounded-xl -rotate-12" />
         </div>
         <div className="container-custom relative z-10">
-          <div className="max-w-3xl mx-auto text-center">
-            <div className="inline-flex items-center justify-center w-20 h-20 bg-primary-foreground/20 rounded-3xl mb-6">
-              <Heart className="w-10 h-10 text-primary-foreground" />
+          <div className="text-center">
+            <div className="inline-flex items-center justify-center w-16 h-16 bg-primary/10 rounded-2xl mb-4">
+              <Heart className="w-8 h-8 text-primary" />
             </div>
-            <h1 className="font-display text-4xl md:text-5xl font-bold text-primary-foreground mb-6">
+            <h1 className="font-display text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-4">
               Faça a Diferença na Vida de uma Criança
             </h1>
-            <p className="text-lg text-primary-foreground/90 mb-8 max-w-2xl mx-auto">
+            <p className="text-lg text-muted-foreground mb-6 max-w-2xl mx-auto">
               Sua doação ajuda a manter nossos serviços gratuitos e proporciona melhores condições 
               de atendimento para as crianças da Creche Amélia há 56 anos.
             </p>
             <Button
               size="lg"
-              className="bg-primary-foreground text-primary hover:bg-primary-foreground/90 font-semibold px-8 h-14 text-base rounded-xl"
+              className="gradient-primary text-primary-foreground font-semibold px-8 h-12 text-base rounded-xl"
               asChild
             >
               <a href="#formas-doacao">

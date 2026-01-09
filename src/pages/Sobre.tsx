@@ -78,21 +78,19 @@ const Sobre = () => {
   return (
     <Layout>
       {/* Hero */}
-      <section className="relative py-20 gradient-hero">
+      <section className="relative py-16 bg-primary/5 border-b border-primary/10">
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
-          <Sparkles className="absolute top-10 right-10 text-block-yellow/30 w-8 h-8" />
-          <div className="absolute bottom-10 left-10 w-12 h-12 bg-block-blue/20 rounded-xl rotate-12" />
+          <Sparkles className="absolute top-6 right-10 text-block-yellow/20 w-6 h-6" />
+          <div className="absolute bottom-6 left-10 w-8 h-8 bg-block-blue/10 rounded-lg rotate-12" />
         </div>
         <div className="container-custom relative z-10">
-          <div className="max-w-3xl">
-            <SectionHeader
-              title="Sobre a Creche Amélia"
-              subtitle="Há 56 anos cuidando, educando e acolhendo as crianças de Rancharia/SP com todo amor e dedicação."
-              centered={false}
-              colorAccent="red"
-              isPageHeader
-            />
-          </div>
+          <SectionHeader
+            title="Sobre a Creche Amélia"
+            subtitle="Há 56 anos cuidando, educando e acolhendo as crianças de Rancharia/SP com todo amor e dedicação."
+            centered={true}
+            colorAccent="red"
+            isPageHeader
+          />
         </div>
       </section>
 

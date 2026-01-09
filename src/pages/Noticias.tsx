@@ -59,16 +59,15 @@ const Noticias = () => {
   return (
     <Layout>
       {/* Hero */}
-      <section className="relative py-20 gradient-hero">
+      <section className="relative py-16 bg-primary/5 border-b border-primary/10">
         <div className="container-custom">
-          <div className="max-w-3xl">
-            <SectionHeader
-              title="Notícias e Novidades"
-              subtitle="Fique por dentro de tudo que acontece na Creche Amélia. Eventos, atividades, prestações de contas e muito mais."
-              centered={false}
-              colorAccent="yellow"
-            />
-          </div>
+          <SectionHeader
+            title="Notícias e Novidades"
+            subtitle="Fique por dentro de tudo que acontece na Creche Amélia. Eventos, atividades, prestações de contas e muito mais."
+            centered={true}
+            colorAccent="yellow"
+            isPageHeader
+          />
         </div>
       </section>
 

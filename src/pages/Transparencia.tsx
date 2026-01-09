@@ -39,16 +39,15 @@ const Transparencia = () => {
   return (
     <Layout>
       {/* Hero */}
-      <section className="relative py-20 gradient-hero">
+      <section className="relative py-16 bg-primary/5 border-b border-primary/10">
         <div className="container-custom">
-          <div className="max-w-3xl">
-            <SectionHeader
-              title="Transparência"
-              subtitle="Compromisso com a transparência e prestação de contas à sociedade. Acesse nossos documentos públicos."
-              centered={false}
-              colorAccent="blue"
-            />
-          </div>
+          <SectionHeader
+            title="Transparência"
+            subtitle="Compromisso com a transparência e prestação de contas à sociedade. Acesse nossos documentos públicos."
+            centered={true}
+            colorAccent="blue"
+            isPageHeader
+          />
         </div>
       </section>
 
@@ -108,15 +107,15 @@ const Transparencia = () => {
               <div className="grid gap-4">
                 <div className="flex justify-between py-3 border-b border-border">
                   <span className="text-muted-foreground">Razão Social</span>
-                  <span className="font-semibold">Associação Creche Amélia</span>
-                </div>
-                <div className="flex justify-between py-3 border-b border-border">
-                  <span className="text-muted-foreground">CNPJ</span>
-                  <span className="font-semibold">00.000.000/0001-00</span>
+                  <span className="font-semibold text-right">Escola de Educação Infantil "Amélia Teixeira Lins"</span>
                 </div>
                 <div className="flex justify-between py-3 border-b border-border">
                   <span className="text-muted-foreground">Natureza Jurídica</span>
-                  <span className="font-semibold">Entidade Beneficente de Assistência Social</span>
+                  <span className="font-semibold text-right">Entidade Filantrópica sem fins lucrativos</span>
+                </div>
+                <div className="flex justify-between py-3 border-b border-border">
+                  <span className="text-muted-foreground">Fundação</span>
+                  <span className="font-semibold">26/01/1969</span>
                 </div>
                 <div className="flex justify-between py-3 border-b border-border">
                   <span className="text-muted-foreground">Município</span>
@@ -124,7 +123,7 @@ const Transparencia = () => {
                 </div>
                 <div className="flex justify-between py-3">
                   <span className="text-muted-foreground">Endereço</span>
-                  <span className="font-semibold text-right">Rua das Flores, 123 - Centro</span>
+                  <span className="font-semibold text-right">Rua Allan Kardec, nº 778 - Vila Righeti</span>
                 </div>
               </div>
             </div>
