@@ -1,6 +1,6 @@
 import Layout from "@/components/layout/Layout";
 import SectionHeader from "@/components/ui/SectionHeader";
-import { Heart, Target, Shield, Users, Award, Clock, Sparkles, GraduationCap, Utensils, Briefcase } from "lucide-react";
+import { Heart, Target, Shield, Users, Award, Clock, Sparkles } from "lucide-react";
 import heroImage from "@/assets/hero-creche.jpg";
 
 const values = [
@@ -56,18 +56,14 @@ const spaces = [
 ];
 
 const equipe = [
-  {
-    nome: "Equipe Pedagógica",
-    descricao: "Professoras formadas em Pedagogia e auxiliares de desenvolvimento infantil dedicadas ao cuidado e educação das crianças.",
-  },
-  {
-    nome: "Equipe de Apoio",
-    descricao: "Profissionais responsáveis pela alimentação, limpeza e manutenção, garantindo um ambiente seguro e acolhedor.",
-  },
-  {
-    nome: "Coordenação",
-    descricao: "Coordenação pedagógica e administrativa comprometida com a qualidade do atendimento e gestão transparente.",
-  },
+  { nome: "Maria da Silva", cargo: "Coordenadora Pedagógica" },
+  { nome: "Ana Santos", cargo: "Professora - Maternal I" },
+  { nome: "Joana Oliveira", cargo: "Professora - Maternal II" },
+  { nome: "Carla Souza", cargo: "Auxiliar de Desenvolvimento Infantil" },
+  { nome: "Fernanda Lima", cargo: "Auxiliar de Desenvolvimento Infantil" },
+  { nome: "Rosa Pereira", cargo: "Berçarista" },
+  { nome: "Lucia Almeida", cargo: "Cozinheira" },
+  { nome: "Sandra Costa", cargo: "Auxiliar de Serviços Gerais" },
 ];
 
 const features = [
@@ -192,24 +188,20 @@ const Sobre = () => {
             colorAccent="blue"
           />
 
-          <div className="grid md:grid-cols-3 gap-6">
-            {equipe.map((membro, index) => {
-              const icons = [GraduationCap, Utensils, Briefcase];
-              const Icon = icons[index];
-              return (
-                <div
-                  key={membro.nome}
-                  className="block-card text-center animate-fade-in"
-                  style={{ animationDelay: `${index * 0.1}s` }}
-                >
-                  <div className="w-16 h-16 rounded-full bg-primary/10 flex items-center justify-center mx-auto mb-4">
-                    <Icon size={28} className="text-primary" />
-                  </div>
-                  <h3 className="font-display text-xl font-bold mb-3">{membro.nome}</h3>
-                  <p className="text-muted-foreground text-sm">{membro.descricao}</p>
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+            {equipe.map((membro, index) => (
+              <div
+                key={membro.nome}
+                className="block-card text-center animate-fade-in p-4"
+                style={{ animationDelay: `${index * 0.05}s` }}
+              >
+                <div className="w-14 h-14 rounded-full bg-primary/10 flex items-center justify-center mx-auto mb-3">
+                  <Users size={24} className="text-primary" />
                 </div>
-              );
-            })}
+                <h3 className="font-display text-base font-bold mb-1">{membro.nome}</h3>
+                <p className="text-muted-foreground text-xs">{membro.cargo}</p>
+              </div>
+            ))}
           </div>
         </div>
       </section>
