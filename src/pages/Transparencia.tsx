@@ -4,12 +4,12 @@ import { FileText, Download, Calendar, Building2, Users } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 const diretoria = [
-  { cargo: "Presidente", nome: "A definir" },
-  { cargo: "Vice-Presidente", nome: "A definir" },
-  { cargo: "1º Secretário", nome: "A definir" },
-  { cargo: "2º Secretário", nome: "A definir" },
-  { cargo: "1º Tesoureiro", nome: "A definir" },
-  { cargo: "2º Tesoureiro", nome: "A definir" },
+  { cargo: "Presidente", nome: "A definir", destaque: true },
+  { cargo: "Vice-Presidente", nome: "A definir", destaque: false },
+  { cargo: "1º Secretário", nome: "A definir", destaque: false },
+  { cargo: "2º Secretário", nome: "A definir", destaque: false },
+  { cargo: "1º Tesoureiro", nome: "A definir", destaque: false },
+  { cargo: "2º Tesoureiro", nome: "A definir", destaque: false },
 ];
 
 const documentos = [
@@ -112,8 +112,25 @@ const Transparencia = () => {
           />
 
           <div className="max-w-3xl mx-auto">
+            {/* Presidente em Destaque */}
+            {diretoria.filter(m => m.destaque).map((membro) => (
+              <div
+                key={membro.cargo}
+                className="block-card flex flex-col items-center gap-4 mb-8 bg-gradient-to-br from-primary/10 to-block-yellow/10 border-2 border-primary/20"
+              >
+                <div className="w-20 h-20 rounded-full bg-primary/20 flex items-center justify-center">
+                  <Users size={36} className="text-primary" />
+                </div>
+                <div className="text-center">
+                  <p className="text-sm text-primary font-semibold uppercase tracking-wide">{membro.cargo}</p>
+                  <p className="font-display text-2xl font-bold mt-1">{membro.nome}</p>
+                </div>
+              </div>
+            ))}
+
+            {/* Demais membros */}
             <div className="grid md:grid-cols-2 gap-4">
-              {diretoria.map((membro, index) => (
+              {diretoria.filter(m => !m.destaque).map((membro, index) => (
                 <div
                   key={membro.cargo}
                   className="block-card flex items-center gap-4 animate-fade-in"

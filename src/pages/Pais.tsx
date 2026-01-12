@@ -1,6 +1,7 @@
 import Layout from "@/components/layout/Layout";
 import SectionHeader from "@/components/ui/SectionHeader";
 import { Clock, Calendar, Backpack, AlertCircle, Heart, Phone, Sparkles } from "lucide-react";
+import heroImage from "@/assets/hero-creche.jpg";
 
 const rotina = [
   { hora: "7:00", atividade: "Recepção das crianças" },
@@ -68,8 +69,16 @@ const Pais = () => {
       </section>
 
       {/* Rotina */}
-      <section className="py-20">
-        <div className="container-custom">
+      <section className="py-20 relative">
+        {/* Background Image */}
+        <div className="absolute inset-0 z-0">
+          <img 
+            src={heroImage} 
+            alt="" 
+            className="w-full h-full object-cover opacity-5"
+          />
+        </div>
+        <div className="container-custom relative z-10">
           <div className="grid lg:grid-cols-2 gap-12">
             <div>
               <div className="flex items-center gap-3 mb-6">
