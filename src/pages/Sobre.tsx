@@ -1,11 +1,7 @@
 import Layout from "@/components/layout/Layout";
 import SectionHeader from "@/components/ui/SectionHeader";
-import { Heart, Target, Shield, Users, Award, Clock, Sparkles } from "lucide-react";
+import { Heart, Target, Shield, Users, Award, Clock, Sparkles, GraduationCap, Utensils, Briefcase } from "lucide-react";
 import heroImage from "@/assets/hero-creche.jpg";
-import salaAula from "@/assets/sala-aula.jpg";
-import playground from "@/assets/playground.jpg";
-import bercario from "@/assets/bercario.jpg";
-import refeitorio from "@/assets/refeitorio.jpg";
 
 const values = [
   {
@@ -42,24 +38,35 @@ const values = [
 
 const spaces = [
   {
-    image: salaAula,
     title: "Salas de Aula",
     description: "Espaços amplos, bem iluminados e equipados com materiais pedagógicos adequados para cada faixa etária.",
   },
   {
-    image: playground,
     title: "Playground",
     description: "Área de lazer ao ar livre com brinquedos seguros e coloridos, piso emborrachado para amortecer quedas.",
   },
   {
-    image: bercario,
     title: "Berçário",
     description: "Ambiente tranquilo e acolhedor com berços individuais e espaço climatizado para o conforto dos bebês.",
   },
   {
-    image: refeitorio,
     title: "Refeitório",
     description: "Espaço limpo e organizado para as refeições, com mobiliário adequado para crianças.",
+  },
+];
+
+const equipe = [
+  {
+    nome: "Equipe Pedagógica",
+    descricao: "Professoras formadas em Pedagogia e auxiliares de desenvolvimento infantil dedicadas ao cuidado e educação das crianças.",
+  },
+  {
+    nome: "Equipe de Apoio",
+    descricao: "Profissionais responsáveis pela alimentação, limpeza e manutenção, garantindo um ambiente seguro e acolhedor.",
+  },
+  {
+    nome: "Coordenação",
+    descricao: "Coordenação pedagógica e administrativa comprometida com a qualidade do atendimento e gestão transparente.",
   },
 ];
 
@@ -176,31 +183,55 @@ const Sobre = () => {
         </div>
       </section>
 
-      {/* Estrutura - Galeria */}
+      {/* Nossa Equipe */}
       <section className="py-20 bg-card">
+        <div className="container-custom">
+          <SectionHeader
+            title="Nossa Equipe"
+            subtitle="Profissionais dedicados ao cuidado e desenvolvimento das nossas crianças."
+            colorAccent="blue"
+          />
+
+          <div className="grid md:grid-cols-3 gap-6">
+            {equipe.map((membro, index) => {
+              const icons = [GraduationCap, Utensils, Briefcase];
+              const Icon = icons[index];
+              return (
+                <div
+                  key={membro.nome}
+                  className="block-card text-center animate-fade-in"
+                  style={{ animationDelay: `${index * 0.1}s` }}
+                >
+                  <div className="w-16 h-16 rounded-full bg-primary/10 flex items-center justify-center mx-auto mb-4">
+                    <Icon size={28} className="text-primary" />
+                  </div>
+                  <h3 className="font-display text-xl font-bold mb-3">{membro.nome}</h3>
+                  <p className="text-muted-foreground text-sm">{membro.descricao}</p>
+                </div>
+              );
+            })}
+          </div>
+        </div>
+      </section>
+
+      {/* Estrutura */}
+      <section className="py-20">
         <div className="container-custom">
           <SectionHeader
             title="Nossa Estrutura"
             subtitle="Conheça os espaços cuidadosamente preparados para proporcionar conforto e segurança."
-            colorAccent="blue"
+            colorAccent="green"
           />
 
           <div className="grid md:grid-cols-2 gap-6">
             {spaces.map((space, index) => (
               <div
                 key={space.title}
-                className="rounded-2xl overflow-hidden shadow-card bg-background animate-fade-in"
+                className="block-card animate-fade-in"
                 style={{ animationDelay: `${index * 0.1}s` }}
               >
-                <img
-                  src={space.image}
-                  alt={space.title}
-                  className="w-full h-[250px] object-cover"
-                />
-                <div className="p-6">
-                  <h3 className="font-display text-xl font-bold mb-2">{space.title}</h3>
-                  <p className="text-muted-foreground text-sm">{space.description}</p>
-                </div>
+                <h3 className="font-display text-xl font-bold mb-2">{space.title}</h3>
+                <p className="text-muted-foreground text-sm">{space.description}</p>
               </div>
             ))}
           </div>

@@ -76,9 +76,10 @@ const Noticias = () => {
         <div className="container-custom">
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
             {noticias.map((noticia, index) => (
-              <article
+              <Link
+                to={`/noticias/${noticia.id}`}
                 key={noticia.id}
-                className="block-card group cursor-pointer animate-fade-in"
+                className="block-card group cursor-pointer animate-fade-in flex flex-col h-full"
                 style={{ animationDelay: `${index * 0.05}s` }}
               >
                 <div className="flex items-center gap-2 mb-4">
@@ -91,11 +92,11 @@ const Noticias = () => {
                   {noticia.titulo}
                 </h3>
 
-                <p className="text-muted-foreground text-sm mb-4 line-clamp-3">
+                <p className="text-muted-foreground text-sm mb-4 line-clamp-3 flex-grow">
                   {noticia.resumo}
                 </p>
 
-                <div className="flex items-center justify-between pt-4 border-t border-border">
+                <div className="flex items-center justify-between pt-4 border-t border-border mt-auto">
                   <div className="flex items-center gap-2 text-sm text-muted-foreground">
                     <Calendar size={14} />
                     <span>{noticia.data}</span>
@@ -104,7 +105,7 @@ const Noticias = () => {
                     Ler mais <ArrowRight size={14} />
                   </span>
                 </div>
-              </article>
+              </Link>
             ))}
           </div>
 
@@ -117,19 +118,6 @@ const Noticias = () => {
         </div>
       </section>
 
-      {/* CTA */}
-      <section className="py-12 bg-card">
-        <div className="container-custom">
-          <div className="text-center">
-            <p className="text-muted-foreground mb-4">
-              Quer receber nossas novidades em primeira mão?
-            </p>
-            <Button className="gradient-primary text-primary-foreground font-semibold rounded-xl" asChild>
-              <Link to="/contato">Entre em Contato</Link>
-            </Button>
-          </div>
-        </div>
-      </section>
     </Layout>
   );
 };

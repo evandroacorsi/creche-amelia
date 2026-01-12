@@ -1,7 +1,16 @@
 import Layout from "@/components/layout/Layout";
 import SectionHeader from "@/components/ui/SectionHeader";
-import { FileText, Download, Calendar, Building2 } from "lucide-react";
+import { FileText, Download, Calendar, Building2, Users } from "lucide-react";
 import { Button } from "@/components/ui/button";
+
+const diretoria = [
+  { cargo: "Presidente", nome: "A definir" },
+  { cargo: "Vice-Presidente", nome: "A definir" },
+  { cargo: "1º Secretário", nome: "A definir" },
+  { cargo: "2º Secretário", nome: "A definir" },
+  { cargo: "1º Tesoureiro", nome: "A definir" },
+  { cargo: "2º Tesoureiro", nome: "A definir" },
+];
 
 const documentos = [
   {
@@ -93,8 +102,39 @@ const Transparencia = () => {
         </div>
       </section>
 
-      {/* Informações Institucionais */}
+      {/* Nossa Diretoria */}
       <section className="py-20 bg-card">
+        <div className="container-custom">
+          <SectionHeader
+            title="Nossa Diretoria"
+            subtitle="Composição da diretoria atual da entidade."
+            colorAccent="yellow"
+          />
+
+          <div className="max-w-3xl mx-auto">
+            <div className="grid md:grid-cols-2 gap-4">
+              {diretoria.map((membro, index) => (
+                <div
+                  key={membro.cargo}
+                  className="block-card flex items-center gap-4 animate-fade-in"
+                  style={{ animationDelay: `${index * 0.05}s` }}
+                >
+                  <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center flex-shrink-0">
+                    <Users size={20} className="text-primary" />
+                  </div>
+                  <div>
+                    <p className="text-sm text-muted-foreground">{membro.cargo}</p>
+                    <p className="font-semibold">{membro.nome}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Informações Institucionais */}
+      <section className="py-20">
         <div className="container-custom">
           <SectionHeader
             title="Informações Institucionais"
@@ -108,6 +148,10 @@ const Transparencia = () => {
                 <div className="flex justify-between py-3 border-b border-border">
                   <span className="text-muted-foreground">Razão Social</span>
                   <span className="font-semibold text-right">Escola de Educação Infantil "Amélia Teixeira Lins"</span>
+                </div>
+                <div className="flex justify-between py-3 border-b border-border">
+                  <span className="text-muted-foreground">CNPJ</span>
+                  <span className="font-semibold text-right">44.411.152/0001-80</span>
                 </div>
                 <div className="flex justify-between py-3 border-b border-border">
                   <span className="text-muted-foreground">Natureza Jurídica</span>
