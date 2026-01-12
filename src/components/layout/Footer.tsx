@@ -77,7 +77,8 @@ const Footer = () => {
         <div className="mt-12 pt-8 border-t border-primary-foreground/20">
           <div className="flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-primary-foreground/60">
             <div className="text-center md:text-left">
-              <p>Escola de Educação Infantil "Amélia Teixeira Lins"</p>
+              <p className="font-semibold text-primary-foreground/80">Escola de Educação Infantil "Amélia Teixeira Lins"</p>
+              <p>CNPJ: 44.411.152/0001-80</p>
               <p>Entidade filantrópica sem fins lucrativos - Fundada em 26/01/1969</p>
             </div>
             <p className="flex items-center gap-1">

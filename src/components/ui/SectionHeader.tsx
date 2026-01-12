@@ -33,7 +33,7 @@ const SectionHeader = ({ title, subtitle, centered = true, colorAccent = "orange
         <IconComponent size={isPageHeader ? 28 : 20} className={colorClasses[colorAccent]} />
       </div>
       <h2 className={isPageHeader ? "font-display text-3xl md:text-4xl lg:text-5xl font-bold text-foreground" : "section-title"}>{title}</h2>
-      {subtitle && <p className={`mt-3 ${isPageHeader ? "text-lg text-muted-foreground max-w-2xl" : "section-subtitle"}`}>{subtitle}</p>}
+      {subtitle && <p className={`mt-3 ${isPageHeader ? "text-lg text-muted-foreground max-w-2xl mx-auto text-center" : "section-subtitle"}`}>{subtitle}</p>}
     </div>
   );
 };
