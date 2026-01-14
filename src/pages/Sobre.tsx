@@ -3,6 +3,7 @@ import SectionHeader from "@/components/ui/SectionHeader";
 import { Heart, Target, Shield, Users, Award, Clock, Sparkles } from "lucide-react";
 import heroImage from "@/assets/hero-creche.jpg";
 
+
 const values = [
   {
     icon: Heart,
@@ -81,19 +82,20 @@ const Sobre = () => {
   return (
     <Layout>
       {/* Hero */}
-      <section className="relative py-16 bg-primary/5 border-b border-primary/10">
-        <div className="absolute inset-0 overflow-hidden pointer-events-none">
-          <Sparkles className="absolute top-6 right-10 text-block-yellow/20 w-6 h-6" />
-          <div className="absolute bottom-6 left-10 w-8 h-8 bg-block-blue/10 rounded-lg rotate-12" />
-        </div>
+      <section className="relative py-20 bg-primary/5 border-b border-primary/10">
         <div className="container-custom relative z-10">
-          <SectionHeader
-            title="Sobre a Creche Amélia"
-            subtitle="Há 56 anos cuidando, educando e acolhendo as crianças de Rancharia/SP com todo amor e dedicação."
-            centered={true}
-            colorAccent="red"
-            isPageHeader
-          />
+          <div className="max-w-3xl mx-auto text-center">
+            <span className="inline-block mb-4 px-4 py-1 text-sm font-medium rounded-full bg-primary/10 text-primary">
+              Educação infantil de qualidade
+            </span>
+            <h1 className="text-4xl md:text-5xl font-bold text-gray-900 leading-tight">
+              Sobre a <span className="text-primary">Creche Amélia</span>
+            </h1>
+            <p className="mt-6 text-lg md:text-xl text-gray-600">
+              Há <strong>56 anos</strong> cuidando, educando e acolhendo as crianças de
+              <strong> Rancharia/SP</strong> com amor, responsabilidade e dedicação.
+            </p>
+          </div>
         </div>
       </section>
 

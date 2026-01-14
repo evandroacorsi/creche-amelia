@@ -1,17 +1,57 @@
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
-import { ArrowRight } from "lucide-react";
-import logo from "@/assets/logo-creche-amelia.png";
+import { ArrowRight, School } from "lucide-react";
+import { useEffect, useState } from "react";
+import { FaWhatsapp } from "react-icons/fa";
+
+
+import logo from "@/assets/logo.png";
 import heroImage from "@/assets/hero-creche.jpg";
 
+/* =========================
+   COUNT UP
+========================= */
+interface CountUpProps {
+  end: number;
+  duration?: number;
+  suffix?: string;
+}
+
+const CountUp = ({ end, duration = 1500, suffix = "" }: CountUpProps) => {
+  const [value, setValue] = useState(0);
+
+  useEffect(() => {
+    let start = 0;
+    const increment = end / (duration / 16);
+
+    const timer = setInterval(() => {
+      start += increment;
+      if (start >= end) {
+        setValue(end);
+        clearInterval(timer);
+      } else {
+        setValue(Math.floor(start));
+      }
+    }, 16);
+
+    return () => clearInterval(timer);
+  }, [end, duration]);
+
+  return (
+    <span>
+      {value}
+      {suffix}
+    </span>
+  );
+};
+
 const HeroSection = () => {
-  // Definindo os estilos de animação diretamente aqui para garantir que funcionem
   const animationStyles = `
     @keyframes subtle-zoom {
       from { transform: scale(1.15); }
-      to { transform: scale(1.0); }
+      to { transform: scale(1); }
     }
-    
+
     @keyframes gradient-shift {
       0% { background-position: 0% 50%; }
       50% { background-position: 100% 50%; }
@@ -23,8 +63,14 @@ const HeroSection = () => {
       to { opacity: 1; transform: translateY(0); }
     }
 
+    /* FLOAT COM ROTAÇÃO (ORIGINAL) */
+    @keyframes float {
+      0%, 100% { transform: translateY(0px) rotate(var(--tw-rotate)); }
+      50% { transform: translateY(-10px) rotate(var(--tw-rotate)); }
+    }
+
     .animate-subtle-zoom {
-      animation: subtle-zoom 2s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+      animation: subtle-zoom 2s ease forwards;
     }
 
     .animate-gradient-text {
@@ -33,120 +79,149 @@ const HeroSection = () => {
     }
 
     .animate-fade-in {
-      opacity: 0; /* Começa invisível */
+      opacity: 0;
       animation: fade-in-up 0.8s ease-out forwards;
     }
-    
-    /* Utilitário para garantir que o float (que você já tinha) funcione */
-    @keyframes float {
-      0%, 100% { transform: translateY(0px) rotate(var(--tw-rotate)); }
-      50% { transform: translateY(-10px) rotate(var(--tw-rotate)); }
-    }
+
     .animation-float {
       animation: float 3s ease-in-out infinite;
     }
   `;
 
   return (
-    <section className="relative min-h-[90vh] flex items-center gradient-hero overflow-hidden pt-6 pb-12 lg:py-0">
-
-      {/* INJEÇÃO DO CSS NO COMPONENTE */}
+    <section className="relative min-h-[100vh] lg:min-h-[90vh] flex items-center gradient-hero overflow-hidden pt-10 pb-16 lg:py-0 ">
       <style>{animationStyles}</style>
+      {/* BLOCOS DECORATIVOS NUMERADOS */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none hidden lg:block">
 
-      {/* Decorative Elements */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute top-20 left-10 w-16 h-16 bg-block-yellow/20 rounded-2xl rotate-12 animation-float" />
-        <div className="absolute top-40 right-20 w-12 h-12 bg-block-blue/20 rounded-xl -rotate-12 animation-float" style={{ animationDelay: "1s" }} />
-        <div className="absolute bottom-40 left-20 w-10 h-10 bg-block-green/20 rounded-lg rotate-45 animation-float" style={{ animationDelay: "2s" }} />
-        <div className="absolute bottom-20 right-40 w-14 h-14 bg-block-red/20 rounded-2xl -rotate-6 animation-float" style={{ animationDelay: "0.5s" }} />
+        {/* BLOCO 1 */}
+        <div className="absolute top-20 left-10 w-16 h-16 bg-block-yellow/30 rounded-2xl rotate-12 animation-float flex items-center justify-center font-display text-2xl font-bold text-block-yellow">
+          1
+        </div>
+
+        {/* BLOCO 2 */}
+        <div
+          className="absolute top-40 right-20 w-12 h-12 bg-block-blue/30 rounded-xl -rotate-12 animation-float flex items-center justify-center font-display text-xl font-bold text-block-blue"
+          style={{ animationDelay: "1s" }}
+        >
+          2
+        </div>
+
+        {/* BLOCO 3 */}
+        <div
+          className="absolute bottom-40 left-20 w-10 h-10 bg-block-green/30 rounded-lg rotate-45 animation-float flex items-center justify-center font-display text-lg font-bold text-block-green"
+          style={{ animationDelay: "2s" }}
+        >
+          3
+        </div>
+
+        {/* BLOCO 4 */}
+        <div
+          className="absolute bottom-20 right-40 w-14 h-14 bg-block-red/30 rounded-2xl -rotate-6 animation-float flex items-center justify-center font-display text-xl font-bold text-block-red"
+          style={{ animationDelay: "0.5s" }}
+        >
+          4
+        </div>
       </div>
 
       <div className="container mx-auto px-4 md:px-6 relative z-10">
-        <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
+        <div className="grid lg:grid-cols-2 gap-10 lg:gap-12 items-center">
 
-          {/* Content */}
-          <div className="text-center lg:text-left mt-4 order-1 lg:order-1">
 
-            {/* Título com animação Gradient e Fade-in */}
-            <h1 className="font-display text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-foreground mb-4 leading-tight animate-fade-in">
+          {/* TEXTO */}
+          <div className="text-center lg:text-left animate-fade-in">
+            <h1 className="font-display text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-4 leading-tight">
+
               Lugar de carinho, cuidado e{" "}
-              <span className="text-gradient-primary animate-gradient-text inline-block">
+              <span className="text-gradient-primary animate-gradient-text">
                 descobertas
               </span>
             </h1>
 
-            {/* Parágrafo com Delay */}
-            <p
-              className="text-base sm:text-lg md:text-xl text-muted-foreground mb-8 max-w-xl mx-auto lg:mx-0 animate-fade-in"
-              style={{ animationDelay: "0.2s" }}
-            >
+            <p className="text-base sm:text-lg md:text-xl text-muted-foreground mb-8 max-w-xl mx-auto lg:mx-0">
               Há 56 anos transformando a infância em Rancharia/SP.
-              Oferecemos um ambiente seguro, acolhedor e estimulante para o desenvolvimento
-              integral das crianças de 4 meses a 3 anos e 11 meses.
+              Oferecemos um ambiente seguro, acolhedor e estimulante para o
+              desenvolvimento integral das crianças de 4 meses a 3 anos e 11 meses.
             </p>
 
-            {/* Botões com Delay */}
-            <div
-              className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start animate-fade-in"
-              style={{ animationDelay: "0.4s" }}
-            >
-              <Button size="lg" className="gradient-primary text-primary-foreground font-semibold px-8 h-12 sm:h-14 text-sm sm:text-base rounded-xl shadow-lg hover:shadow-xl transition-all hover:scale-105" asChild>
-                <a href="https://wa.me/5518997876081" target="_blank" rel="noopener noreferrer">
+            <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start mb-10">
+
+              {/* WHATSAPP */}
+              <Button
+                size="lg"
+                className="gradient-primary px-8 h-14 rounded-xl shadow-lg hover:scale-105 transition-all flex items-center gap-3 w-full sm:w-auto"
+                asChild
+              >
+                <a
+                  href="https://wa.me/5518997876081"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <FaWhatsapp className="text-xl" />
                   Agende uma Visita
-                  <ArrowRight className="ml-2" size={20} />
+                  <ArrowRight className="ml-1" />
                 </a>
               </Button>
-              <Button size="lg" variant="outline" className="font-semibold px-8 h-12 sm:h-14 text-sm sm:text-base rounded-xl border-2" asChild>
-                <Link to="/sobre">Conheça a Creche</Link>
+
+              {/* CONHEÇA A CRECHE */}
+              <Button
+                size="lg"
+                variant="outline"
+                className="
+                  px-8 h-14 rounded-xl
+                  flex items-center gap-3
+                "
+                asChild
+              >
+                <Link to="/sobre">
+                  <School className="w-5 h-5" />
+                  Conheça a Creche
+                </Link>
               </Button>
             </div>
 
-            {/* Stats com Delay */}
+
+            {/* STATS */}
             <div
-              className="grid grid-cols-3 gap-2 sm:gap-6 mt-8 sm:mt-12 pt-4 sm:pt-8 animate-fade-in border-t lg:border-none border-gray-200"
-              style={{ animationDelay: "0.6s" }}
-            >
+              className=" grid grid-cols-3 gap-3 border-t pt-6 text-center text-sm">
               <div>
-                <div className="font-display text-2xl sm:text-3xl md:text-4xl font-bold text-primary">56</div>
-                <div className="text-xs sm:text-sm text-muted-foreground">Anos de história</div>
+                <div className="font-display text-3xl font-bold text-primary">
+                  <CountUp end={56} />
+                </div>
+                <div className="text-sm text-muted-foreground">Anos de história</div>
               </div>
+
               <div>
-                <div className="font-display text-2xl sm:text-3xl md:text-4xl font-bold text-block-blue">4m-4a</div>
-                <div className="text-xs sm:text-sm text-muted-foreground">Idade atendida</div>
+                <div className="font-display text-3xl font-bold text-block-blue">
+                  <CountUp end={4} suffix="m" /> - <CountUp end={4} suffix="a" />
+                </div>
+                <div className="text-sm text-muted-foreground">Idade atendida</div>
               </div>
+
               <div>
-                <div className="font-display text-2xl sm:text-3xl md:text-4xl font-bold text-block-green">100%</div>
-                <div className="text-xs sm:text-sm text-muted-foreground">Gratuito</div>
+                <div className="font-display text-3xl font-bold text-block-green">
+                  <CountUp end={100} suffix="%" />
+                </div>
+                <div className="text-sm text-muted-foreground">Gratuito</div>
               </div>
             </div>
           </div>
 
-          {/* Hero Image e Badge */}
-          <div className="relative mt-8 lg:mt-0 order-2 lg:order-2">
-
-            {/* Wrapper da imagem com fade-in */}
-            <div
-              className="relative rounded-3xl overflow-hidden shadow-2xl mx-auto max-w-[500px] lg:max-w-none animate-fade-in"
-              style={{ animationDelay: "0.3s" }}
-            >
-              {/* Imagem com Zoom Sutil */}
+          {/* IMAGEM */}
+          <div className="relative animate-fade-in">
+            <div className="rounded-3xl overflow-hidden shadow-2xl">
               <img
                 src={heroImage}
                 alt="Crianças brincando na Creche Amélia"
-                className="w-full h-64 sm:h-[400px] lg:h-[500px] object-cover animate-subtle-zoom"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-foreground/20 to-transparent" />
-            </div>
+                className=" w-full h-[220px] sm:h-[320px] md:h-[380px] lg:h-[400px] object-coveranimate-subtle-zoom"/>
+                </div>
 
-            {/* Logo Badge */}
             <div
-              className="absolute -bottom-4 left-4 lg:-bottom-6 lg:-left-6 bg-card p-3 lg:p-4 rounded-2xl shadow-xl animate-float"
-              style={{ animationDelay: "1s" }}
-            >
-              <img src={logo} alt="Creche Amélia" className="h-16 lg:h-24 w-auto" />
+              className="
+                absolute -bottom-3 left-3 sm:-bottom-5 sm:-left-5 bg-white p-2 rounded-lg shadow-sm animation-float ">
+              <img src={logo} alt="Creche Amélia" className="h-14 sm:h-24" />
             </div>
           </div>
-
         </div>
       </div>
     </section>

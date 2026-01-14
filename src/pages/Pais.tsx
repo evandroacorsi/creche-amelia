@@ -32,21 +32,31 @@ const Pais = () => {
   return (
     <Layout>
       {/* Hero */}
-      <section className="relative py-16 bg-primary/5 border-b border-primary/10">
+      <section className="relative py-20 bg-primary/5 border-b border-primary/10">
+        {/* Elementos decorativos sutis */}
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
-          <Sparkles className="absolute top-6 right-10 text-block-yellow/20 w-6 h-6" />
-          <div className="absolute bottom-6 left-10 w-8 h-8 bg-block-blue/10 rounded-lg rotate-12" />
+          <Sparkles className="absolute top-8 right-12 text-primary/20 w-7 h-7" />
+          <div className="absolute bottom-10 left-12 w-10 h-10 bg-primary/10 rounded-xl rotate-12" />
         </div>
+
         <div className="container-custom relative z-10">
-          <SectionHeader
-            title="Informações para Pais"
-            subtitle="Tudo o que você precisa saber sobre a rotina, cuidados e parceria entre família e creche."
-            centered={true}
-            colorAccent="yellow"
-            isPageHeader
-          />
+          <div className="max-w-3xl mx-auto text-center">
+            <span className="inline-block mb-4 px-4 py-1 text-sm font-medium rounded-full bg-primary/10 text-primary">
+              Família e creche
+            </span>
+
+            <h2 className="text-4xl md:text-5xl font-bold text-gray-900 leading-tight">
+              Informações para <span className="text-primary">Pais</span>
+            </h2>
+
+            <p className="mt-6 text-lg md:text-xl text-gray-600">
+              Tudo o que você precisa saber sobre a rotina, os cuidados diários e a
+              colaboração entre família e creche para o desenvolvimento das crianças.
+            </p>
+          </div>
         </div>
       </section>
+
 
       {/* Informações sobre idades */}
       <section className="py-12 bg-card">

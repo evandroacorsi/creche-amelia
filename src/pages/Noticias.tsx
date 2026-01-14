@@ -59,17 +59,31 @@ const Noticias = () => {
   return (
     <Layout>
       {/* Hero */}
-      <section className="relative py-16 bg-primary/5 border-b border-primary/10">
-        <div className="container-custom">
-          <SectionHeader
-            title="Notícias e Novidades"
-            subtitle="Fique por dentro de tudo que acontece na Creche Amélia. Eventos, atividades, prestações de contas e muito mais."
-            centered={true}
-            colorAccent="yellow"
-            isPageHeader
-          />
+      <section className="relative py-20 bg-primary/5 border-b border-primary/10">
+        {/* Elementos decorativos sutis */}
+        <div className="absolute inset-0 overflow-hidden pointer-events-none">
+          <div className="absolute top-8 right-12 w-10 h-10 bg-primary/10 rounded-xl rotate-6" />
+          <div className="absolute bottom-10 left-12 w-6 h-6 bg-primary/10 rounded-full" />
+        </div>
+
+        <div className="container-custom relative z-10">
+          <div className="max-w-3xl mx-auto text-center">
+            <span className="inline-block mb-4 px-4 py-1 text-sm font-medium rounded-full bg-primary/10 text-primary">
+              Acompanhe nosso dia a dia
+            </span>
+
+            <h2 className="text-4xl md:text-5xl font-bold text-gray-900 leading-tight">
+              Notícias e <span className="text-primary">Novidades</span>
+            </h2>
+
+            <p className="mt-6 text-lg md:text-xl text-gray-600">
+              Fique por dentro de tudo o que acontece na Creche Amélia.
+              Eventos, atividades, comunicados, prestações de contas e muito mais.
+            </p>
+          </div>
         </div>
       </section>
+
 
       {/* Lista de Notícias */}
       <section className="py-20">

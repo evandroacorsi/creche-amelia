@@ -1,12 +1,15 @@
 import Layout from "@/components/layout/Layout";
 import SectionHeader from "@/components/ui/SectionHeader";
 import { Button } from "@/components/ui/button";
-import { Heart, Gift, Banknote, Package, HandHeart, ArrowRight, Sparkles } from "lucide-react";
+import { Heart, Gift, Banknote, Package, HandHeart, ArrowRight, Sparkles, HeartHandshake } from "lucide-react";
 import { Link } from "react-router-dom";
+import { SiPix } from "react-icons/si";
+import { FaWhatsapp } from "react-icons/fa";
+
 
 const formasDoacao = [
   {
-    icon: Banknote,
+    icon: SiPix,
     title: "PIX",
     description: "Faça uma doação via PIX de forma rápida e segura.",
     destaque: "Chave PIX disponível",
@@ -43,120 +46,194 @@ const Doacoes = () => {
   return (
     <Layout>
       {/* Hero */}
-      <section className="relative py-16 bg-primary/5 border-b border-primary/10 overflow-hidden">
-        <div className="absolute inset-0 opacity-10">
-          <div className="absolute top-6 left-10 w-16 h-16 border-2 border-primary rounded-2xl rotate-12" />
-          <div className="absolute bottom-6 right-10 w-12 h-12 border-2 border-primary rounded-xl -rotate-12" />
+      <section className="relative py-20 bg-primary/5 border-b border-primary/10 overflow-hidden">
+        {/* Elementos decorativos */}
+        <div className="absolute inset-0 pointer-events-none">
+          <div className="absolute top-8 left-12 w-16 h-16 border-2 border-primary/30 rounded-2xl rotate-12" />
+          <div className="absolute bottom-10 right-12 w-12 h-12 border-2 border-primary/30 rounded-xl -rotate-12" />
+          <div className="absolute top-1/2 right-0 w-32 h-32 bg-primary/5 rounded-full translate-x-1/2" />
         </div>
+
         <div className="container-custom relative z-10">
-          <div className="text-center">
-            <div className="inline-flex items-center justify-center w-16 h-16 bg-primary/10 rounded-2xl mb-4">
+          <div className="max-w-3xl mx-auto text-center">
+            <div className="inline-flex items-center justify-center w-16 h-16 bg-primary/10 rounded-2xl mb-6">
               <Heart className="w-8 h-8 text-primary" />
             </div>
-            <h1 className="font-display text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-4">
-              Faça a Diferença na Vida de uma Criança
+
+            <h1 className="text-4xl md:text-5xl font-bold text-gray-900 leading-tight">
+              Faça a Diferença na Vida de uma{" "}
+              <span className="text-primary whitespace-nowrap">Criança</span>
             </h1>
-            <p className="text-lg text-muted-foreground mb-6 max-w-2xl mx-auto">
-              Sua doação ajuda a manter nossos serviços gratuitos e proporciona melhores condições 
-              de atendimento para as crianças da Creche Amélia há 56 anos.
+
+
+            <p className="mt-6 text-lg md:text-xl text-gray-600 max-w-2xl mx-auto">
+              Sua doação ajuda a manter nossos serviços gratuitos e garante melhores
+              condições de cuidado, educação e acolhimento para as crianças da
+              Creche Amélia há <strong>56 anos</strong>.
             </p>
-            <Button
-              size="lg"
-              className="gradient-primary text-primary-foreground font-semibold px-8 h-12 text-base rounded-xl"
-              asChild
-            >
-              <a href="#formas-doacao">
-                Quero Doar <ArrowRight className="ml-2" size={20} />
-              </a>
-            </Button>
+
+            <div className="mt-8">
+              <Button
+                size="lg"
+                className="gradient-primary text-primary-foreground font-semibold px-8 h-12 text-base rounded-xl"
+                asChild
+              >
+                <a href="#formas-doacao">
+                  Quero Doar <ArrowRight className="ml-2" size={20} />
+                </a>
+              </Button>
+            </div>
           </div>
         </div>
       </section>
 
-      {/* Formas de Doação */}
-      <section id="formas-doacao" className="py-20">
-        <div className="container-custom">
-          <SectionHeader
-            title="Como Doar"
-            subtitle="Existem diversas formas de contribuir com a nossa causa. Escolha a que melhor se adapta a você."
-            colorAccent="red"
-          />
 
+      {/* Formas de Doação */}
+      {/* Formas de Doação */}
+      <section
+        id="formas-doacao"
+        className="relative py-20 bg-red-50/50 border-t border-red-100 overflow-hidden"
+      >
+        {/* Elementos decorativos */}
+        <div className="absolute inset-0 pointer-events-none">
+          <div className="absolute top-10 left-10 w-20 h-20 border-2 border-red-200/60 rounded-2xl rotate-12" />
+          <div className="absolute bottom-16 right-12 w-14 h-14 border-2 border-red-200/60 rounded-xl -rotate-12" />
+          <div className="absolute top-1/2 right-0 w-40 h-40 bg-red-100/40 rounded-full translate-x-1/2" />
+        </div>
+
+        <div className="container-custom relative z-10">
+          {/* Header */}
+          <div className="max-w-3xl mx-auto text-center mb-14">
+            <div className="inline-flex items-center justify-center w-16 h-16 bg-red-100 rounded-2xl mb-6">
+              <HeartHandshake className="w-8 h-8 text-red-600" />
+            </div>
+
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-900">
+              Como <span className="text-red-600">Doar</span>
+            </h2>
+
+            <p className="mt-4 text-lg text-gray-600 max-w-2xl mx-auto">
+              Existem diversas formas de contribuir com a nossa causa.
+              Escolha a que melhor se adapta a você.
+            </p>
+          </div>
+
+          {/* Cards */}
           <div className="grid md:grid-cols-3 gap-6">
             {formasDoacao.map((forma, index) => (
               <div
                 key={forma.title}
-                className={`block-card border-2 ${forma.cor} animate-fade-in`}
+                className="group relative bg-white/80 backdrop-blur-sm border border-red-100 rounded-2xl p-6 shadow-sm hover:shadow-lg transition-all duration-300 animate-fade-in flex flex-col"
                 style={{ animationDelay: `${index * 0.1}s` }}
               >
-                <div className={`w-14 h-14 rounded-xl flex items-center justify-center mb-4 ${forma.cor.split(' ')[0]}`}>
-                  <forma.icon size={28} className={forma.cor.split(' ')[1]} />
+                {/* Topo */}
+                <div>
+                  <div className="w-14 h-14 rounded-xl flex items-center justify-center mb-4 bg-red-100 text-red-600 group-hover:scale-105 transition-transform">
+                    <forma.icon size={28} />
+                  </div>
+
+                  <h3 className="font-display text-xl font-bold mb-2 text-gray-900">
+                    {forma.title}
+                  </h3>
                 </div>
-                <h3 className="font-display text-xl font-bold mb-2">{forma.title}</h3>
-                <p className="text-muted-foreground text-sm mb-4">{forma.description}</p>
-                <div className="pt-4 border-t border-border">
-                  <span className="font-mono font-bold text-foreground">{forma.destaque}</span>
+
+                {/* Meio (flexível) */}
+                <p className="text-gray-600 text-sm leading-relaxed mb-5 flex-1">
+                  {forma.description}
+                </p>
+
+                {/* Base (fixa e alinhada) */}
+                <div className="pt-4 border-t border-red-100 flex items-center justify-between">
+                  <span className="font-mono font-semibold text-red-600">
+                    {forma.destaque}
+                  </span>
+
+                  <span className="text-xs text-gray-400 group-hover:text-red-500 transition-colors">
+                    <Link to="/contato">
+                      Entre em Contato →
+                    </Link>
+                  </span>
+
+
                 </div>
               </div>
+
             ))}
           </div>
         </div>
       </section>
 
+
       {/* Dados Bancários */}
-      <section className="py-20 bg-card">
+      <section className="py-20 bg-gradient-to-b from-card to-background">
         <div className="container-custom">
           <SectionHeader
             title="Dados para Doação"
-            subtitle="Informações bancárias para transferência ou depósito."
+            subtitle="Informações institucionais para contato, transferência ou depósito."
             colorAccent="blue"
           />
 
           <div className="max-w-2xl mx-auto">
-            <div className="block-card">
-              <div className="space-y-4">
-                <div className="flex justify-between py-3 border-b border-border">
-                  <span className="text-muted-foreground">Razão Social</span>
-                  <span className="font-semibold text-right">Escola de Educação Infantil "Amélia Teixeira Lins"</span>
+            <div className="rounded-2xl border border-border bg-background shadow-sm p-6">
+
+              {/* Lista de dados */}
+              <div className="divide-y divide-border">
+                <div className="flex flex-col sm:flex-row sm:justify-between gap-1 py-4">
+                  <span className="text-sm text-muted-foreground">Razão Social</span>
+                  <span className="font-semibold text-sm sm:text-right">
+                    Escola de Educação Infantil “Amélia Teixeira Lins”
+                  </span>
                 </div>
-                <div className="flex justify-between py-3 border-b border-border">
-                  <span className="text-muted-foreground">Telefone</span>
-                  <span className="font-semibold">(18) 3265-6789</span>
+
+                <div className="flex flex-col sm:flex-row sm:justify-between gap-1 py-4">
+                  <span className="text-sm text-muted-foreground">Telefone</span>
+                  <span className="font-semibold text-sm">(18) 3265-6789</span>
                 </div>
-                <div className="flex justify-between py-3 border-b border-border">
-                  <span className="text-muted-foreground">WhatsApp</span>
-                  <span className="font-semibold">(18) 99787-6081</span>
+
+                <div className="flex flex-col sm:flex-row sm:justify-between gap-1 py-4">
+                  <span className="text-sm text-muted-foreground">WhatsApp</span>
+                  <span className="font-semibold text-sm">(18) 99787-6081</span>
                 </div>
-                <div className="flex justify-between py-3 border-b border-border">
-                  <span className="text-muted-foreground">E-mail</span>
-                  <span className="font-semibold">crecheamelia@hotmail.com</span>
+
+                <div className="flex flex-col sm:flex-row sm:justify-between gap-1 py-4">
+                  <span className="text-sm text-muted-foreground">E-mail</span>
+                  <span className="font-semibold text-sm break-all">
+                    crecheamelia@hotmail.com
+                  </span>
                 </div>
-                <div className="flex justify-between py-3">
-                  <span className="text-muted-foreground">Endereço</span>
-                  <span className="font-semibold text-right">Rua Allan Kardec, nº 778 - Vila Righeti, Rancharia/SP</span>
+
+                <div className="flex flex-col sm:flex-row sm:justify-between gap-1 py-4">
+                  <span className="text-sm text-muted-foreground">Endereço</span>
+                  <span className="font-semibold text-sm sm:text-right">
+                    Rua Allan Kardec, nº 778 – Vila Righeti, Rancharia/SP
+                  </span>
                 </div>
               </div>
+
               <div className="mt-6 p-4 bg-block-green/10 rounded-xl text-center">
                 <p className="text-sm text-muted-foreground">
                   Para informações sobre PIX e dados bancários, entre em contato pelo WhatsApp
                 </p>
                 <Button className="mt-4 gradient-primary text-primary-foreground" asChild>
                   <a href="https://wa.me/5518997876081" target="_blank" rel="noopener noreferrer">
-                    Falar no WhatsApp
+
+                    <FaWhatsapp className="text-xl" />Falar no WhatsApp
                   </a>
                 </Button>
+
               </div>
             </div>
           </div>
         </div>
       </section>
 
+
       {/* O que precisamos */}
-      <section className="py-20">
+      <section className="py-20 bg-gradient-to-b from-emerald-50/60 to-background dark:from-emerald-900/10">
         <div className="container-custom">
           <SectionHeader
             title="O Que Mais Precisamos"
-            subtitle="Lista de itens que fazem diferença no dia a dia da creche."
+            subtitle="Itens que fazem diferença no dia a dia da creche."
             colorAccent="green"
           />
 
@@ -164,16 +241,41 @@ const Doacoes = () => {
             {comoAjudar.map((item, index) => (
               <div
                 key={item}
-                className="flex items-center gap-3 bg-card p-4 rounded-xl shadow-soft animate-fade-in"
+                className="
+            group flex items-center gap-4 p-4
+            rounded-xl
+            border border-emerald-100 dark:border-emerald-900/40
+            bg-white dark:bg-background
+            shadow-sm hover:shadow-md
+            transition-all duration-300
+            hover:-translate-y-1
+            animate-fade-in
+          "
                 style={{ animationDelay: `${index * 0.05}s` }}
               >
-                <Gift size={20} className="text-primary flex-shrink-0" />
-                <span className="font-medium text-sm">{item}</span>
+                {/* Indicador */}
+                <div
+                  className="
+              w-3.5 h-3.5 rounded-full
+              bg-emerald-500
+              group-hover:bg-emerald-600
+              transition-colors
+              flex-shrink-0
+            "
+                />
+
+                <span className="text-sm font-medium text-foreground/80">
+                  {item}
+                </span>
               </div>
             ))}
           </div>
         </div>
       </section>
+
+
+
+
 
       {/* CTA Final */}
       <section className="py-20 bg-block-red">
@@ -183,7 +285,7 @@ const Doacoes = () => {
               Toda Ajuda Faz a Diferença
             </h2>
             <p className="text-primary-foreground/90 mb-8">
-              Entre em contato para saber mais sobre como você pode contribuir 
+              Entre em contato para saber mais sobre como você pode contribuir
               com a Creche Amélia e fazer parte dessa história de amor e cuidado há 56 anos.
             </p>
             <Button

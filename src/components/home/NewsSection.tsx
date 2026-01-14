@@ -44,15 +44,16 @@ const NewsSection = () => {
           {/* Notícia em Destaque */}
           <Link
             to={`/noticias/${destaque.id}`}
-            className="group block bg-background rounded-2xl overflow-hidden shadow-card hover:shadow-lg transition-all duration-300"
-          >
+            className=" group block bg-card rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl hover:-translate-y-1 transition-all duration-300 ">
             <div className="relative h-64 overflow-hidden">
               <img
                 src={destaque.imagem}
                 alt={destaque.titulo}
                 className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
               />
-              <div className="absolute top-4 left-4 bg-primary text-primary-foreground px-3 py-1 rounded-full text-xs font-semibold">
+              <div className="absolute inset-0 bg-black/20 group-hover:bg-black/30 transition-colors" />
+
+              <div className=" absolute top-4 left-4 bg-primary/90 backdrop-blur text-primary-foreground px-3 py-1 rounded-full text-xs font-bold shadow-md ">
                 Destaque
               </div>
             </div>
@@ -61,10 +62,11 @@ const NewsSection = () => {
                 <Calendar size={14} />
                 <span>{destaque.data}</span>
               </div>
-              <h3 className="font-display text-xl font-bold mb-3 group-hover:text-primary transition-colors">
+              <h3 className=" font-display text-xl font-bold mb-3 text-foreground group-hover:text-primary transition-colors ">
                 {destaque.titulo}
               </h3>
-              <p className="text-muted-foreground text-sm line-clamp-3">
+              <p className="text-muted-foreground/90 text-sm line-clamp-3">
+
                 {destaque.resumo}
               </p>
               <div className="flex items-center gap-2 text-primary font-semibold text-sm mt-4 group-hover:gap-3 transition-all">
@@ -79,7 +81,7 @@ const NewsSection = () => {
               <Link
                 key={noticia.id}
                 to={`/noticias/${noticia.id}`}
-                className="group flex gap-4 bg-background rounded-xl p-4 shadow-soft hover:shadow-card transition-all duration-300"
+                className=" group flex gap-4 bg-card rounded-xl p-4 shadow-md hover:shadow-lg hover:bg-muted/30 transition-all duration-300"
               >
                 <div className="w-24 h-24 rounded-lg overflow-hidden flex-shrink-0">
                   <img
@@ -106,8 +108,8 @@ const NewsSection = () => {
             {/* Botão Ver Todas */}
             <div className="mt-auto pt-4">
               <Button
-                variant="outline"
-                className="w-full rounded-xl font-semibold"
+                variant="secondary"
+                className="w-full rounded-xl font-semibold hover:bg-primary hover:text-primary-foreground transition-colors"
                 asChild
               >
                 <Link to="/noticias">
