@@ -1,18 +1,19 @@
 import { Link } from "react-router-dom";
-import { MapPin, Phone, Mail, Instagram, Heart } from "lucide-react";
+import { MapPin, Phone, Mail, Instagram, Heart, Facebook } from "lucide-react";
 import logo from "@/assets/logo-creche-amelia.png";
 
 const Footer = () => {
+
+  const currentYear = new Date().getFullYear();
+
   return (
     <footer className="bg-foreground text-primary-foreground">
       <div className="container-custom py-12">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {/* Logo and Description */}
           <div className="space-y-4">
-            <img src={logo} alt="Creche Amélia" className="h-20 w-auto bg-card rounded-lg p-2" />
-            <p className="text-primary-foreground/80 text-sm leading-relaxed">
-              Lugar de carinho, cuidado e descobertas a cada passo. Há 56 anos transformando a vida de crianças em Rancharia/SP.
-            </p>
+            <img src={logo} alt="Creche Amélia" className="h-40 w-auto bg-card rounded-lg p-2" />
+
           </div>
 
           {/* Quick Links */}
@@ -69,6 +70,15 @@ const Footer = () => {
               >
                 <Instagram size={20} />
               </a>
+              <a
+                href="https://www.facebook.com/CrecheAmeliaLins/?locale=pt_BR"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-10 h-10 rounded-lg bg-primary-foreground/10 flex items-center justify-center hover:bg-primary-foreground/20 transition-colors"
+              >
+                <Facebook size={20} />
+              </a>
+
             </div>
           </div>
         </div>
@@ -78,11 +88,11 @@ const Footer = () => {
           <div className="flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-primary-foreground/60">
             <div className="text-center md:text-left">
               <p className="font-semibold text-primary-foreground/80">Escola de Educação Infantil "Amélia Teixeira Lins"</p>
-              <p>CNPJ: 44.411.152/0001-80</p>
+              <p>CNPJ: 44.935.773/0001-35</p>
               <p>Entidade filantrópica sem fins lucrativos - Fundada em 26/01/1969</p>
             </div>
             <p className="flex items-center gap-1">
-              Feito com <Heart size={14} className="text-block-red fill-block-red" /> para nossas crianças
+              © {currentYear} Creche Amélia Teixeira Lins. Todos os direitos reservados.
             </p>
           </div>
         </div>

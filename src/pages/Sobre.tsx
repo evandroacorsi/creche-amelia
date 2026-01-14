@@ -105,19 +105,19 @@ const Sobre = () => {
               <h2 className="font-display text-3xl font-bold mb-6">Nossa História</h2>
               <div className="space-y-4 text-muted-foreground">
                 <p>
-                  A Creche Berçário Espírita de Rancharia "Amélia Teixeira Lins" foi fundada 
-                  em 26 de janeiro de 1969, nascendo do sonho de oferecer às crianças um espaço 
+                  A Creche Berçário Espírita de Rancharia "Amélia Teixeira Lins" foi fundada
+                  em 26 de janeiro de 1969, nascendo do sonho de oferecer às crianças um espaço
                   onde pudessem crescer com amor, segurança e educação de qualidade.
                 </p>
                 <p>
-                  Ao longo dos 56 anos de existência, nossa creche manteve seu foco principal: 
-                  ser mais do que um lugar de cuidado. Somos uma rede de apoio familiar onde o 
-                  desenvolvimento emocional da criança caminha lado a lado com a segurança física 
+                  Ao longo dos 56 anos de existência, nossa creche manteve seu foco principal:
+                  ser mais do que um lugar de cuidado. Somos uma rede de apoio familiar onde o
+                  desenvolvimento emocional da criança caminha lado a lado com a segurança física
                   e a nutrição de qualidade.
                 </p>
                 <p>
-                  Atendemos crianças de 4 meses a 3 anos e 11 meses, oferecendo berçário, maternal, 
-                  educação infantil, alimentação balanceada e atividades pedagógicas e recreativas 
+                  Atendemos crianças de 4 meses a 3 anos e 11 meses, oferecendo berçário, maternal,
+                  educação infantil, alimentação balanceada e atividades pedagógicas e recreativas
                   em período integral, de forma totalmente gratuita.
                 </p>
               </div>
@@ -136,19 +136,19 @@ const Sobre = () => {
             <div className="block-card border-l-4 border-primary">
               <h3 className="font-display text-2xl font-bold mb-4 text-primary">Nossa Missão</h3>
               <p className="text-muted-foreground">
-                Realizar um trabalho de caráter educativo, buscando a autonomia e o desenvolvimento 
-                pessoal e social da criança através das ações voltadas para o desenvolvimento social 
-                e cultural com vagas oferecidas gratuitamente, sem distinção de raça, cor, sexo, 
-                credo religioso ou qualquer outra forma de discriminação, não tendo caráter político 
+                Realizar um trabalho de caráter educativo, buscando a autonomia e o desenvolvimento
+                pessoal e social da criança através das ações voltadas para o desenvolvimento social
+                e cultural com vagas oferecidas gratuitamente, sem distinção de raça, cor, sexo,
+                credo religioso ou qualquer outra forma de discriminação, não tendo caráter político
                 e nem finalidade lucrativa.
               </p>
             </div>
             <div className="block-card border-l-4 border-block-blue">
               <h3 className="font-display text-2xl font-bold mb-4 text-block-blue">O Que Nos Torna Especiais</h3>
               <p className="text-muted-foreground">
-                Nossa creche é especial porque aqui, cada criança é vista em sua individualidade, 
-                recebendo o afeto e a segurança necessários para que se sinta encorajada a explorar 
-                o mundo. O desenvolvimento emocional da criança caminha lado a lado com a segurança 
+                Nossa creche é especial porque aqui, cada criança é vista em sua individualidade,
+                recebendo o afeto e a segurança necessários para que se sinta encorajada a explorar
+                o mundo. O desenvolvimento emocional da criança caminha lado a lado com a segurança
                 física e a nutrição de qualidade.
               </p>
             </div>
@@ -200,30 +200,6 @@ const Sobre = () => {
                 </div>
                 <h3 className="font-display text-base font-bold mb-1">{membro.nome}</h3>
                 <p className="text-muted-foreground text-xs">{membro.cargo}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Estrutura */}
-      <section className="py-20">
-        <div className="container-custom">
-          <SectionHeader
-            title="Nossa Estrutura"
-            subtitle="Conheça os espaços cuidadosamente preparados para proporcionar conforto e segurança."
-            colorAccent="green"
-          />
-
-          <div className="grid md:grid-cols-2 gap-6">
-            {spaces.map((space, index) => (
-              <div
-                key={space.title}
-                className="block-card animate-fade-in"
-                style={{ animationDelay: `${index * 0.1}s` }}
-              >
-                <h3 className="font-display text-xl font-bold mb-2">{space.title}</h3>
-                <p className="text-muted-foreground text-sm">{space.description}</p>
               </div>
             ))}
           </div>

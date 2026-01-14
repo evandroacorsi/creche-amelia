@@ -17,7 +17,7 @@ const Contato = () => {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    
+
     if (!formData.nome.trim() || !formData.telefone.trim() || !formData.mensagem.trim()) {
       toast({
         title: "Campos obrigatórios",
@@ -58,8 +58,9 @@ const Contato = () => {
 
       {/* Contato */}
       <section className="py-16">
+
         <div className="container-custom">
-          <div className="grid lg:grid-cols-2 gap-8 items-start">
+          <div className="grid lg:grid-cols-2 gap-8 items-center">
             {/* Formulário */}
             <div className="block-card">
               <h2 className="font-display text-xl font-bold mb-5">Envie sua Mensagem</h2>
@@ -102,9 +103,8 @@ const Contato = () => {
 
             {/* Informações */}
             <div>
-              <h2 className="font-display text-xl font-bold mb-5">Informações de Contato</h2>
               <div className="space-y-4">
-                <div className="block-card flex items-start gap-4">
+                <div className="block-card flex items-center gap-4">
                   <div className="w-12 h-12 rounded-xl bg-block-green/10 flex items-center justify-center flex-shrink-0">
                     <MapPin size={24} className="text-block-green" />
                   </div>
@@ -117,7 +117,7 @@ const Contato = () => {
                   </div>
                 </div>
 
-                <div className="block-card flex items-start gap-4">
+                <div className="block-card flex items-center gap-4">
                   <div className="w-12 h-12 rounded-xl bg-block-blue/10 flex items-center justify-center flex-shrink-0">
                     <Phone size={24} className="text-block-blue" />
                   </div>
@@ -130,7 +130,7 @@ const Contato = () => {
                   </div>
                 </div>
 
-                <div className="block-card flex items-start gap-4">
+                <div className="block-card flex items-center gap-4">
                   <div className="w-12 h-12 rounded-xl bg-block-yellow/10 flex items-center justify-center flex-shrink-0">
                     <Mail size={24} className="text-block-yellow" />
                   </div>
@@ -142,7 +142,7 @@ const Contato = () => {
                   </div>
                 </div>
 
-                <div className="block-card flex items-start gap-4">
+                <div className="block-card flex items-center gap-4">
                   <div className="w-12 h-12 rounded-xl bg-block-red/10 flex items-center justify-center flex-shrink-0">
                     <Clock size={24} className="text-block-red" />
                   </div>
@@ -161,21 +161,18 @@ const Contato = () => {
       </section>
 
       {/* Mapa */}
-      <section className="py-12 bg-card">
-        <div className="container-custom">
-          <div className="rounded-2xl overflow-hidden shadow-card">
-            <iframe
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3702.5!2d-50.89!3d-22.23!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMjLCsDEzJzQ4LjAiUyA1MMKwNTMnMjQuMCJX!5e0!3m2!1spt-BR!2sbr!4v1234567890123"
-              width="100%"
-              height="400"
-              style={{ border: 0 }}
-              allowFullScreen
-              loading="lazy"
-              referrerPolicy="no-referrer-when-downgrade"
-              title="Localização Creche Amélia - Rua Allan Kardec, 778 - Vila Righeti, Rancharia/SP"
-            />
-          </div>
-        </div>
+      <section className="w-full p-0 bg-card">
+        {/* MUDANÇA 2: Removi a div 'container-custom' e a div de 'rounded/shadow' */}
+        {/* O iframe agora é filho direto da section */}
+        <iframe
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3702.5!2d-50.89!3d-22.23!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMjLCsDEzJzQ4LjAiUyA1MMKwNTMnMjQuMCJX!5e0!3m2!1spt-BR!2sbr!4v1234567890123"
+          className="w-full h-[450px] lg:h-[550px]" // MUDANÇA 3: Altura responsiva e w-full via classe
+          style={{ border: 0, display: "block" }} // display: block remove uma pequena margem fantasma que iframes tem
+          allowFullScreen
+          loading="lazy"
+          referrerPolicy="no-referrer-when-downgrade"
+          title="Localização Creche Amélia - Rua Allan Kardec, 778 - Vila Righeti, Rancharia/SP"
+        />
       </section>
     </Layout>
   );

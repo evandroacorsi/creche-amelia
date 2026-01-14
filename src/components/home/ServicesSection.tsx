@@ -5,7 +5,7 @@ import ServiceCard from "@/components/ui/ServiceCard";
 const services = [
   {
     icon: BookOpen,
-    title: "Educação Infantil",
+    title: "Desenvolvimento Infantil",
     description: "Programa pedagógico focado no desenvolvimento cognitivo, social e emocional, respeitando a individualidade de cada criança.",
     color: "green" as const,
   },

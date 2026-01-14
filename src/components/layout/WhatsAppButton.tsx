@@ -1,4 +1,5 @@
 import { MessageCircle } from "lucide-react";
+import { FaWhatsapp } from "react-icons/fa";
 
 const WhatsAppButton = () => {
   const phoneNumber = "5518997876081";
@@ -13,7 +14,7 @@ const WhatsAppButton = () => {
       className="whatsapp-float animate-scale-in"
       aria-label="Fale conosco pelo WhatsApp"
     >
-      <MessageCircle size={28} className="text-white fill-white" />
+      <FaWhatsapp size={36} className="text-white fill-white" />
     </a>
   );
 };

@@ -51,16 +51,16 @@ const Pais = () => {
       {/* Informações sobre idades */}
       <section className="py-12 bg-card">
         <div className="container-custom">
-          <div className="bg-block-blue/10 border-2 border-block-blue/30 rounded-2xl p-6 flex items-start gap-4">
+          <div className="bg-block-blue/10 border-2 border-block-blue/30 rounded-2xl p-6 flex items-center gap-4">
             <div className="w-12 h-12 rounded-xl bg-block-blue/20 flex items-center justify-center flex-shrink-0">
               <Heart className="text-block-blue" size={24} />
             </div>
             <div>
               <h3 className="font-display text-lg font-bold mb-2">Idades Atendidas</h3>
               <p className="text-muted-foreground text-sm">
-                Atendemos crianças de <strong>4 meses a 3 anos e 11 meses</strong> em período integral, 
-                oferecendo berçário, maternal e educação infantil de forma totalmente gratuita. 
-                Todas as vagas são oferecidas sem distinção de raça, cor, sexo, credo religioso ou 
+                Atendemos crianças de <strong>4 meses a 3 anos e 11 meses</strong> em período integral,
+                oferecendo berçário, maternal e educação infantil de forma totalmente gratuita.
+                Todas as vagas são oferecidas sem distinção de raça, cor, sexo, credo religioso ou
                 qualquer outra forma de discriminação.
               </p>
             </div>
@@ -72,9 +72,9 @@ const Pais = () => {
       <section className="py-20 relative">
         {/* Background Image */}
         <div className="absolute inset-0 z-0">
-          <img 
-            src={heroImage} 
-            alt="" 
+          <img
+            src={heroImage}
+            alt=""
             className="w-full h-full object-cover opacity-5"
           />
         </div>
@@ -88,7 +88,7 @@ const Pais = () => {
                 <h2 className="font-display text-2xl font-bold">Rotina Diária</h2>
               </div>
               <p className="text-muted-foreground mb-6">
-                Nossa rotina é organizada para proporcionar um equilíbrio entre 
+                Nossa rotina é organizada para proporcionar um equilíbrio entre
                 atividades pedagógicas, recreativas, alimentação e descanso.
               </p>
               <div className="space-y-3">
@@ -113,7 +113,7 @@ const Pais = () => {
                 <h2 className="font-display text-2xl font-bold">O Que Trazer</h2>
               </div>
               <p className="text-muted-foreground mb-6">
-                Itens necessários para garantir o conforto e cuidado do seu filho 
+                Itens necessários para garantir o conforto e cuidado do seu filho
                 durante a permanência na creche.
               </p>
               <div className="space-y-3">
@@ -149,7 +149,7 @@ const Pais = () => {
               </div>
               <h3 className="font-display text-xl font-bold mb-2">Cuidado Integral</h3>
               <p className="text-muted-foreground text-sm">
-                Cada criança é vista em sua individualidade, recebendo afeto e segurança 
+                Cada criança é vista em sua individualidade, recebendo afeto e segurança
                 para explorar o mundo com confiança.
               </p>
             </div>
@@ -168,7 +168,7 @@ const Pais = () => {
               </div>
               <h3 className="font-display text-xl font-bold mb-2">Rede de Apoio</h3>
               <p className="text-muted-foreground text-sm">
-                Mais do que um lugar de cuidado, somos uma rede de apoio familiar 
+                Mais do que um lugar de cuidado, somos uma rede de apoio familiar
                 para todas as famílias.
               </p>
             </div>
@@ -184,8 +184,8 @@ const Pais = () => {
             <div>
               <h3 className="font-display text-lg font-bold mb-2">Importante</h3>
               <p className="text-muted-foreground text-sm">
-                Em caso de doença, a criança deve permanecer em casa para sua recuperação 
-                e para proteger os coleguinhas. Comunique-nos sempre sobre qualquer 
+                Em caso de doença, a criança deve permanecer em casa para sua recuperação
+                e para proteger os coleguinhas. Comunique-nos sempre sobre qualquer
                 alteração na saúde ou rotina do seu filho.
               </p>
             </div>

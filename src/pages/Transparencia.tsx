@@ -1,6 +1,6 @@
 import Layout from "@/components/layout/Layout";
 import SectionHeader from "@/components/ui/SectionHeader";
-import { FileText, Download, Calendar, Building2, Users } from "lucide-react";
+import { FileText, Download, Calendar, Building2, Users, Eye } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 const diretoria = [
@@ -20,7 +20,7 @@ const documentos = [
       { nome: "Estatuto Social", data: "2024" },
       { nome: "Regimento Interno", data: "2024" },
       { nome: "Certidão de Regularidade Fiscal", data: "2024" },
-      { nome: "CNPJ e Documentação Legal", data: "2024" },
+      { nome: "Cartão CNPJ", data: "2026", link: "/CNPJ Creche.pdf" },
     ],
   },
   {
@@ -59,7 +59,6 @@ const Transparencia = () => {
           />
         </div>
       </section>
-
       {/* Documentos */}
       <section className="py-20">
         <div className="container-custom">
@@ -89,10 +88,44 @@ const Transparencia = () => {
                           <p className="text-sm text-muted-foreground">{doc.data}</p>
                         </div>
                       </div>
-                      <Button variant="outline" size="sm" className="rounded-lg flex-shrink-0">
-                        <Download size={16} className="mr-2" />
-                        Baixar
-                      </Button>
+
+                      {/* LÓGICA DO BOTÃO DE DOWNLOAD AQUI */}
+                      {/* ... dentro do map dos itens ... */}
+
+                      {/* LÓGICA DE VISUALIZAÇÃO */}
+                      {doc.link ? (
+                        /* CASO 1: TEM LINK (Arquivo existe) */
+                        <Button
+                          variant="outline"
+                          size="sm"
+                          className="rounded-lg flex-shrink-0 cursor-pointer hover:bg-primary/10 border-primary/20"
+                          asChild
+                        >
+                          <a
+                            href={doc.link}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                          /* REMOVIDO: o atributo 'download' para não forçar baixar */
+                          >
+                            {/* ALTERADO: Ícone de olho e texto Visualizar */}
+                            <Eye size={16} className="mr-2 text-primary" />
+                            <span className="text-primary">Visualizar</span>
+                          </a>
+                        </Button>
+                      ) : (
+                        /* CASO 2: NÃO TEM LINK */
+                        <Button
+                          variant="ghost"
+                          size="sm"
+                          className="rounded-lg flex-shrink-0 opacity-50"
+                          disabled
+                        >
+                          <Eye size={16} className="mr-2" />
+                          Em breve
+                        </Button>
+                      )}
+                      {/* FIM DA LÓGICA */}
+
                     </div>
                   ))}
                 </div>
@@ -102,95 +135,7 @@ const Transparencia = () => {
         </div>
       </section>
 
-      {/* Nossa Diretoria */}
-      <section className="py-20 bg-card">
-        <div className="container-custom">
-          <SectionHeader
-            title="Nossa Diretoria"
-            subtitle="Composição da diretoria atual da entidade."
-            colorAccent="yellow"
-          />
-
-          <div className="max-w-3xl mx-auto">
-            {/* Presidente em Destaque */}
-            {diretoria.filter(m => m.destaque).map((membro) => (
-              <div
-                key={membro.cargo}
-                className="block-card flex flex-col items-center gap-4 mb-8 bg-gradient-to-br from-primary/10 to-block-yellow/10 border-2 border-primary/20"
-              >
-                <div className="w-20 h-20 rounded-full bg-primary/20 flex items-center justify-center">
-                  <Users size={36} className="text-primary" />
-                </div>
-                <div className="text-center">
-                  <p className="text-sm text-primary font-semibold uppercase tracking-wide">{membro.cargo}</p>
-                  <p className="font-display text-2xl font-bold mt-1">{membro.nome}</p>
-                </div>
-              </div>
-            ))}
-
-            {/* Demais membros */}
-            <div className="grid md:grid-cols-2 gap-4">
-              {diretoria.filter(m => !m.destaque).map((membro, index) => (
-                <div
-                  key={membro.cargo}
-                  className="block-card flex items-center gap-4 animate-fade-in"
-                  style={{ animationDelay: `${index * 0.05}s` }}
-                >
-                  <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center flex-shrink-0">
-                    <Users size={20} className="text-primary" />
-                  </div>
-                  <div>
-                    <p className="text-sm text-muted-foreground">{membro.cargo}</p>
-                    <p className="font-semibold">{membro.nome}</p>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Informações Institucionais */}
-      <section className="py-20">
-        <div className="container-custom">
-          <SectionHeader
-            title="Informações Institucionais"
-            subtitle="Dados da entidade mantenedora."
-            colorAccent="green"
-          />
-
-          <div className="max-w-2xl mx-auto">
-            <div className="block-card">
-              <div className="grid gap-4">
-                <div className="flex justify-between py-3 border-b border-border">
-                  <span className="text-muted-foreground">Razão Social</span>
-                  <span className="font-semibold text-right">Escola de Educação Infantil "Amélia Teixeira Lins"</span>
-                </div>
-                <div className="flex justify-between py-3 border-b border-border">
-                  <span className="text-muted-foreground">CNPJ</span>
-                  <span className="font-semibold text-right">44.411.152/0001-80</span>
-                </div>
-                <div className="flex justify-between py-3 border-b border-border">
-                  <span className="text-muted-foreground">Natureza Jurídica</span>
-                  <span className="font-semibold text-right">Entidade Filantrópica sem fins lucrativos</span>
-                </div>
-                <div className="flex justify-between py-3 border-b border-border">
-                  <span className="text-muted-foreground">Fundação</span>
-                  <span className="font-semibold">26/01/1969</span>
-                </div>
-                <div className="flex justify-between py-3 border-b border-border">
-                  <span className="text-muted-foreground">Município</span>
-                  <span className="font-semibold">Rancharia - SP</span>
-                </div>
-                <div className="flex justify-between py-3">
-                  <span className="text-muted-foreground">Endereço</span>
-                  <span className="font-semibold text-right">Rua Allan Kardec, nº 778 - Vila Righeti</span>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
+      {/* ... Restante do código ... */}
     </Layout>
   );
 };
