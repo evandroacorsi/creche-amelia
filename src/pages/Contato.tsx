@@ -7,6 +7,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { MapPin, Phone, Mail, Clock, Sparkles } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 import { FaWhatsapp } from "react-icons/fa";
+import heroImage from "@/assets/bg1.png";
 
 const Contato = () => {
   const { toast } = useToast();
@@ -42,6 +43,7 @@ const Contato = () => {
     <Layout>
       {/* Hero */}
       <section className="relative py-20 bg-primary/5 border-b border-primary/10">
+
         {/* Elementos decorativos */}
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
           <Sparkles className="absolute top-8 right-12 text-primary/20 w-7 h-7" />
@@ -68,7 +70,8 @@ const Contato = () => {
 
 
       {/* Contato */}
-      <section className="py-20">
+      <section className="py-20 bg-block-red">
+
         <div className="container-custom">
           <div className="grid lg:grid-cols-2 gap-12 items-start">
             {/* Formulário */}

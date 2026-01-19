@@ -9,7 +9,7 @@ import {
 
 const CTASection = () => {
   return (
-    <section className="py-20 gradient-primary">
+    <section className="py-20 bg-block-blue">
       <div className="container-custom text-center">
         <div className="max-w-3xl mx-auto">
           <div className="inline-flex items-center justify-center w-16 h-16 bg-primary-foreground/20 rounded-2xl mb-6">

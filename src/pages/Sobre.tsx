@@ -1,6 +1,6 @@
 import Layout from "@/components/layout/Layout";
 import SectionHeader from "@/components/ui/SectionHeader";
-import { Heart, Target, Shield, Users, Award, Clock, Sparkles } from "lucide-react";
+import { Heart, Target, Shield, Users, Award, Clock, Sparkles, Sun } from "lucide-react";
 import heroImage from "@/assets/hero-creche.jpg";
 
 
@@ -208,14 +208,19 @@ const Sobre = () => {
         </div>
       </section>
 
+
       {/* Diferenciais */}
-      <section className="py-20">
+      <section className="py-20 bg-block-yellow">
         <div className="container-custom">
-          <SectionHeader
-            title="Diferenciais da Nossa Estrutura"
-            subtitle="Instalações pensadas para o bem-estar e desenvolvimento das crianças."
-            colorAccent="yellow"
-          />
+          <div className="mx-auto text-center">
+            <Sun size={36} className="text-white mb-4 mx-auto" />
+            <h2 className="font-display text-3xl font-bold text-primary-foreground mb-4">
+              Diferenciais da Nossa Estrutura
+            </h2>
+            <p className="text-primary-foreground/90 mb-8">
+              Instalações pensadas para o bem-estar e desenvolvimento das crianças.
+            </p>
+          </div>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-4">
             {features.map((feature, index) => (

@@ -7,9 +7,9 @@ const navLinks = [
   { name: "Início", path: "/" },
   { name: "Sobre", path: "/sobre" },
   { name: "Para os Pais", path: "/pais" },
+  { name: "Doações", path: "/doacoes" },
   { name: "Transparência", path: "/transparencia" },
   { name: "Notícias", path: "/noticias" },
-  { name: "Doações", path: "/doacoes" },
   { name: "Contato", path: "/contato" },
 ];
 

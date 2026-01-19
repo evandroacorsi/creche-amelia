@@ -85,7 +85,7 @@ const Pais = () => {
           <img
             src={heroImage}
             alt=""
-            className="w-full h-full object-cover opacity-5"
+            className="w-full h-full object-cover opacity-15"
           />
         </div>
         <div className="container-custom relative z-10">
@@ -187,9 +187,9 @@ const Pais = () => {
       </section>
 
       {/* Aviso */}
-      <section className="py-12">
+      <section className="py-12 bg-block-green">
         <div className="container-custom">
-          <div className="bg-block-yellow/10 border-2 border-block-yellow/30 rounded-2xl p-6 flex items-start gap-4">
+          <div className="bg-white border-2 border-block-yellow/30 rounded-2xl p-6 flex items-start gap-4">
             <AlertCircle className="text-block-yellow flex-shrink-0 mt-1" size={24} />
             <div>
               <h3 className="font-display text-lg font-bold mb-2">Importante</h3>

@@ -1,6 +1,7 @@
 import Layout from "@/components/layout/Layout";
-import { FileText, Calendar, Building2, Eye } from "lucide-react";
+import { FileText, Calendar, Building2, Eye, Scale, BookOpen, Info } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { Card, CardContent } from "@/components/ui/card";
 
 /* =========================
    DADOS
@@ -79,15 +80,67 @@ const Transparencia = () => {
         </div>
       </section>
 
+      {/* --- NOVA SEÇÃO: FUNDAMENTAÇÃO LEGAL --- */}
+      <section className="py-20 bg-background border-b border-primary/5">
+        <div className="container-custom">
+          <div className="text-center mb-12">
+            <div className="flex items-center justify-center gap-3 mb-4">
+              <Scale className="text-primary" size={32} />
+              <h2 className="text-2xl md:text-3xl font-bold text-black">
+                Fundamentação Legal
+              </h2>
+            </div>
+            <div className="w-20 h-1 bg-secondary mx-auto mb-6 rounded-full" />
+            <p className="text-muted-foreground max-w-3xl mx-auto text-center leading-relaxed">
+              Nossa instituição atua em estrita conformidade com a legislação brasileira, garantindo a publicidade e a transparência na aplicação dos recursos públicos.
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+            {/* LEI DE ACESSO À INFORMAÇÃO */}
+            <Card className="bg-white border-l-4 border-l-primary shadow-lg hover:shadow-xl transition-all">
+              <CardContent className="p-8">
+                <div className="flex items-center gap-3 mb-4">
+                  <div className="p-2 bg-secondary/50 rounded-lg">
+                    <Info className="text-primary" size={24} />
+                  </div>
+                  <h3 className="text-xl font-bold text-primary">Lei de Acesso à Informação</h3>
+                </div>
+                <p className="text-sm font-bold text-gray-700 mb-2">Lei nº 12.527/2011</p>
+                <p className="text-muted-foreground text-justify text-sm leading-relaxed mb-0">
+                  Esta lei aplica-se às entidades privadas sem fins lucrativos que recebem recursos públicos. Em cumprimento a este dispositivo, tornamos público o acesso às informações sobre o recebimento e destinação de tais recursos.
+                </p>
+              </CardContent>
+            </Card>
+
+            {/* MROSC */}
+            <Card className="bg-white border-l-4 border-l-primary shadow-lg hover:shadow-xl transition-all">
+              <CardContent className="p-8">
+                <div className="flex items-center gap-3 mb-4">
+                  <div className="p-2 bg-primary/10 rounded-lg">
+                    <BookOpen className="text-primary" size={24} />
+                  </div>
+                  <h3 className="text-xl font-bold text-primary">Marco Regulatório (MROSC)</h3>
+                </div>
+                <p className="text-sm font-bold text-gray-700 mb-2">Lei nº 13.019/2014</p>
+                <p className="text-muted-foreground text-justify text-sm leading-relaxed mb-0">
+                  Estabelece o regime jurídico das parcerias entre a administração pública e as organizações da sociedade civil, exigindo total transparência nas parcerias celebradas e na execução dos planos de trabalho.
+                </p>
+              </CardContent>
+            </Card>
+          </div>
+        </div>
+      </section>
+
       {/* DOCUMENTOS */}
-      <section className="py-20">
+      <section className="py-20 bg-primary/5">
         <div className="container-custom">
           <div className="space-y-14">
             {documentos.map((categoria) => (
               <div key={categoria.categoria}>
                 {/* Título da categoria */}
                 <div className="flex items-center gap-4 mb-8">
-                  <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center">
+                  <div className="w-12 h-12 rounded-xl bg-white shadow-sm flex items-center justify-center">
                     <categoria.icon size={24} className="text-primary" />
                   </div>
                   <h2 className="text-2xl font-bold text-gray-900">
@@ -100,11 +153,11 @@ const Transparencia = () => {
                   {categoria.items.map((doc, index) => (
                     <div
                       key={doc.nome}
-                      className="block-card flex items-center justify-between gap-4 animate-fade-in"
+                      className="block-card bg-white p-4 rounded-xl border border-border/50 shadow-sm hover:shadow-md transition-all flex items-center justify-between gap-4 animate-fade-in"
                       style={{ animationDelay: `${index * 0.05}s` }}
                     >
                       <div className="flex items-center gap-4">
-                        <div className="w-10 h-10 rounded-lg bg-secondary flex items-center justify-center">
+                        <div className="w-10 h-10 rounded-lg bg-secondary flex items-center justify-center flex-shrink-0">
                           <FileText
                             size={20}
                             className="text-secondary-foreground"
