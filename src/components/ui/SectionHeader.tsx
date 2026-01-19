@@ -1,28 +1,39 @@
+import { Sparkles, Star, Heart, Sun } from "lucide-react";
+
 interface SectionHeaderProps {
   title: string;
   subtitle?: string;
   centered?: boolean;
   colorAccent?: "green" | "blue" | "red" | "yellow" | "orange";
+  isPageHeader?: boolean;
 }
 
 const colorClasses = {
-  green: "bg-block-green",
-  blue: "bg-block-blue",
-  red: "bg-block-red",
-  yellow: "bg-block-yellow",
-  orange: "bg-block-orange",
+  green: "text-block-green",
+  blue: "text-block-blue",
+  red: "text-block-red",
+  yellow: "text-block-yellow",
+  orange: "text-primary",
 };
 
-const SectionHeader = ({ title, subtitle, centered = true, colorAccent = "orange" }: SectionHeaderProps) => {
+const icons = {
+  green: Star,
+  blue: Sparkles,
+  red: Heart,
+  yellow: Sun,
+  orange: Sparkles,
+};
+
+const SectionHeader = ({ title, subtitle, centered = true, colorAccent = "orange", isPageHeader = false }: SectionHeaderProps) => {
+  const IconComponent = icons[colorAccent];
+  
   return (
     <div className={`mb-12 animate-fade-in ${centered ? "text-center" : ""}`}>
-      <div className={`inline-flex items-center gap-2 mb-4 ${centered ? "justify-center" : ""}`}>
-        <span className={`w-3 h-3 rounded-full ${colorClasses[colorAccent]}`} />
-        <span className={`w-2 h-2 rounded-full ${colorClasses[colorAccent]} opacity-60`} />
-        <span className={`w-1.5 h-1.5 rounded-full ${colorClasses[colorAccent]} opacity-40`} />
+      <div className={`inline-flex items-center gap-3 mb-4 ${centered ? "justify-center" : ""}`}>
+        <IconComponent size={isPageHeader ? 28 : 20} className={colorClasses[colorAccent]} />
       </div>
-      <h2 className="section-title">{title}</h2>
-      {subtitle && <p className="section-subtitle mt-3">{subtitle}</p>}
+      <h2 className={isPageHeader ? "font-display text-3xl md:text-4xl lg:text-5xl font-bold text-foreground" : "section-title"}>{title}</h2>
+      {subtitle && <p className={`mt-3 ${isPageHeader ? "text-lg text-muted-foreground max-w-2xl mx-auto text-center" : "section-subtitle"}`}>{subtitle}</p>}
     </div>
   );
 };

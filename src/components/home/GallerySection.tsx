@@ -46,7 +46,7 @@ const GallerySection = () => {
 
         <div className="text-center mt-12">
           <Button size="lg" variant="outline" className="font-semibold rounded-xl" asChild>
-            <Link to="/estrutura">Ver Galeria Completa</Link>
+            <Link to="/sobre">Ver Mais sobre a Estrutura</Link>
           </Button>
         </div>
       </div>

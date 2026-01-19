@@ -1,6 +1,7 @@
 import Layout from "@/components/layout/Layout";
 import SectionHeader from "@/components/ui/SectionHeader";
-import { Clock, Calendar, Backpack, AlertCircle, Heart, Phone } from "lucide-react";
+import { Clock, Calendar, Backpack, AlertCircle, Heart, Phone, Sparkles } from "lucide-react";
+import heroImage from "@/assets/hero-creche.jpg";
 
 const rotina = [
   { hora: "7:00", atividade: "Recepção das crianças" },
@@ -31,22 +32,63 @@ const Pais = () => {
   return (
     <Layout>
       {/* Hero */}
-      <section className="relative py-20 gradient-hero">
+      <section className="relative py-20 bg-primary/5 border-b border-primary/10">
+        {/* Elementos decorativos sutis */}
+        <div className="absolute inset-0 overflow-hidden pointer-events-none">
+          <Sparkles className="absolute top-8 right-12 text-primary/20 w-7 h-7" />
+          <div className="absolute bottom-10 left-12 w-10 h-10 bg-primary/10 rounded-xl rotate-12" />
+        </div>
+
+        <div className="container-custom relative z-10">
+          <div className="max-w-3xl mx-auto text-center">
+            <span className="inline-block mb-4 px-4 py-1 text-sm font-medium rounded-full bg-primary/10 text-primary">
+              Família e creche
+            </span>
+
+            <h2 className="text-4xl md:text-5xl font-bold text-gray-900 leading-tight">
+              Informações para <span className="text-primary">Pais</span>
+            </h2>
+
+            <p className="mt-6 text-lg md:text-xl text-gray-600">
+              Tudo o que você precisa saber sobre a rotina, os cuidados diários e a
+              colaboração entre família e creche para o desenvolvimento das crianças.
+            </p>
+          </div>
+        </div>
+      </section>
+
+
+      {/* Informações sobre idades */}
+      <section className="py-12 bg-card">
         <div className="container-custom">
-          <div className="max-w-3xl">
-            <SectionHeader
-              title="Informações para Pais"
-              subtitle="Tudo o que você precisa saber sobre a rotina, cuidados e parceria entre família e creche."
-              centered={false}
-              colorAccent="yellow"
-            />
+          <div className="bg-block-blue/10 border-2 border-block-blue/30 rounded-2xl p-6 flex items-center gap-4">
+            <div className="w-12 h-12 rounded-xl bg-block-blue/20 flex items-center justify-center flex-shrink-0">
+              <Heart className="text-block-blue" size={24} />
+            </div>
+            <div>
+              <h3 className="font-display text-lg font-bold mb-2">Idades Atendidas</h3>
+              <p className="text-muted-foreground text-sm">
+                Atendemos crianças de <strong>4 meses a 3 anos e 11 meses</strong> em período integral,
+                oferecendo berçário, maternal e educação infantil de forma totalmente gratuita.
+                Todas as vagas são oferecidas sem distinção de raça, cor, sexo, credo religioso ou
+                qualquer outra forma de discriminação.
+              </p>
+            </div>
           </div>
         </div>
       </section>
 
       {/* Rotina */}
-      <section className="py-20">
-        <div className="container-custom">
+      <section className="py-20 relative">
+        {/* Background Image */}
+        <div className="absolute inset-0 z-0">
+          <img
+            src={heroImage}
+            alt=""
+            className="w-full h-full object-cover opacity-15"
+          />
+        </div>
+        <div className="container-custom relative z-10">
           <div className="grid lg:grid-cols-2 gap-12">
             <div>
               <div className="flex items-center gap-3 mb-6">
@@ -56,7 +98,7 @@ const Pais = () => {
                 <h2 className="font-display text-2xl font-bold">Rotina Diária</h2>
               </div>
               <p className="text-muted-foreground mb-6">
-                Nossa rotina é organizada para proporcionar um equilíbrio entre 
+                Nossa rotina é organizada para proporcionar um equilíbrio entre
                 atividades pedagógicas, recreativas, alimentação e descanso.
               </p>
               <div className="space-y-3">
@@ -81,7 +123,7 @@ const Pais = () => {
                 <h2 className="font-display text-2xl font-bold">O Que Trazer</h2>
               </div>
               <p className="text-muted-foreground mb-6">
-                Itens necessários para garantir o conforto e cuidado do seu filho 
+                Itens necessários para garantir o conforto e cuidado do seu filho
                 durante a permanência na creche.
               </p>
               <div className="space-y-3">
@@ -117,7 +159,8 @@ const Pais = () => {
               </div>
               <h3 className="font-display text-xl font-bold mb-2">Cuidado Integral</h3>
               <p className="text-muted-foreground text-sm">
-                Zelamos pela saúde física e emocional de cada criança com atenção e carinho.
+                Cada criança é vista em sua individualidade, recebendo afeto e segurança
+                para explorar o mundo com confiança.
               </p>
             </div>
             <div className="block-card text-center">
@@ -133,9 +176,10 @@ const Pais = () => {
               <div className="w-14 h-14 rounded-xl bg-block-yellow/10 flex items-center justify-center mx-auto mb-4">
                 <Calendar size={28} className="text-block-yellow" />
               </div>
-              <h3 className="font-display text-xl font-bold mb-2">Eventos e Reuniões</h3>
+              <h3 className="font-display text-xl font-bold mb-2">Rede de Apoio</h3>
               <p className="text-muted-foreground text-sm">
-                Realizamos reuniões periódicas e eventos para fortalecer a parceria família-escola.
+                Mais do que um lugar de cuidado, somos uma rede de apoio familiar
+                para todas as famílias.
               </p>
             </div>
           </div>
@@ -143,15 +187,15 @@ const Pais = () => {
       </section>
 
       {/* Aviso */}
-      <section className="py-12">
+      <section className="py-12 bg-block-green">
         <div className="container-custom">
-          <div className="bg-block-yellow/10 border-2 border-block-yellow/30 rounded-2xl p-6 flex items-start gap-4">
+          <div className="bg-white border-2 border-block-yellow/30 rounded-2xl p-6 flex items-start gap-4">
             <AlertCircle className="text-block-yellow flex-shrink-0 mt-1" size={24} />
             <div>
               <h3 className="font-display text-lg font-bold mb-2">Importante</h3>
               <p className="text-muted-foreground text-sm">
-                Em caso de doença, a criança deve permanecer em casa para sua recuperação 
-                e para proteger os coleguinhas. Comunique-nos sempre sobre qualquer 
+                Em caso de doença, a criança deve permanecer em casa para sua recuperação
+                e para proteger os coleguinhas. Comunique-nos sempre sobre qualquer
                 alteração na saúde ou rotina do seu filho.
               </p>
             </div>

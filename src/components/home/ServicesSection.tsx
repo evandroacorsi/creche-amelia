@@ -1,44 +1,42 @@
-import { Link } from "react-router-dom";
-import { Baby, BookOpen, UtensilsCrossed, Palette, Gamepad2, ShieldCheck } from "lucide-react";
+import { Baby, BookOpen, UtensilsCrossed, Palette, Gamepad2, Clock } from "lucide-react";
 import SectionHeader from "@/components/ui/SectionHeader";
 import ServiceCard from "@/components/ui/ServiceCard";
-import { Button } from "@/components/ui/button";
 
 const services = [
   {
     icon: BookOpen,
-    title: "Educação Infantil",
-    description: "Programa pedagógico completo focado no desenvolvimento cognitivo, social e emocional das crianças.",
+    title: "Desenvolvimento Infantil",
+    description: "Programa pedagógico focado no desenvolvimento cognitivo, social e emocional, respeitando a individualidade de cada criança.",
     color: "green" as const,
   },
   {
     icon: Baby,
     title: "Berçário",
-    description: "Cuidados especializados para bebês de 0 a 2 anos, com ambiente acolhedor e equipe preparada.",
+    description: "Cuidados especializados para bebês de 4 meses a 2 anos, com ambiente acolhedor e equipe preparada.",
     color: "blue" as const,
   },
   {
     icon: UtensilsCrossed,
     title: "Alimentação",
-    description: "Refeições balanceadas e nutritivas, preparadas com carinho por nutricionistas especializados.",
+    description: "Refeições balanceadas e nutritivas, garantindo nutrição de qualidade para o desenvolvimento saudável.",
     color: "red" as const,
   },
   {
     icon: Palette,
     title: "Atividades Pedagógicas",
-    description: "Projetos educativos que estimulam a criatividade, coordenação motora e aprendizado.",
+    description: "Projetos educativos que estimulam a criatividade, coordenação motora e aprendizado lúdico.",
     color: "yellow" as const,
   },
   {
     icon: Gamepad2,
     title: "Atividades Recreativas",
-    description: "Brincadeiras e jogos que promovem a socialização e o desenvolvimento físico.",
+    description: "Brincadeiras e jogos que promovem a socialização e o desenvolvimento físico das crianças.",
     color: "orange" as const,
   },
   {
-    icon: ShieldCheck,
-    title: "Ambiente Seguro",
-    description: "Instalações adaptadas e monitoradas para garantir a segurança e bem-estar das crianças.",
+    icon: Clock,
+    title: "Período Integral",
+    description: "Atendimento em período integral para melhor apoiar as famílias e o desenvolvimento infantil.",
     color: "green" as const,
   },
 ];
@@ -49,7 +47,7 @@ const ServicesSection = () => {
       <div className="container-custom">
         <SectionHeader
           title="O que Oferecemos"
-          subtitle="Proporcionamos uma experiência completa de cuidado e educação para o desenvolvimento integral das crianças."
+          subtitle="Proporcionamos uma experiência completa de cuidado e educação gratuita para o desenvolvimento integral das crianças."
           colorAccent="blue"
         />
 
@@ -64,12 +62,6 @@ const ServicesSection = () => {
               delay={index * 0.1}
             />
           ))}
-        </div>
-
-        <div className="text-center mt-12">
-          <Button size="lg" variant="outline" className="font-semibold rounded-xl" asChild>
-            <Link to="/servicos">Ver Todos os Serviços</Link>
-          </Button>
         </div>
       </div>
     </section>
