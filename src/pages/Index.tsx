@@ -9,8 +9,8 @@ const Index = () => {
   return (
     <Layout>
       <HeroSection />
-      <ServicesSection />
       <AboutSection />
+      <ServicesSection />
       <NewsSection />
       <CTASection />
     </Layout>

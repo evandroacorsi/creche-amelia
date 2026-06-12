@@ -32,7 +32,7 @@ const NewsSection = () => {
   const [destaque, ...outras] = noticias;
 
   return (
-    <section className="py-20 bg-card">
+    <section className="py-20">
       <div className="container-custom">
         <SectionHeader
           title="Acompanhe as Novidades"

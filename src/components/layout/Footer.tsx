@@ -91,9 +91,11 @@ const Footer = () => {
               <p>CNPJ: 44.935.773/0001-35</p>
               <p>Entidade filantrópica sem fins lucrativos - Fundada em 26/01/1969</p>
             </div>
-            <p className="flex items-center gap-1">
-              © {currentYear} Creche Amélia Teixeira Lins. Todos os direitos reservados.
+            <p className="flex flex-col md:flex-row items-center gap-1 text-center md:text-right">
+              <span>© {currentYear} Creche Amélia Teixeira Lins.</span>
+              <span>Todos os direitos reservados.</span>
             </p>
+
           </div>
         </div>
       </div>

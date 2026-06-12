@@ -1,8 +1,9 @@
 import Layout from "@/components/layout/Layout";
 import SectionHeader from "@/components/ui/SectionHeader";
-import { Heart, Target, Shield, Users, Award, Clock, Sparkles, Sun } from "lucide-react";
+import { Heart, Target, Shield, Users, Award, Clock, Sun } from "lucide-react";
 import heroImage from "@/assets/hero-creche.jpg";
-
+// 1. Importe a logo aqui
+import logoPrefeitura from "@/assets/logo-prefeitura.webp";
 
 const values = [
   {
@@ -34,25 +35,6 @@ const values = [
     icon: Clock,
     title: "Dedicação Integral",
     description: "Atendimento em período integral com atenção individualizada para cada criança.",
-  },
-];
-
-const spaces = [
-  {
-    title: "Salas de Aula",
-    description: "Espaços amplos, bem iluminados e equipados com materiais pedagógicos adequados para cada faixa etária.",
-  },
-  {
-    title: "Playground",
-    description: "Área de lazer ao ar livre com brinquedos seguros e coloridos, piso emborrachado para amortecer quedas.",
-  },
-  {
-    title: "Berçário",
-    description: "Ambiente tranquilo e acolhedor com berços individuais e espaço climatizado para o conforto dos bebês.",
-  },
-  {
-    title: "Refeitório",
-    description: "Espaço limpo e organizado para as refeições, com mobiliário adequado para crianças.",
   },
 ];
 
@@ -131,11 +113,41 @@ const Sobre = () => {
         </div>
       </section>
 
+      <section className="py-14 bg-slate-100 border-y border-slate-300">
+        <div className="container-custom">
+          <div className="flex flex-col md:flex-row items-center justify-center gap-8 md:gap-16">
+
+            <div className="text-center md:text-right max-w-lg">
+              <h3 className="text-lg font-extrabold text-slate-900 mb-1">
+                Parceria Institucional
+              </h3>
+              <p className="text-slate-700 text-sm leading-relaxed">
+                Trabalhamos em convênio com a <strong>Prefeitura Municipal de Rancharia</strong>,
+                uma parceria fundamental para garantir a gratuidade e a excelência
+                do atendimento oferecido às nossas crianças.
+              </p>
+            </div>
+
+            <div className="hidden md:block w-px h-16 bg-slate-300"></div>
+
+            <div className="flex-shrink-0 grayscale-[30%] hover:grayscale-0 transition-all duration-500">
+              <img
+                src={logoPrefeitura}
+                alt="Logo Prefeitura de Rancharia"
+                className="h-16 md:h-20 w-auto object-contain"
+              />
+            </div>
+
+          </div>
+        </div>
+      </section>
+
+
       {/* Missão */}
       <section className="py-20 bg-card">
         <div className="container-custom">
           <div className="grid md:grid-cols-2 gap-8">
-            <div className="block-card border-l-4 border-primary">
+            <div className="block-card border-l-4 border-primary bg-white">
               <h3 className="font-display text-2xl font-bold mb-4 text-primary">Nossa Missão</h3>
               <p className="text-muted-foreground">
                 Realizar um trabalho de caráter educativo, buscando a autonomia e o desenvolvimento
@@ -145,7 +157,7 @@ const Sobre = () => {
                 e nem finalidade lucrativa.
               </p>
             </div>
-            <div className="block-card border-l-4 border-block-blue">
+            <div className="block-card border-l-4 border-block-blue bg-white">
               <h3 className="font-display text-2xl font-bold mb-4 text-block-blue">O Que Nos Torna Especiais</h3>
               <p className="text-muted-foreground">
                 Nossa creche é especial porque aqui, cada criança é vista em sua individualidade,
@@ -207,7 +219,6 @@ const Sobre = () => {
           </div>
         </div>
       </section>
-
 
       {/* Diferenciais */}
       <section className="py-20 bg-block-yellow">

@@ -13,6 +13,8 @@ import Noticias from "./pages/Noticias";
 import NoticiaDetalhe from "./pages/NoticiaDetalhe";
 import Doacoes from "./pages/Doacoes";
 import NotFound from "./pages/NotFound";
+import Auth from "./pages/Auth";
+import Admin from "./pages/Admin";
 
 const queryClient = new QueryClient();
 
@@ -43,6 +45,11 @@ const App = () => (
           <Route path="/noticias" element={<Noticias />} />
           <Route path="/noticias/:id" element={<NoticiaDetalhe />} />
           <Route path="/doacoes" element={<Doacoes />} />
+
+          {/* Páginas sem Header/Footer */}
+          <Route path="/auth" element={<Auth />} />
+          <Route path="/admin" element={<Admin />} />
+
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>
