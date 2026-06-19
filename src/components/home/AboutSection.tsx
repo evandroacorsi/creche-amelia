@@ -32,19 +32,15 @@ const values = [
 
 const AboutSection = () => {
   return (
-    // Ajustei o padding vertical para mobile e desktop
     <section className="py-12 lg:py-20">
-      {/* Container padronizado */}
       <div className="container mx-auto px-4 md:px-6">
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
 
-          {/* Content */}
-          {/* ADICIONADO: Classes para centralizar no mobile e alinhar à esquerda no desktop */}
           <div className="flex flex-col items-center lg:items-start text-center lg:text-left order-1 lg:order-1">
             <SectionHeader
               title="Sobre a Creche Amélia"
               subtitle="Uma história de amor e dedicação à educação infantil em Rancharia/SP."
-              centered={false} // Nota: Se o componente SectionHeader for rígido, talvez precise de CSS extra, mas o pai (flex-col items-center) deve forçar o centro.
+              centered={false}
               colorAccent="red"
             />
 
@@ -71,14 +67,10 @@ const AboutSection = () => {
             </Button>
           </div>
 
-          {/* Values Grid */}
-          {/* MUDANÇA: grid-cols-1 no mobile (resolve o aperto) e sm:grid-cols-2 (tablet/pc) */}
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 lg:gap-6 mt-8 lg:mt-0 order-2 lg:order-2 w-full">
             {values.map((value, index) => (
               <div
                 key={value.title}
-                // MUDANÇA 1: h-full para altura igual
-                // MUDANÇA 2: sm:mt-8 aplica o efeito "escada" apenas quando houver 2 colunas
                 className={`block-card text-center p-6 h-full flex flex-col items-center justify-center ${index % 2 === 1 ? "sm:mt-8" : ""
                   }`}
               >
@@ -86,7 +78,6 @@ const AboutSection = () => {
                   <value.icon size={28} />
                 </div>
 
-                {/* MUDANÇA: break-words impede que 'Desenvolvimento' saia do card */}
                 <h3 className="font-display text-lg font-bold mb-2 break-words w-full">
                   {value.title}
                 </h3>

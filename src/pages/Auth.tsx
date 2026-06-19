@@ -1,13 +1,15 @@
-import { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
-import { supabase } from "@/integrations/supabase/client";
+import logo from "@/assets/logo-creche-amelia.png";
+import { ThemeToggle } from "@/components/theme-toggle";
 import { Button } from "@/components/ui/button";
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { useToast } from "@/hooks/use-toast";
-import { Loader2 } from "lucide-react";
-import logo from "@/assets/logo.png";
+import { isSupabaseConfigured, supabase } from "@/integrations/supabase/client";
+import { ADMIN_PATH } from "@/lib/adminRoutes";
+import { AlertCircle, Loader2 } from "lucide-react";
+import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 export default function Auth() {
   const [email, setEmail] = useState("");
@@ -17,27 +19,30 @@ export default function Auth() {
   const { toast } = useToast();
 
   useEffect(() => {
-    // Check if user is already logged in
+    if (!isSupabaseConfigured) return;
+
     supabase.auth.getSession().then(({ data: { session } }) => {
-      if (session) {
-        navigate("/admin");
-      }
+      if (session) navigate(ADMIN_PATH);
     });
 
-    const { data: { subscription } } = supabase.auth.onAuthStateChange((event, session) => {
-      if (session) {
-        navigate("/admin");
-      }
+    const {
+      data: { subscription },
+    } = supabase.auth.onAuthStateChange((_event, session) => {
+      if (session) navigate(ADMIN_PATH);
     });
 
     return () => subscription.unsubscribe();
   }, [navigate]);
 
-  const handleAuth = async (e: React.FormEvent) => {
-    e.preventDefault();
+  const handleAuth = async (event: React.FormEvent) => {
+    event.preventDefault();
     setLoading(true);
 
     try {
+      if (!isSupabaseConfigured) {
+        throw new Error("Configure as credenciais do Supabase no arquivo .env.");
+      }
+
       const { error } = await supabase.auth.signInWithPassword({
         email,
         password,
@@ -46,13 +51,13 @@ export default function Auth() {
       if (error) throw error;
 
       toast({
-        title: "Login realizado com sucesso!",
-        description: "Bem-vindo de volta.",
+        title: "Login realizado com sucesso",
+        description: "Bem-vindo ao painel administrativo.",
       });
-    } catch (error: any) {
+    } catch (error: unknown) {
       toast({
-        title: "Erro",
-        description: error.message || "Ocorreu um erro. Tente novamente.",
+        title: "Erro ao entrar",
+        description: error instanceof Error ? error.message : "Ocorreu um erro. Tente novamente.",
         variant: "destructive",
       });
     } finally {
@@ -61,18 +66,26 @@ export default function Auth() {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-primary p-4">
-      <Card className="w-full max-w-md shadow-elegant animate-fade-in">
+    <div className="relative flex min-h-screen items-center justify-center bg-muted p-4">
+      <div className="absolute top-4 right-4">
+        <ThemeToggle />
+      </div>
+      <Card className="w-full max-w-md animate-fade-in shadow-lg">
         <CardHeader className="space-y-4 text-center">
-          <img src={logo} alt="Lar Francisco Franco" className="h-16 mx-auto" />
-          <CardTitle className="text-2xl font-bold">
-            Login
-          </CardTitle>
+          <img src={logo} alt="Creche Amélia" className="mx-auto h-20 w-auto" />
+          <CardTitle className="text-2xl font-bold">Login</CardTitle>
           <CardDescription>
-            Entre com suas credenciais para acessar o painel administrativo
+            Entre com suas credenciais para acessar o painel administrativo.
           </CardDescription>
         </CardHeader>
         <CardContent>
+          {!isSupabaseConfigured && (
+            <div className="mb-4 flex items-start gap-3 rounded-md border border-destructive/30 bg-destructive/10 p-3 text-sm text-destructive">
+              <AlertCircle className="mt-0.5 h-4 w-4 shrink-0" />
+              <span>Preencha o `.env` antes de usar o login.</span>
+            </div>
+          )}
+
           <form onSubmit={handleAuth} className="space-y-4">
             <div className="space-y-2">
               <Label htmlFor="email">Email</Label>
@@ -81,9 +94,9 @@ export default function Auth() {
                 type="email"
                 placeholder="seu@email.com"
                 value={email}
-                onChange={(e) => setEmail(e.target.value)}
+                onChange={(event) => setEmail(event.target.value)}
                 required
-                disabled={loading}
+                disabled={loading || !isSupabaseConfigured}
               />
             </div>
             <div className="space-y-2">
@@ -91,20 +104,19 @@ export default function Auth() {
               <Input
                 id="password"
                 type="password"
-                placeholder="••••••••"
+                placeholder="Senha"
                 value={password}
-                onChange={(e) => setPassword(e.target.value)}
+                onChange={(event) => setPassword(event.target.value)}
                 required
-                disabled={loading}
+                disabled={loading || !isSupabaseConfigured}
                 minLength={6}
               />
             </div>
-            <Button type="submit" className="w-full" disabled={loading}>
+            <Button type="submit" className="w-full" disabled={loading || !isSupabaseConfigured}>
               {loading && <Loader2 className="mr-2 h-4 w-4 animate-spin" />}
               Entrar
             </Button>
           </form>
-
         </CardContent>
       </Card>
     </div>

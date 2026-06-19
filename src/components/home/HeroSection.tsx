@@ -4,13 +4,9 @@ import { ArrowRight, School } from "lucide-react";
 import { useEffect, useState } from "react";
 import { FaWhatsapp } from "react-icons/fa";
 
-
 import logo from "@/assets/logo.png";
 import heroImage from "@/assets/hero-creche.jpg";
 
-/* =========================
-   COUNT UP
-========================= */
 interface CountUpProps {
   end: number;
   duration?: number;
@@ -63,7 +59,7 @@ const HeroSection = () => {
       to { opacity: 1; transform: translateY(0); }
     }
 
-    /* FLOAT COM ROTAÇÃO (ORIGINAL) */
+
     @keyframes float {
       0%, 100% { transform: translateY(0px) rotate(var(--tw-rotate)); }
       50% { transform: translateY(-10px) rotate(var(--tw-rotate)); }
@@ -91,15 +87,12 @@ const HeroSection = () => {
   return (
     <section className="relative min-h-[100vh] lg:min-h-[90vh] flex items-center gradient-hero overflow-hidden pt-10 pb-16 lg:py-0 ">
       <style>{animationStyles}</style>
-      {/* BLOCOS DECORATIVOS NUMERADOS */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none hidden lg:block">
 
-        {/* BLOCO 1 */}
         <div className="absolute top-20 left-10 w-16 h-16 bg-block-yellow/30 rounded-2xl rotate-12 animation-float flex items-center justify-center font-display text-2xl font-bold text-block-yellow">
           1
         </div>
 
-        {/* BLOCO 2 */}
         <div
           className="absolute top-40 right-20 w-12 h-12 bg-block-blue/30 rounded-xl -rotate-12 animation-float flex items-center justify-center font-display text-xl font-bold text-block-blue"
           style={{ animationDelay: "1s" }}
@@ -107,7 +100,6 @@ const HeroSection = () => {
           2
         </div>
 
-        {/* BLOCO 3 */}
         <div
           className="absolute bottom-40 left-20 w-10 h-10 bg-block-green/30 rounded-lg rotate-45 animation-float flex items-center justify-center font-display text-lg font-bold text-block-green"
           style={{ animationDelay: "2s" }}
@@ -115,7 +107,6 @@ const HeroSection = () => {
           3
         </div>
 
-        {/* BLOCO 4 */}
         <div
           className="absolute bottom-20 right-40 w-14 h-14 bg-block-red/30 rounded-2xl -rotate-6 animation-float flex items-center justify-center font-display text-xl font-bold text-block-red"
           style={{ animationDelay: "0.5s" }}
@@ -127,8 +118,6 @@ const HeroSection = () => {
       <div className="container mx-auto px-4 md:px-6 relative z-10">
         <div className="grid lg:grid-cols-2 gap-10 lg:gap-12 items-center">
 
-
-          {/* TEXTO */}
           <div className="text-center lg:text-left animate-fade-in">
             <h1 className="font-display text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-4 leading-tight">
 
@@ -146,7 +135,6 @@ const HeroSection = () => {
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start mb-10">
 
-              {/* WHATSAPP */}
               <Button
                 size="lg"
                 className="gradient-primary px-8 h-14 rounded-xl shadow-lg hover:scale-105 transition-all flex items-center gap-3 w-full sm:w-auto"
@@ -163,7 +151,6 @@ const HeroSection = () => {
                 </a>
               </Button>
 
-              {/* CONHEÇA A CRECHE */}
               <Button
                 size="lg"
                 variant="outline"
@@ -180,8 +167,6 @@ const HeroSection = () => {
               </Button>
             </div>
 
-
-            {/* STATS */}
             <div
               className=" grid grid-cols-3 gap-3 border-t pt-6 text-center text-sm">
               <div>
@@ -207,7 +192,6 @@ const HeroSection = () => {
             </div>
           </div>
 
-          {/* IMAGEM */}
           <div className="relative animate-fade-in">
             <div className="rounded-3xl overflow-hidden shadow-2xl">
               <img
@@ -218,7 +202,7 @@ const HeroSection = () => {
 
             <div
               className="
-                absolute -bottom-3 left-3 sm:-bottom-5 sm:-left-5 bg-white p-2 rounded-lg shadow-sm animation-float ">
+                absolute -bottom-3 left-3 sm:-bottom-5 sm:-left-5 bg-card p-2 rounded-lg shadow-sm animation-float ">
               <img src={logo} alt="Creche Amélia" className="h-14 sm:h-24" />
             </div>
           </div>

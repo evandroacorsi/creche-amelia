@@ -1,126 +1,203 @@
-import { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
-import { supabase } from "@/integrations/supabase/client";
-import { Button } from "@/components/ui/button";
-import { useToast } from "@/hooks/use-toast";
-import { LogOut, Plus, FileText, Users } from "lucide-react"; // Adicionei ícones novos
-import logo from "@/assets/logo-creche-amelia.png";
-import { NewsList } from "@/components/admin/NewsList";
+import { ImageLibraryManager } from "@/components/admin/ImageLibraryManager";
 import { NewsDialog } from "@/components/admin/NewsDialog";
-// Importar componentes das Abas
+import { NewsList } from "@/components/admin/NewsList";
+import { ThemeToggle } from "@/components/theme-toggle";
+import { Button } from "@/components/ui/button";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { useToast } from "@/hooks/use-toast";
+import { isSupabaseConfigured, supabase } from "@/integrations/supabase/client";
+import { AUTH_PATH } from "@/lib/adminRoutes";
+import type { NewsPost } from "@/lib/news";
+import logo from "@/assets/logo-creche-amelia.png";
+import type { User } from "@supabase/supabase-js";
+import { AlertCircle, FileText, Image as ImageIcon, LogOut, Plus } from "lucide-react";
+import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 export default function Admin() {
-  const [user, setUser] = useState<any>(null);
+  const [user, setUser] = useState<User | null>(null);
   const [loading, setLoading] = useState(true);
-
-  // Estados para Notícias
+  const [isAdmin, setIsAdmin] = useState(false);
   const [isNewsDialogOpen, setIsNewsDialogOpen] = useState(false);
-  const [editingNews, setEditingNews] = useState<any>(null);
+  const [editingNews, setEditingNews] = useState<NewsPost | null>(null);
+  const [refreshKey, setRefreshKey] = useState(0);
 
   const navigate = useNavigate();
   const { toast } = useToast();
-  const [refreshKey, setRefreshKey] = useState(0);
 
   useEffect(() => {
-    supabase.auth.getSession().then(({ data: { session } }) => {
-      if (!session) navigate("/auth");
-      else setUser(session.user);
+    if (!isSupabaseConfigured) {
+      setLoading(false);
+      return;
+    }
+
+    const validateAdmin = async (sessionUser: User | null) => {
+      if (!sessionUser) {
+        setUser(null);
+        setIsAdmin(false);
+        navigate(AUTH_PATH);
+        return;
+      }
+
+      setUser(sessionUser);
+      const { data, error } = await supabase.rpc("has_role", {
+        _user_id: sessionUser.id,
+        _role: "admin",
+      });
+
+      if (error || data !== true) {
+        setIsAdmin(false);
+        toast({
+          title: "Acesso negado",
+          description: "Sua conta não possui permissão de administrador.",
+          variant: "destructive",
+        });
+        return;
+      }
+
+      setIsAdmin(true);
+    };
+
+    supabase.auth.getSession().then(async ({ data: { session } }) => {
+      await validateAdmin(session?.user ?? null);
       setLoading(false);
     });
 
-    const { data: { subscription } } = supabase.auth.onAuthStateChange((event, session) => {
-      if (!session) navigate("/auth");
-      else setUser(session.user);
+    const {
+      data: { subscription },
+    } = supabase.auth.onAuthStateChange((_event, session) => {
+      validateAdmin(session?.user ?? null).finally(() => setLoading(false));
     });
 
     return () => subscription.unsubscribe();
-  }, [navigate]);
+  }, [navigate, toast]);
 
   const handleLogout = async () => {
     await supabase.auth.signOut();
     toast({ title: "Logout realizado", description: "Você saiu com sucesso." });
-    navigate("/auth");
+    navigate(AUTH_PATH);
   };
 
-  // Funções de Notícias
-  const handleEditNews = (news: any) => {
+  const handleEditNews = (news: NewsPost) => {
     setEditingNews(news);
     setIsNewsDialogOpen(true);
   };
+
   const handleCloseNewsDialog = () => {
     setIsNewsDialogOpen(false);
     setEditingNews(null);
   };
 
-
   if (loading) {
     return (
-      <div className="min-h-screen flex items-center justify-center bg-background">
-        <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-primary"></div>
+      <div className="flex min-h-screen items-center justify-center bg-background">
+        <div className="h-12 w-12 animate-spin rounded-full border-b-2 border-primary" />
+      </div>
+    );
+  }
+
+  if (!isSupabaseConfigured) {
+    return (
+      <div className="flex min-h-screen items-center justify-center bg-secondary p-6">
+        <div className="max-w-lg rounded-lg border bg-card p-8 text-center shadow-sm">
+          <AlertCircle className="mx-auto mb-4 h-10 w-10 text-destructive" />
+          <h1 className="mb-3 text-display text-3xl font-semibold text-foreground">
+            Supabase não configurado
+          </h1>
+          <p className="text-sm leading-relaxed text-muted-foreground">
+            Preencha `VITE_SUPABASE_URL` e `VITE_SUPABASE_PUBLISHABLE_KEY` no arquivo `.env` para acessar o painel administrativo.
+          </p>
+        </div>
       </div>
     );
   }
 
   return (
     <div className="min-h-screen bg-muted/30">
-      <header className="bg-primary border-b border-border">
-        <div className="container mx-auto px-4 py-4 flex items-center justify-between">
-          <div className="flex items-center gap-4">
-            <img src={logo} alt="Creche Amélia" className="h-16" />
-            <div>
-              <h1 className="text-xl font-bold text-muted">Painel Administrativo</h1>
-              <p className="text-sm text-muted">Escola de Educação Infantil "Amélia Teixeira Lins"</p>
+      <header className="border-b border-border bg-card">
+        <div className="container mx-auto flex items-center justify-between gap-4 px-4 py-4">
+          <div className="flex min-w-0 items-center gap-4">
+            <img src={logo} alt="Creche Amélia" className="h-16 w-auto" />
+            <div className="min-w-0">
+              <h1 className="text-xl font-bold text-foreground">Painel Administrativo</h1>
+              <p className="truncate text-sm text-muted-foreground">
+                {user?.email ?? "Creche Amélia"}
+              </p>
             </div>
           </div>
 
-          <Button variant="outline" className="bg-white/10 backdrop-blur-sm border-white text-white hover:bg-white hover:text-primary" onClick={handleLogout}>
-            <LogOut className="mr-2 h-4 w-4" />
-            Sair
-          </Button>
+          <div className="flex items-center gap-2">
+            <ThemeToggle />
+            <Button variant="outline" onClick={handleLogout}>
+              <LogOut className="mr-2 h-4 w-4" />
+              Sair
+            </Button>
+          </div>
         </div>
       </header>
 
       <main className="container mx-auto px-4 py-8">
-
-        {/* Componente de Abas para separar os conteúdos */}
         <Tabs defaultValue="news" className="w-full">
-
-          <div className="flex flex-col md:flex-row items-start md:items-center justify-between mb-6 gap-4">
-            <TabsList className="bg-white">
+          <div className="mb-6 flex flex-col items-start justify-between gap-4 md:flex-row md:items-center">
+            <TabsList className="bg-muted">
               <TabsTrigger value="news" className="gap-2">
                 <FileText className="h-4 w-4" /> Notícias
+              </TabsTrigger>
+              <TabsTrigger value="image-library" className="gap-2">
+                <ImageIcon className="h-4 w-4" /> Biblioteca de Imagens
               </TabsTrigger>
             </TabsList>
           </div>
 
-          {/* CONTEÚDO DA ABA DE NOTÍCIAS */}
           <TabsContent value="news">
-            <div className="flex items-center justify-between mb-6">
+            <div className="mb-6 flex flex-col justify-between gap-4 sm:flex-row sm:items-center">
               <div>
                 <h2 className="text-3xl font-bold text-foreground">Gerenciar Notícias</h2>
-                <p className="text-muted-foreground mt-1">Crie, edite e gerencie as notícias do site</p>
+                <p className="mt-1 text-muted-foreground">
+                  Crie, edite e gerencie as notícias do site.
+                </p>
               </div>
-              <Button onClick={() => setIsNewsDialogOpen(true)} className="gap-2">
-                <Plus className="h-4 w-4" /> Nova Notícia
-              </Button>
+              {isAdmin && (
+                <Button onClick={() => setIsNewsDialogOpen(true)} className="gap-2">
+                  <Plus className="h-4 w-4" /> Nova Notícia
+                </Button>
+              )}
             </div>
 
-            <NewsList onEdit={handleEditNews} key={`news-${refreshKey}`} />
+            {isAdmin ? (
+              <NewsList onEdit={handleEditNews} key={`news-${refreshKey}`} />
+            ) : (
+              <div className="rounded-lg border border-destructive/30 bg-card p-8 text-center text-muted-foreground">
+                Esta conta está autenticada, mas não possui permissão de administrador.
+              </div>
+            )}
           </TabsContent>
 
+          <TabsContent value="image-library">
+            <div className="mb-6">
+              <h2 className="text-3xl font-bold text-foreground">Biblioteca de Imagens</h2>
+              <p className="mt-1 text-muted-foreground">
+                Visualize e exclua as imagens salvas na pasta de uploads do servidor.
+              </p>
+            </div>
 
+            {isAdmin ? (
+              <ImageLibraryManager />
+            ) : (
+              <div className="rounded-lg border border-destructive/30 bg-card p-8 text-center text-muted-foreground">
+                Esta conta está autenticada, mas não possui permissão de administrador.
+              </div>
+            )}
+          </TabsContent>
         </Tabs>
       </main>
 
-      {/* Dialogs */}
       <NewsDialog
         open={isNewsDialogOpen}
         onOpenChange={handleCloseNewsDialog}
         editingNews={editingNews}
-        onSuccess={() => setRefreshKey(prev => prev + 1)}
+        onSuccess={() => setRefreshKey((prev) => prev + 1)}
       />
-
     </div>
   );
 }

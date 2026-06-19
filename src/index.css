@@ -6,34 +6,34 @@
 
 @layer base {
   :root {
-    /* Cream/Beige Background - from logo */
+
     --background: 40 33% 94%;
     --foreground: 25 30% 20%;
 
-    /* Cards with slightly warmer cream */
+
     --card: 40 40% 97%;
     --card-foreground: 25 30% 20%;
 
     --popover: 40 40% 97%;
     --popover-foreground: 25 30% 20%;
 
-    /* Primary - Warm Red/Orange from logo */
+
     --primary: 15 80% 50%;
     --primary-foreground: 40 33% 98%;
 
-    /* Secondary - Soft orange */
+
     --secondary: 30 70% 92%;
     --secondary-foreground: 15 80% 40%;
 
-    /* Muted cream tones */
+
     --muted: 40 30% 90%;
     --muted-foreground: 25 20% 45%;
 
-    /* Accent - Warm yellow */
+
     --accent: 45 90% 55%;
     --accent-foreground: 25 30% 20%;
 
-    /* Block colors from logo */
+
     --block-green: 140 60% 45%;
     --block-blue: 210 70% 50%;
     --block-red: 0 75% 55%;
@@ -49,12 +49,12 @@
 
     --radius: 1rem;
 
-    /* Custom shadows */
+
     --shadow-soft: 0 4px 20px -4px hsl(25 30% 20% / 0.1);
     --shadow-card: 0 8px 30px -8px hsl(25 30% 20% / 0.12);
     --shadow-block: 4px 4px 0px hsl(25 30% 20% / 0.15);
 
-    /* Sidebar */
+
     --sidebar-background: 40 40% 97%;
     --sidebar-foreground: 25 30% 20%;
     --sidebar-primary: 15 80% 50%;
@@ -87,12 +87,22 @@
     --accent: 45 90% 55%;
     --accent-foreground: 25 30% 10%;
 
+    --block-green: 140 45% 38%;
+    --block-blue: 210 55% 42%;
+    --block-red: 0 60% 45%;
+    --block-yellow: 45 80% 48%;
+    --block-orange: 25 75% 48%;
+
     --destructive: 0 62.8% 30.6%;
     --destructive-foreground: 40 33% 94%;
 
     --border: 25 20% 25%;
     --input: 25 20% 25%;
     --ring: 15 80% 55%;
+
+    --shadow-soft: 0 4px 20px -4px hsl(0 0% 0% / 0.3);
+    --shadow-card: 0 8px 30px -8px hsl(0 0% 0% / 0.35);
+    --shadow-block: 4px 4px 0px hsl(0 0% 0% / 0.25);
 
     --sidebar-background: 25 20% 14%;
     --sidebar-foreground: 40 33% 94%;
@@ -150,7 +160,7 @@
 
   .block-card:hover {
     transform: translateY(-4px);
-    box-shadow: 0 12px 40px -12px hsl(25 30% 20% / 0.18);
+    box-shadow: var(--shadow-card);
   }
 
   .toy-block {
@@ -160,13 +170,27 @@
 
   .toy-block:hover {
     transform: translate(-2px, -2px);
-    box-shadow: 6px 6px 0px hsl(25 30% 20% / 0.2);
+    box-shadow: var(--shadow-block);
+  }
+
+  .site-footer {
+    --footer-background: 25 30% 20%;
+    --footer-foreground: 40 33% 98%;
+    background-color: hsl(var(--footer-background));
+    color: hsl(var(--footer-foreground));
   }
 
   .gradient-hero {
     background: linear-gradient(135deg,
         hsl(var(--background)) 0%,
         hsl(40 35% 90%) 50%,
+        hsl(var(--secondary)) 100%);
+  }
+
+  .dark .gradient-hero {
+    background: linear-gradient(135deg,
+        hsl(var(--background)) 0%,
+        hsl(25 22% 18%) 50%,
         hsl(var(--secondary)) 100%);
   }
 
@@ -185,9 +209,9 @@
     background-clip: text;
   }
 
-  /* Playful decorative elements - removed dots */
 
-  /* WhatsApp floating button */
+
+
   .whatsapp-float {
     @apply fixed bottom-6 right-6 z-50 flex items-center justify-center w-14 h-14 rounded-full transition-all duration-300;
     background: #25D366;
@@ -199,7 +223,7 @@
     box-shadow: 0 6px 25px rgba(37, 211, 102, 0.5);
   }
 
-  /* Block colors utilities */
+
   .bg-block-green {
     background-color: hsl(var(--block-green));
   }
@@ -238,6 +262,16 @@
 
   .text-block-orange {
     color: hsl(var(--block-orange));
+  }
+
+  .news-blockquote {
+    border-left: 4px solid hsl(var(--accent));
+    background: hsl(var(--muted));
+    padding: 1rem 1.25rem;
+    margin: 1.25rem 0;
+    border-radius: 0 0.5rem 0.5rem 0;
+    font-style: italic;
+    color: hsl(var(--foreground));
   }
 }
 

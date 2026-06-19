@@ -41,10 +41,8 @@ const Contato = () => {
 
   return (
     <Layout>
-      {/* Hero */}
       <section className="relative py-20 bg-primary/5 border-b border-primary/10">
 
-        {/* Elementos decorativos */}
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
           <Sparkles className="absolute top-8 right-12 text-primary/20 w-7 h-7" />
           <div className="absolute bottom-10 left-12 w-10 h-10 bg-primary/10 rounded-xl rotate-12" />
@@ -56,11 +54,11 @@ const Contato = () => {
               Fale conosco
             </span>
 
-            <h2 className="text-4xl md:text-5xl font-bold text-gray-900 leading-tight">
+            <h2 className="text-4xl md:text-5xl font-bold text-foreground leading-tight">
               Entre em <span className="text-primary">Contato</span>
             </h2>
 
-            <p className="mt-6 text-lg md:text-xl text-gray-600">
+            <p className="mt-6 text-lg md:text-xl text-muted-foreground">
               Estamos prontos para atender você e esclarecer todas as suas dúvidas
               sobre a Creche Amélia, com atenção, carinho e transparência.
             </p>
@@ -68,15 +66,12 @@ const Contato = () => {
         </div>
       </section>
 
-
-      {/* Contato */}
       <section className="py-20 bg-block-red">
 
         <div className="container-custom">
           <div className="grid lg:grid-cols-2 gap-12 items-start">
-            {/* Formulário */}
             <div className="block-card">
-              <h2 className="text-2xl font-bold text-gray-900 mb-2">
+              <h2 className="text-2xl font-bold text-foreground mb-2">
                 Envie sua Mensagem
               </h2>
               <p className="text-muted-foreground mb-6">
@@ -85,7 +80,7 @@ const Contato = () => {
 
               <form onSubmit={handleSubmit} className="space-y-5">
                 <div>
-                  <label className="block text-sm font-semibold mb-2 text-gray-700">
+                  <label className="block text-sm font-semibold mb-2 text-foreground">
                     Nome completo
                   </label>
                   <Input
@@ -100,7 +95,7 @@ const Contato = () => {
                 </div>
 
                 <div>
-                  <label className="block text-sm font-semibold mb-2 text-gray-700">
+                  <label className="block text-sm font-semibold mb-2 text-foreground">
                     Telefone
                   </label>
                   <Input
@@ -115,7 +110,7 @@ const Contato = () => {
                 </div>
 
                 <div>
-                  <label className="block text-sm font-semibold mb-2 text-gray-700">
+                  <label className="block text-sm font-semibold mb-2 text-foreground">
                     Mensagem
                   </label>
                   <Textarea
@@ -139,14 +134,13 @@ const Contato = () => {
               </form>
             </div>
 
-            {/* Informações de contato */}
             <div className="space-y-5">
               <div className="block-card flex items-start gap-4">
                 <div className="w-12 h-12 rounded-xl bg-block-green/10 flex items-center justify-center flex-shrink-0">
                   <MapPin size={24} className="text-block-green" />
                 </div>
                 <div>
-                  <h3 className="font-semibold text-gray-900 mb-1">Endereço</h3>
+                  <h3 className="font-semibold text-foreground mb-1">Endereço</h3>
                   <p className="text-muted-foreground text-sm leading-relaxed">
                     Rua Allan Kardec, nº 778<br />
                     Vila Righeti – Rancharia/SP
@@ -159,7 +153,7 @@ const Contato = () => {
                   <Phone size={24} className="text-block-blue" />
                 </div>
                 <div>
-                  <h3 className="font-semibold text-gray-900 mb-1">Telefone</h3>
+                  <h3 className="font-semibold text-foreground mb-1">Telefone</h3>
                   <p className="text-muted-foreground text-sm leading-relaxed">
                     (18) 3265-6789<br />
                     (18) 99787-6081 (WhatsApp)
@@ -172,7 +166,7 @@ const Contato = () => {
                   <Mail size={24} className="text-block-yellow" />
                 </div>
                 <div>
-                  <h3 className="font-semibold text-gray-900 mb-1">E-mail</h3>
+                  <h3 className="font-semibold text-foreground mb-1">E-mail</h3>
                   <p className="text-muted-foreground text-sm">
                     crecheamelia@hotmail.com
                   </p>
@@ -184,7 +178,7 @@ const Contato = () => {
                   <Clock size={24} className="text-block-red" />
                 </div>
                 <div>
-                  <h3 className="font-semibold text-gray-900 mb-1">
+                  <h3 className="font-semibold text-foreground mb-1">
                     Horário de Funcionamento
                   </h3>
                   <p className="text-muted-foreground text-sm leading-relaxed">
@@ -198,15 +192,11 @@ const Contato = () => {
         </div>
       </section>
 
-
-      {/* Mapa */}
       <section className="w-full p-0 bg-card">
-        {/* MUDANÇA 2: Removi a div 'container-custom' e a div de 'rounded/shadow' */}
-        {/* O iframe agora é filho direto da section */}
         <iframe
           src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3702.5!2d-50.89!3d-22.23!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMjLCsDEzJzQ4LjAiUyA1MMKwNTMnMjQuMCJX!5e0!3m2!1spt-BR!2sbr!4v1234567890123"
-          className="w-full h-[450px] lg:h-[550px]" // MUDANÇA 3: Altura responsiva e w-full via classe
-          style={{ border: 0, display: "block" }} // display: block remove uma pequena margem fantasma que iframes tem
+          className="w-full h-[450px] lg:h-[550px]"
+          style={{ border: 0, display: "block" }}
           allowFullScreen
           loading="lazy"
           referrerPolicy="no-referrer-when-downgrade"

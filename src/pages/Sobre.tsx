@@ -2,7 +2,6 @@ import Layout from "@/components/layout/Layout";
 import SectionHeader from "@/components/ui/SectionHeader";
 import { Heart, Target, Shield, Users, Award, Clock, Sun } from "lucide-react";
 import heroImage from "@/assets/hero-creche.jpg";
-// 1. Importe a logo aqui
 import logoPrefeitura from "@/assets/logo-prefeitura.webp";
 
 const values = [
@@ -63,17 +62,16 @@ const features = [
 const Sobre = () => {
   return (
     <Layout>
-      {/* Hero */}
       <section className="relative py-20 bg-primary/5 border-b border-primary/10">
         <div className="container-custom relative z-10">
           <div className="max-w-3xl mx-auto text-center">
             <span className="inline-block mb-4 px-4 py-1 text-sm font-medium rounded-full bg-primary/10 text-primary">
               Educação infantil de qualidade
             </span>
-            <h1 className="text-4xl md:text-5xl font-bold text-gray-900 leading-tight">
+            <h1 className="text-4xl md:text-5xl font-bold text-foreground leading-tight">
               Sobre a <span className="text-primary">Creche Amélia</span>
             </h1>
-            <p className="mt-6 text-lg md:text-xl text-gray-600">
+            <p className="mt-6 text-lg md:text-xl text-muted-foreground">
               Há <strong>56 anos</strong> cuidando, educando e acolhendo as crianças de
               <strong> Rancharia/SP</strong> com amor, responsabilidade e dedicação.
             </p>
@@ -81,7 +79,6 @@ const Sobre = () => {
         </div>
       </section>
 
-      {/* História */}
       <section className="py-20">
         <div className="container-custom">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
@@ -113,22 +110,22 @@ const Sobre = () => {
         </div>
       </section>
 
-      <section className="py-14 bg-slate-100 border-y border-slate-300">
+      <section className="py-14 bg-muted border-y border-border">
         <div className="container-custom">
           <div className="flex flex-col md:flex-row items-center justify-center gap-8 md:gap-16">
 
             <div className="text-center md:text-right max-w-lg">
-              <h3 className="text-lg font-extrabold text-slate-900 mb-1">
+              <h3 className="text-lg font-extrabold text-foreground mb-1">
                 Parceria Institucional
               </h3>
-              <p className="text-slate-700 text-sm leading-relaxed">
+              <p className="text-muted-foreground text-sm leading-relaxed">
                 Trabalhamos em convênio com a <strong>Prefeitura Municipal de Rancharia</strong>,
                 uma parceria fundamental para garantir a gratuidade e a excelência
                 do atendimento oferecido às nossas crianças.
               </p>
             </div>
 
-            <div className="hidden md:block w-px h-16 bg-slate-300"></div>
+            <div className="hidden md:block w-px h-16 bg-border"></div>
 
             <div className="flex-shrink-0 grayscale-[30%] hover:grayscale-0 transition-all duration-500">
               <img
@@ -142,12 +139,10 @@ const Sobre = () => {
         </div>
       </section>
 
-
-      {/* Missão */}
       <section className="py-20 bg-card">
         <div className="container-custom">
           <div className="grid md:grid-cols-2 gap-8">
-            <div className="block-card border-l-4 border-primary bg-white">
+            <div className="block-card border-l-4 border-primary bg-card">
               <h3 className="font-display text-2xl font-bold mb-4 text-primary">Nossa Missão</h3>
               <p className="text-muted-foreground">
                 Realizar um trabalho de caráter educativo, buscando a autonomia e o desenvolvimento
@@ -157,7 +152,7 @@ const Sobre = () => {
                 e nem finalidade lucrativa.
               </p>
             </div>
-            <div className="block-card border-l-4 border-block-blue bg-white">
+            <div className="block-card border-l-4 border-block-blue bg-card">
               <h3 className="font-display text-2xl font-bold mb-4 text-block-blue">O Que Nos Torna Especiais</h3>
               <p className="text-muted-foreground">
                 Nossa creche é especial porque aqui, cada criança é vista em sua individualidade,
@@ -170,7 +165,6 @@ const Sobre = () => {
         </div>
       </section>
 
-      {/* Valores */}
       <section className="py-20">
         <div className="container-custom">
           <SectionHeader
@@ -193,7 +187,6 @@ const Sobre = () => {
         </div>
       </section>
 
-      {/* Nossa Equipe */}
       <section className="py-20 bg-card">
         <div className="container-custom">
           <SectionHeader
@@ -220,15 +213,14 @@ const Sobre = () => {
         </div>
       </section>
 
-      {/* Diferenciais */}
       <section className="py-20 bg-block-yellow">
         <div className="container-custom">
           <div className="mx-auto text-center">
-            <Sun size={36} className="text-white mb-4 mx-auto" />
-            <h2 className="font-display text-3xl font-bold text-primary-foreground mb-4">
+            <Sun size={36} className="text-foreground dark:text-white mb-4 mx-auto" />
+            <h2 className="font-display text-3xl font-bold text-foreground dark:text-white mb-4">
               Diferenciais da Nossa Estrutura
             </h2>
-            <p className="text-primary-foreground/90 mb-8">
+            <p className="text-foreground/90 dark:text-white/90 mb-8">
               Instalações pensadas para o bem-estar e desenvolvimento das crianças.
             </p>
           </div>

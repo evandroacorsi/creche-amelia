@@ -12,15 +12,15 @@ const CTASection = () => {
     <section className="py-20 bg-block-blue">
       <div className="container-custom text-center">
         <div className="max-w-3xl mx-auto">
-          <div className="inline-flex items-center justify-center w-16 h-16 bg-primary-foreground/20 rounded-2xl mb-6">
-            <Heart className="w-8 h-8 text-primary-foreground" />
+          <div className="inline-flex items-center justify-center w-16 h-16 bg-white/20 rounded-2xl mb-6">
+            <Heart className="w-8 h-8 text-white" />
           </div>
 
-          <h2 className="font-display text-3xl md:text-4xl lg:text-5xl font-bold text-primary-foreground mb-6">
+          <h2 className="font-display text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-6">
             Juntos escrevendo os primeiros capítulos
           </h2>
 
-          <p className="text-lg text-primary-foreground/90 mb-8 max-w-2xl mx-auto">
+          <p className="text-lg text-white/90 mb-8 max-w-2xl mx-auto">
             Agende uma visita e conheça de perto todo o carinho e dedicação que
             oferecemos às nossas crianças. Estamos esperando você!
           </p>

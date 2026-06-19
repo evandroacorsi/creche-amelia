@@ -26,7 +26,7 @@ const icons = {
 
 const SectionHeader = ({ title, subtitle, centered = true, colorAccent = "orange", isPageHeader = false }: SectionHeaderProps) => {
   const IconComponent = icons[colorAccent];
-  
+
   return (
     <div className={`mb-12 animate-fade-in ${centered ? "text-center" : ""}`}>
       <div className={`inline-flex items-center gap-3 mb-4 ${centered ? "justify-center" : ""}`}>

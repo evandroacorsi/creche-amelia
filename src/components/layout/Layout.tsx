@@ -7,9 +7,7 @@ interface LayoutProps {
   children: ReactNode;
 }
 
-// --- LAYOUT CONDICIONAL (igual ao seu projeto anterior) ---
 const Layout = ({ children }: LayoutProps) => {
-  // Rotas onde Header e Footer NÃO devem aparecer
   const hiddenRoutes = ["/auth", "/admin"];
 
   const hideLayout = hiddenRoutes.includes(location.pathname);

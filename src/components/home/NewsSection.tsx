@@ -41,7 +41,6 @@ const NewsSection = () => {
         />
 
         <div className="grid lg:grid-cols-2 gap-8">
-          {/* Notícia em Destaque */}
           <Link
             to={`/noticias/${destaque.id}`}
             className=" group block bg-card rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl hover:-translate-y-1 transition-all duration-300 ">
@@ -75,7 +74,6 @@ const NewsSection = () => {
             </div>
           </Link>
 
-          {/* Outras Notícias */}
           <div className="flex flex-col gap-4">
             {outras.map((noticia) => (
               <Link
@@ -105,7 +103,6 @@ const NewsSection = () => {
               </Link>
             ))}
 
-            {/* Botão Ver Todas */}
             <div className="mt-auto pt-4">
               <Button
                 variant="secondary"

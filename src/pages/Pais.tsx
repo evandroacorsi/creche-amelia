@@ -31,9 +31,7 @@ const itensNecessarios = [
 const Pais = () => {
   return (
     <Layout>
-      {/* Hero */}
       <section className="relative py-20 bg-primary/5 border-b border-primary/10">
-        {/* Elementos decorativos sutis */}
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
           <Sparkles className="absolute top-8 right-12 text-primary/20 w-7 h-7" />
           <div className="absolute bottom-10 left-12 w-10 h-10 bg-primary/10 rounded-xl rotate-12" />
@@ -45,11 +43,11 @@ const Pais = () => {
               Família e creche
             </span>
 
-            <h2 className="text-4xl md:text-5xl font-bold text-gray-900 leading-tight">
+            <h2 className="text-4xl md:text-5xl font-bold text-foreground leading-tight">
               Informações para <span className="text-primary">Pais</span>
             </h2>
 
-            <p className="mt-6 text-lg md:text-xl text-gray-600">
+            <p className="mt-6 text-lg md:text-xl text-muted-foreground">
               Tudo o que você precisa saber sobre a rotina, os cuidados diários e a
               colaboração entre família e creche para o desenvolvimento das crianças.
             </p>
@@ -57,8 +55,6 @@ const Pais = () => {
         </div>
       </section>
 
-
-      {/* Informações sobre idades */}
       <section className="py-12 bg-card">
         <div className="container-custom">
           <div className="bg-block-blue/10 border-2 border-block-blue/30 rounded-2xl p-6 flex items-center gap-4">
@@ -78,9 +74,7 @@ const Pais = () => {
         </div>
       </section>
 
-      {/* Rotina */}
       <section className="py-20 relative">
-        {/* Background Image */}
         <div className="absolute inset-0 z-0">
           <img
             src={heroImage}
@@ -143,7 +137,6 @@ const Pais = () => {
         </div>
       </section>
 
-      {/* Compromisso */}
       <section className="py-20 bg-card">
         <div className="container-custom">
           <SectionHeader
@@ -186,10 +179,9 @@ const Pais = () => {
         </div>
       </section>
 
-      {/* Aviso */}
       <section className="py-12 bg-block-green">
         <div className="container-custom">
-          <div className="bg-white border-2 border-block-yellow/30 rounded-2xl p-6 flex items-start gap-4">
+          <div className="bg-card border-2 border-block-yellow/30 rounded-2xl p-6 flex items-start gap-4">
             <AlertCircle className="text-block-yellow flex-shrink-0 mt-1" size={24} />
             <div>
               <h3 className="font-display text-lg font-bold mb-2">Importante</h3>

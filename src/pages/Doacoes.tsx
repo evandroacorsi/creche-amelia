@@ -19,10 +19,6 @@ import { FaWhatsapp } from "react-icons/fa";
 import heroImage from "@/assets/bg2.png";
 import bg1 from "@/assets/bg1.png";
 
-/* =========================
-   DADOS
-========================= */
-
 const formasDoacao = [
   {
     icon: SiPix,
@@ -81,16 +77,10 @@ const comoAjudar = [
   "Roupas infantis",
 ];
 
-/* =========================
-   COMPONENTE
-========================= */
-
 const Doacoes = () => {
   return (
     <Layout>
-      {/* Hero */}
       <section className="relative py-20 bg-primary/5 border-b border-primary/10 overflow-hidden">
-        {/* Elementos decorativos */}
         <div className="absolute inset-0 z-0">
           <img
             src={heroImage}
@@ -110,12 +100,12 @@ const Doacoes = () => {
               <Heart className="w-8 h-8 text-primary" />
             </div>
 
-            <h1 className="text-4xl md:text-5xl font-bold text-gray-900 leading-tight">
+            <h1 className="text-4xl md:text-5xl font-bold text-foreground leading-tight">
               Faça a Diferença na Vida de uma{" "}
               <span className="text-primary whitespace-nowrap">Criança</span>
             </h1>
 
-            <p className="mt-6 text-lg md:text-xl text-gray-600 max-w-2xl mx-auto">
+            <p className="mt-6 text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto">
               Sua doação ajuda a manter nossos serviços gratuitos e garante melhores
               condições de cuidado, educação e acolhimento para as crianças da
               Creche Amélia há <strong>56 anos</strong>.
@@ -136,29 +126,27 @@ const Doacoes = () => {
         </div>
       </section>
 
-      {/* Formas de Doação (Individual) */}
       <section
         id="formas-doacao"
-        className="relative py-20 bg-red-50/50 border-t border-red-100 overflow-hidden"
+        className="relative py-20 bg-red-50/50 dark:bg-muted/20 border-t border-border overflow-hidden"
       >
-        {/* Elementos decorativos */}
         <div className="absolute inset-0 pointer-events-none">
-          <div className="absolute top-10 left-10 w-20 h-20 border-2 border-red-200/60 rounded-2xl rotate-12" />
-          <div className="absolute bottom-16 right-12 w-14 h-14 border-2 border-red-200/60 rounded-xl -rotate-12" />
-          <div className="absolute top-1/2 right-0 w-40 h-40 bg-red-100/40 rounded-full translate-x-1/2" />
+          <div className="absolute top-10 left-10 w-20 h-20 border-2 border-red-200/60 dark:border-red-900/40 rounded-2xl rotate-12" />
+          <div className="absolute bottom-16 right-12 w-14 h-14 border-2 border-red-200/60 dark:border-red-900/40 rounded-xl -rotate-12" />
+          <div className="absolute top-1/2 right-0 w-40 h-40 bg-red-100/40 dark:bg-red-950/30 rounded-full translate-x-1/2" />
         </div>
 
         <div className="container-custom relative z-10">
           <div className="max-w-3xl mx-auto text-center mb-14">
-            <div className="inline-flex items-center justify-center w-16 h-16 bg-red-100 rounded-2xl mb-6">
-              <HeartHandshake className="w-8 h-8 text-red-600" />
+            <div className="inline-flex items-center justify-center w-16 h-16 bg-red-100 dark:bg-red-950/40 rounded-2xl mb-6">
+              <HeartHandshake className="w-8 h-8 text-red-600 dark:text-red-400" />
             </div>
 
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900">
-              Como <span className="text-red-600">Doar</span>
+            <h2 className="text-3xl md:text-4xl font-bold text-foreground">
+              Como <span className="text-red-600 dark:text-red-400">Doar</span>
             </h2>
 
-            <p className="mt-4 text-lg text-gray-600 max-w-2xl mx-auto">
+            <p className="mt-4 text-lg text-muted-foreground max-w-2xl mx-auto">
               Existem diversas formas de contribuir com a nossa causa.
               Escolha a que melhor se adapta a você.
             </p>
@@ -168,32 +156,29 @@ const Doacoes = () => {
             {formasDoacao.map((forma, index) => (
               <div
                 key={forma.title}
-                className="group relative bg-white/80 backdrop-blur-sm border border-red-100 rounded-2xl p-6 shadow-sm hover:shadow-lg transition-all flex flex-col"
+                className="group relative bg-card/80 backdrop-blur-sm border border-border rounded-2xl p-6 shadow-sm hover:shadow-lg transition-all flex flex-col"
                 style={{ animationDelay: `${index * 0.1}s` }}
               >
-                {/* Topo */}
                 <div>
-                  <div className="w-14 h-14 rounded-xl flex items-center justify-center mb-4 bg-red-100 text-red-600 group-hover:scale-105 transition-transform">
+                  <div className="w-14 h-14 rounded-xl flex items-center justify-center mb-4 bg-red-100 dark:bg-red-950/40 text-red-600 dark:text-red-400 group-hover:scale-105 transition-transform">
                     <forma.icon size={28} />
                   </div>
 
-                  <h3 className="font-display text-xl font-bold mb-2 text-gray-900">
+                  <h3 className="font-display text-xl font-bold mb-2 text-foreground">
                     {forma.title}
                   </h3>
                 </div>
 
-                {/* Meio (flexível) */}
-                <p className="text-gray-600 text-sm leading-relaxed mb-5 flex-1">
+                <p className="text-muted-foreground text-sm leading-relaxed mb-5 flex-1">
                   {forma.description}
                 </p>
 
-                {/* Base (fixa e alinhada) */}
-                <div className="pt-4 border-t border-red-100 flex items-center justify-between">
-                  <span className="font-mono font-semibold text-red-600">
+                <div className="pt-4 border-t border-border flex items-center justify-between">
+                  <span className="font-mono font-semibold text-red-600 dark:text-red-400">
                     {forma.destaque}
                   </span>
 
-                  <span className="text-xs text-gray-400 group-hover:text-red-500 transition-colors">
+                  <span className="text-xs text-muted-foreground group-hover:text-red-500 dark:group-hover:text-red-400 transition-colors">
                     <Link to="/contato">
                       Entre em Contato →
                     </Link>
@@ -205,8 +190,7 @@ const Doacoes = () => {
         </div>
       </section>
 
-      {/* --- NOVA SEÇÃO: PARCERIAS EMPRESARIAIS --- */}
-      <section className="py-20 bg-slate-50 border-y border-slate-200">
+      <section className="py-20 bg-muted border-y border-border">
         <div className="container-custom">
           <SectionHeader
             title="Parcerias Empresariais"
@@ -215,16 +199,15 @@ const Doacoes = () => {
           />
 
           <div className="mt-10 grid lg:grid-cols-2 gap-10 items-center">
-            {/* Texto Descritivo */}
             <div className="space-y-6">
-              <div className="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm">
+              <div className="bg-card p-6 rounded-2xl border border-border shadow-sm">
                 <div className="flex items-start gap-4">
-                  <div className="p-3 bg-blue-100 rounded-xl text-blue-600">
+                  <div className="p-3 bg-blue-100 dark:bg-blue-950/40 rounded-xl text-blue-600 dark:text-blue-400">
                     <Building2 size={32} />
                   </div>
                   <div>
-                    <h3 className="text-xl font-bold text-gray-900 mb-2">Por que ser um parceiro?</h3>
-                    <p className="text-gray-600 leading-relaxed">
+                    <h3 className="text-xl font-bold text-foreground mb-2">Por que ser um parceiro?</h3>
+                    <p className="text-muted-foreground leading-relaxed">
                       Empresas podem contribuir de diversas formas, inclusive com <strong>benefícios fiscais</strong> para doações a Organizações da Sociedade Civil (OSC). Ao apoiar a Creche Amélia, sua empresa reforça a responsabilidade social e impacta diretamente a comunidade local.
                     </p>
                   </div>
@@ -233,21 +216,20 @@ const Doacoes = () => {
 
               <div className="grid sm:grid-cols-2 gap-4">
                 {parceriasEmpresariais.map((item) => (
-                  <div key={item.title} className="bg-white p-5 rounded-xl border border-slate-100 shadow-sm hover:shadow-md transition-all">
+                  <div key={item.title} className="bg-card p-5 rounded-xl border border-border shadow-sm hover:shadow-md transition-all">
                     <item.icon className="text-primary mb-3" size={24} />
-                    <h4 className="font-bold text-gray-900 mb-1">{item.title}</h4>
-                    <p className="text-sm text-gray-500">{item.description}</p>
+                    <h4 className="font-bold text-foreground mb-1">{item.title}</h4>
+                    <p className="text-sm text-muted-foreground">{item.description}</p>
                   </div>
                 ))}
               </div>
             </div>
 
-            {/* CTA Box */}
             <div className="bg-primary/5 rounded-3xl p-8 border border-primary/10 text-center lg:text-left">
-              <h3 className="text-2xl font-bold text-gray-900 mb-4">
+              <h3 className="text-2xl font-bold text-foreground mb-4">
                 Quer tornar sua empresa uma parceira?
               </h3>
-              <p className="text-gray-600 mb-8 leading-relaxed">
+              <p className="text-muted-foreground mb-8 leading-relaxed">
                 Entre em contato com nossa diretoria para conhecer os projetos disponíveis para patrocínio e entender como funciona a dedução fiscal.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
@@ -267,7 +249,6 @@ const Doacoes = () => {
         </div>
       </section>
 
-      {/* Dados Bancários */}
       <section className="py-20 bg-gradient-to-b from-card to-background">
 
         <div className="container-custom">
@@ -279,7 +260,6 @@ const Doacoes = () => {
 
           <div className="max-w-2xl mx-auto">
             <div className="rounded-2xl border border-border bg-background shadow-sm p-6">
-              {/* Lista de dados */}
               <div className="divide-y divide-border">
                 <div className="flex flex-col sm:flex-row sm:justify-between gap-1 py-4">
                   <span className="text-sm text-muted-foreground">Razão Social</span>
@@ -329,7 +309,6 @@ const Doacoes = () => {
 
       </section>
 
-      {/* O que precisamos */}
       <section className="py-20 bg-gradient-to-b from-emerald-50/60 to-background dark:from-emerald-900/10">
         <div className="container-custom">
           <SectionHeader
@@ -346,7 +325,7 @@ const Doacoes = () => {
                   group flex items-center gap-4 p-4
                   rounded-xl
                   border border-emerald-100 dark:border-emerald-900/40
-                  bg-white dark:bg-background
+                  bg-card dark:bg-background
                   shadow-sm hover:shadow-md
                   transition-all duration-300
                   hover:-translate-y-1
@@ -354,7 +333,6 @@ const Doacoes = () => {
                 "
                 style={{ animationDelay: `${index * 0.05}s` }}
               >
-                {/* Indicador */}
                 <div
                   className="
                     w-3.5 h-3.5 rounded-full
@@ -374,22 +352,21 @@ const Doacoes = () => {
         </div>
       </section>
 
-      {/* CTA Final */}
       <section className="py-20 bg-block-red">
         <div className="container-custom text-center">
           <div className="max-w-2xl mx-auto">
             <Handshake size={36} className="text-white mb-4 mx-auto" />
 
-            <h2 className="font-display text-3xl font-bold text-primary-foreground mb-4">
+            <h2 className="font-display text-3xl font-bold text-white mb-4">
               Toda Ajuda Faz a Diferença
             </h2>
-            <p className="text-primary-foreground/90 mb-8">
+            <p className="text-white/90 mb-8">
               Entre em contato para saber mais sobre como você pode contribuir
               com a Creche Amélia e fazer parte dessa história de amor e cuidado há 56 anos.
             </p>
             <Button
               size="lg"
-              className="bg-primary-foreground text-block-red hover:bg-primary-foreground/90 font-semibold px-8 h-14 text-base rounded-xl"
+              className="bg-white text-block-red hover:bg-white/90 font-semibold px-8 h-14 text-base rounded-xl"
               asChild
             >
               <Link to="/contato">
