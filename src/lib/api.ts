@@ -6,7 +6,7 @@ export async function fetchJson<T>(input: RequestInfo | URL, init?: RequestInit)
   if (!contentType.includes("application/json")) {
     if (text.trim().startsWith("<?php")) {
       throw new Error(
-        "A API PHP nao esta sendo executada. Em desenvolvimento, use `npm run dev`; em producao, acesse o site por um servidor com PHP habilitado.",
+        "A API PHP nao esta sendo executada. Em desenvolvimento, rode `npm run dev:php` e `npm run dev:vite`; em producao, acesse o site por um servidor com PHP habilitado.",
       );
     }
 

@@ -1,50 +1,20 @@
 import Layout from "@/components/layout/Layout";
-import { FileText, Calendar, Building2, Eye, Scale, BookOpen, Info } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
-
-const diretoria = [
-  { cargo: "Presidente", nome: "A definir", destaque: true },
-  { cargo: "Vice-Presidente", nome: "A definir" },
-  { cargo: "1º Secretário", nome: "A definir" },
-  { cargo: "2º Secretário", nome: "A definir" },
-  { cargo: "1º Tesoureiro", nome: "A definir" },
-  { cargo: "2º Tesoureiro", nome: "A definir" },
-];
-
-const documentos = [
-  {
-    categoria: "Documentos Institucionais",
-    icon: Building2,
-    items: [
-      { nome: "Estatuto Social", data: "2024" },
-      { nome: "Regimento Interno", data: "2024" },
-      { nome: "Certidão de Regularidade Fiscal", data: "2024" },
-      { nome: "Cartão CNPJ", data: "2026", link: "/CNPJ Creche.pdf" },
-    ],
-  },
-  {
-    categoria: "Prestação de Contas",
-    icon: FileText,
-    items: [
-      { nome: "Relatório Anual 2024", data: "Jan/2025" },
-      { nome: "Relatório Anual 2023", data: "Jan/2024" },
-      { nome: "Balanço Patrimonial 2024", data: "Dez/2024" },
-      { nome: "Demonstrativo de Receitas e Despesas 2024", data: "Dez/2024" },
-    ],
-  },
-  {
-    categoria: "Convênios e Parcerias",
-    icon: Calendar,
-    items: [
-      { nome: "Termo de Convênio Municipal", data: "2024" },
-      { nome: "Plano de Trabalho", data: "2024" },
-      { nome: "Relatório de Execução", data: "2024" },
-    ],
-  },
-];
+import { fetchPublicDocuments, groupDocumentsByCategory } from "@/lib/documents";
+import { BookOpen, Eye, FileText, Info, Scale } from "lucide-react";
+import { useEffect, useState } from "react";
 
 const Transparencia = () => {
+  const [documentGroups, setDocumentGroups] = useState(() => groupDocumentsByCategory([]));
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    fetchPublicDocuments()
+      .then((documents) => setDocumentGroups(groupDocumentsByCategory(documents)))
+      .finally(() => setLoading(false));
+  }, []);
+
   return (
     <Layout>
       <section className="relative py-20 bg-primary/5 border-b border-primary/10">
@@ -122,44 +92,54 @@ const Transparencia = () => {
 
       <section className="py-20 bg-primary/5">
         <div className="container-custom">
-          <div className="space-y-14">
-            {documentos.map((categoria) => (
-              <div key={categoria.categoria}>
-                <div className="flex items-center gap-4 mb-8">
-                  <div className="w-12 h-12 rounded-xl bg-card shadow-sm flex items-center justify-center">
-                    <categoria.icon size={24} className="text-primary" />
+          {loading ? (
+            <div className="py-12 text-center text-muted-foreground">Carregando documentos...</div>
+          ) : documentGroups.length === 0 ? (
+            <div className="rounded-xl border border-dashed bg-card p-12 text-center">
+              <FileText className="mx-auto mb-4 h-10 w-10 text-muted-foreground" />
+              <h2 className="text-xl font-semibold text-foreground">Nenhum documento publicado ainda</h2>
+              <p className="mt-2 text-muted-foreground">
+                Os documentos de transparência serão exibidos aqui assim que forem publicados.
+              </p>
+            </div>
+          ) : (
+            <div className="space-y-14">
+              {documentGroups.map((categoria) => (
+                <div key={categoria.categoria}>
+                  <div className="flex items-center gap-4 mb-8">
+                    <div className="w-12 h-12 rounded-xl bg-card shadow-sm flex items-center justify-center">
+                      <categoria.icon size={24} className="text-primary" />
+                    </div>
+                    <h2 className="text-2xl font-bold text-foreground">
+                      {categoria.categoria}
+                    </h2>
                   </div>
-                  <h2 className="text-2xl font-bold text-foreground">
-                    {categoria.categoria}
-                  </h2>
-                </div>
 
-                <div className="grid md:grid-cols-2 gap-4">
-                  {categoria.items.map((doc, index) => (
-                    <div
-                      key={doc.nome}
-                      className="block-card bg-card p-4 rounded-xl border border-border/50 shadow-sm hover:shadow-md transition-all flex items-center justify-between gap-4 animate-fade-in"
-                      style={{ animationDelay: `${index * 0.05}s` }}
-                    >
-                      <div className="flex items-center gap-4">
-                        <div className="w-10 h-10 rounded-lg bg-secondary flex items-center justify-center flex-shrink-0">
-                          <FileText
-                            size={20}
-                            className="text-secondary-foreground"
-                          />
+                  <div className="grid md:grid-cols-2 gap-4">
+                    {categoria.items.map((doc, index) => (
+                      <div
+                        key={doc.id}
+                        className="block-card bg-card p-4 rounded-xl border border-border/50 shadow-sm hover:shadow-md transition-all flex items-center justify-between gap-4 animate-fade-in"
+                        style={{ animationDelay: `${index * 0.05}s` }}
+                      >
+                        <div className="flex items-center gap-4">
+                          <div className="w-10 h-10 rounded-lg bg-secondary flex items-center justify-center flex-shrink-0">
+                            <FileText
+                              size={20}
+                              className="text-secondary-foreground"
+                            />
+                          </div>
+
+                          <div>
+                            <h3 className="font-semibold text-foreground">
+                              {doc.nome}
+                            </h3>
+                            <p className="text-sm text-muted-foreground">
+                              {doc.data}
+                            </p>
+                          </div>
                         </div>
 
-                        <div>
-                          <h3 className="font-semibold text-foreground">
-                            {doc.nome}
-                          </h3>
-                          <p className="text-sm text-muted-foreground">
-                            {doc.data}
-                          </p>
-                        </div>
-                      </div>
-
-                      {doc.link ? (
                         <Button
                           variant="outline"
                           size="sm"
@@ -167,7 +147,7 @@ const Transparencia = () => {
                           asChild
                         >
                           <a
-                            href={doc.link}
+                            href={doc.arquivo}
                             target="_blank"
                             rel="noopener noreferrer"
                           >
@@ -175,23 +155,13 @@ const Transparencia = () => {
                             <span className="text-primary">Visualizar</span>
                           </a>
                         </Button>
-                      ) : (
-                        <Button
-                          variant="ghost"
-                          size="sm"
-                          disabled
-                          className="rounded-lg flex-shrink-0 opacity-50"
-                        >
-                          <Eye size={16} className="mr-2" />
-                          Em breve
-                        </Button>
-                      )}
-                    </div>
-                  ))}
+                      </div>
+                    ))}
+                  </div>
                 </div>
-              </div>
-            ))}
-          </div>
+              ))}
+            </div>
+          )}
         </div>
       </section>
     </Layout>

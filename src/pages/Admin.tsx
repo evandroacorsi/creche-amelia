@@ -1,3 +1,5 @@
+import { DocumentDialog } from "@/components/admin/DocumentDialog";
+import { DocumentsList } from "@/components/admin/DocumentsList";
 import { ImageLibraryManager } from "@/components/admin/ImageLibraryManager";
 import { NewsDialog } from "@/components/admin/NewsDialog";
 import { NewsList } from "@/components/admin/NewsList";
@@ -7,10 +9,11 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { useToast } from "@/hooks/use-toast";
 import { isSupabaseConfigured, supabase } from "@/integrations/supabase/client";
 import { AUTH_PATH } from "@/lib/adminRoutes";
+import type { TransparencyDocument } from "@/lib/documents";
 import type { NewsPost } from "@/lib/news";
 import logo from "@/assets/logo-creche-amelia.png";
 import type { User } from "@supabase/supabase-js";
-import { AlertCircle, FileText, Image as ImageIcon, LogOut, Plus } from "lucide-react";
+import { AlertCircle, FileText, FolderOpen, Image as ImageIcon, LogOut, Plus } from "lucide-react";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
@@ -20,7 +23,10 @@ export default function Admin() {
   const [isAdmin, setIsAdmin] = useState(false);
   const [isNewsDialogOpen, setIsNewsDialogOpen] = useState(false);
   const [editingNews, setEditingNews] = useState<NewsPost | null>(null);
+  const [isDocumentDialogOpen, setIsDocumentDialogOpen] = useState(false);
+  const [editingDocument, setEditingDocument] = useState<TransparencyDocument | null>(null);
   const [refreshKey, setRefreshKey] = useState(0);
+  const [documentsRefreshKey, setDocumentsRefreshKey] = useState(0);
 
   const navigate = useNavigate();
   const { toast } = useToast();
@@ -88,6 +94,16 @@ export default function Admin() {
     setEditingNews(null);
   };
 
+  const handleEditDocument = (document: TransparencyDocument) => {
+    setEditingDocument(document);
+    setIsDocumentDialogOpen(true);
+  };
+
+  const handleCloseDocumentDialog = () => {
+    setIsDocumentDialogOpen(false);
+    setEditingDocument(null);
+  };
+
   if (loading) {
     return (
       <div className="flex min-h-screen items-center justify-center bg-background">
@@ -143,6 +159,9 @@ export default function Admin() {
               <TabsTrigger value="news" className="gap-2">
                 <FileText className="h-4 w-4" /> Notícias
               </TabsTrigger>
+              <TabsTrigger value="documents" className="gap-2">
+                <FolderOpen className="h-4 w-4" /> Transparência
+              </TabsTrigger>
               <TabsTrigger value="image-library" className="gap-2">
                 <ImageIcon className="h-4 w-4" /> Biblioteca de Imagens
               </TabsTrigger>
@@ -166,6 +185,36 @@ export default function Admin() {
 
             {isAdmin ? (
               <NewsList onEdit={handleEditNews} key={`news-${refreshKey}`} />
+            ) : (
+              <div className="rounded-lg border border-destructive/30 bg-card p-8 text-center text-muted-foreground">
+                Esta conta está autenticada, mas não possui permissão de administrador.
+              </div>
+            )}
+          </TabsContent>
+
+          <TabsContent value="documents">
+            <div className="mb-6 flex flex-col justify-between gap-4 sm:flex-row sm:items-center">
+              <div>
+                <h2 className="text-3xl font-bold text-foreground">Documentos de Transparência</h2>
+                <p className="mt-1 text-muted-foreground">
+                  Publique PDFs exibidos na página de transparência do site.
+                </p>
+              </div>
+              {isAdmin && (
+                <Button
+                  onClick={() => {
+                    setEditingDocument(null);
+                    setIsDocumentDialogOpen(true);
+                  }}
+                  className="gap-2"
+                >
+                  <Plus className="h-4 w-4" /> Novo Documento
+                </Button>
+              )}
+            </div>
+
+            {isAdmin ? (
+              <DocumentsList onEdit={handleEditDocument} key={`documents-${documentsRefreshKey}`} />
             ) : (
               <div className="rounded-lg border border-destructive/30 bg-card p-8 text-center text-muted-foreground">
                 Esta conta está autenticada, mas não possui permissão de administrador.
@@ -197,6 +246,13 @@ export default function Admin() {
         onOpenChange={handleCloseNewsDialog}
         editingNews={editingNews}
         onSuccess={() => setRefreshKey((prev) => prev + 1)}
+      />
+
+      <DocumentDialog
+        open={isDocumentDialogOpen}
+        onOpenChange={handleCloseDocumentDialog}
+        editingDocument={editingDocument}
+        onSuccess={() => setDocumentsRefreshKey((prev) => prev + 1)}
       />
     </div>
   );
