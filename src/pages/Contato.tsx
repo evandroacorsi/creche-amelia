@@ -182,7 +182,7 @@ const Contato = () => {
                     Horário de Funcionamento
                   </h3>
                   <p className="text-muted-foreground text-sm leading-relaxed">
-                    Segunda a Sexta: 7h às 17h<br />
+                    Segunda a Sexta: 7h às 16h<br />
                     Sábado e Domingo: Fechado
                   </p>
                 </div>

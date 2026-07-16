@@ -1,22 +1,28 @@
 import logo from "@/assets/logo-creche-amelia.png";
+import { Turnstile } from "@/components/security/Turnstile";
 import { ThemeToggle } from "@/components/theme-toggle";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
+import { PasswordInput } from "@/components/ui/password-input";
 import { useToast } from "@/hooks/use-toast";
 import { isSupabaseConfigured, supabase } from "@/integrations/supabase/client";
-import { ADMIN_PATH } from "@/lib/adminRoutes";
+import { ADMIN_PATH, RESET_PASSWORD_PATH } from "@/lib/adminRoutes";
+import { isTurnstileConfigured } from "@/lib/security";
 import { AlertCircle, Loader2 } from "lucide-react";
-import { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useCallback, useEffect, useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
 
 export default function Auth() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [turnstileToken, setTurnstileToken] = useState("");
+  const [turnstileKey, setTurnstileKey] = useState(0);
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
   const { toast } = useToast();
+  const handleTurnstileVerify = useCallback((token: string) => setTurnstileToken(token), []);
 
   useEffect(() => {
     if (!isSupabaseConfigured) return;
@@ -42,10 +48,16 @@ export default function Auth() {
       if (!isSupabaseConfigured) {
         throw new Error("Configure as credenciais do Supabase no arquivo .env.");
       }
+      if (isTurnstileConfigured && !turnstileToken) {
+        throw new Error("Confirme a validação anti-spam antes de entrar.");
+      }
 
       const { error } = await supabase.auth.signInWithPassword({
         email,
         password,
+        options: {
+          captchaToken: turnstileToken || undefined,
+        },
       });
 
       if (error) throw error;
@@ -61,6 +73,10 @@ export default function Auth() {
         variant: "destructive",
       });
     } finally {
+      if (isTurnstileConfigured) {
+        setTurnstileToken("");
+        setTurnstileKey((current) => current + 1);
+      }
       setLoading(false);
     }
   };
@@ -101,9 +117,8 @@ export default function Auth() {
             </div>
             <div className="space-y-2">
               <Label htmlFor="password">Senha</Label>
-              <Input
+              <PasswordInput
                 id="password"
-                type="password"
                 placeholder="Senha"
                 value={password}
                 onChange={(event) => setPassword(event.target.value)}
@@ -112,10 +127,21 @@ export default function Auth() {
                 minLength={6}
               />
             </div>
+            <Turnstile
+              key={turnstileKey}
+              onVerify={handleTurnstileVerify}
+              onExpire={() => setTurnstileToken("")}
+              theme="auto"
+            />
             <Button type="submit" className="w-full" disabled={loading || !isSupabaseConfigured}>
               {loading && <Loader2 className="mr-2 h-4 w-4 animate-spin" />}
               Entrar
             </Button>
+            <div className="text-center text-sm">
+              <Link to={RESET_PASSWORD_PATH} className="text-primary hover:underline">
+                Esqueci minha senha
+              </Link>
+            </div>
           </form>
         </CardContent>
       </Card>

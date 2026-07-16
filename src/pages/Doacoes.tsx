@@ -18,6 +18,9 @@ import { SiPix } from "react-icons/si";
 import { FaWhatsapp } from "react-icons/fa";
 import heroImage from "@/assets/bg2.png";
 import bg1 from "@/assets/bg1.png";
+import { getInstitutionYears } from "@/lib/institution";
+
+const institutionYears = getInstitutionYears();
 
 const formasDoacao = [
   {
@@ -108,7 +111,7 @@ const Doacoes = () => {
             <p className="mt-6 text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto">
               Sua doação ajuda a manter nossos serviços gratuitos e garante melhores
               condições de cuidado, educação e acolhimento para as crianças da
-              Creche Amélia há <strong>56 anos</strong>.
+              Creche Amélia há <strong>{institutionYears} anos</strong>.
             </p>
 
             <div className="mt-8">
@@ -362,7 +365,7 @@ const Doacoes = () => {
             </h2>
             <p className="text-white/90 mb-8">
               Entre em contato para saber mais sobre como você pode contribuir
-              com a Creche Amélia e fazer parte dessa história de amor e cuidado há 56 anos.
+              com a Creche Amélia e fazer parte dessa história de amor e cuidado há {institutionYears} anos.
             </p>
             <Button
               size="lg"

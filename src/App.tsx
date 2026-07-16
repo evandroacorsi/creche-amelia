@@ -5,7 +5,7 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { ThemeProvider } from "next-themes";
 import { BrowserRouter, Routes, Route, useLocation, Navigate, useParams } from "react-router-dom";
 import { useEffect } from "react";
-import { ADMIN_PATH, AUTH_PATH } from "@/lib/adminRoutes";
+import { ADMIN_PATH, AUTH_PATH, RESET_PASSWORD_PATH } from "@/lib/adminRoutes";
 import Index from "./pages/Index";
 import Sobre from "./pages/Sobre";
 import Pais from "./pages/Pais";
@@ -17,6 +17,7 @@ import Doacoes from "./pages/Doacoes";
 import NotFound from "./pages/NotFound";
 import Auth from "./pages/Auth";
 import Admin from "./pages/Admin";
+import ResetPassword from "./pages/ResetPassword";
 
 const queryClient = new QueryClient();
 
@@ -57,6 +58,7 @@ const App = () => (
           <Route path="/doacoes" element={<Doacoes />} />
 
           <Route path={AUTH_PATH} element={<Auth />} />
+          <Route path={RESET_PASSWORD_PATH} element={<ResetPassword />} />
           <Route path={ADMIN_PATH} element={<Admin />} />
 
           <Route path="*" element={<NotFound />} />

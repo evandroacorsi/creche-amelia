@@ -6,6 +6,9 @@ import { FaWhatsapp } from "react-icons/fa";
 
 import logo from "@/assets/logo.png";
 import heroImage from "@/assets/hero-creche.jpg";
+import { getInstitutionYears } from "@/lib/institution";
+
+const institutionYears = getInstitutionYears();
 
 interface CountUpProps {
   end: number;
@@ -128,7 +131,7 @@ const HeroSection = () => {
             </h1>
 
             <p className="text-base sm:text-lg md:text-xl text-muted-foreground mb-8 max-w-xl mx-auto lg:mx-0">
-              Há 56 anos transformando a infância em Rancharia/SP.
+              Há {institutionYears} anos transformando a infância em Rancharia/SP.
               Oferecemos um ambiente seguro, acolhedor e estimulante para o
               desenvolvimento integral das crianças de 4 meses a 3 anos e 11 meses.
             </p>
@@ -171,7 +174,7 @@ const HeroSection = () => {
               className=" grid grid-cols-3 gap-3 border-t pt-6 text-center text-sm">
               <div>
                 <div className="font-display text-3xl font-bold text-primary">
-                  <CountUp end={56} />
+                  <CountUp end={institutionYears} />
                 </div>
                 <div className="text-sm text-muted-foreground">Anos de história</div>
               </div>

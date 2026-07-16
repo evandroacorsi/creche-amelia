@@ -2,6 +2,9 @@ import { Link } from "react-router-dom";
 import SectionHeader from "@/components/ui/SectionHeader";
 import { Button } from "@/components/ui/button";
 import { Heart, Target, Shield, Users } from "lucide-react";
+import { getInstitutionYears } from "@/lib/institution";
+
+const institutionYears = getInstitutionYears();
 
 const values = [
   {
@@ -24,7 +27,7 @@ const values = [
   },
   {
     icon: Users,
-    title: "56 Anos de Tradição",
+    title: `${institutionYears} Anos de Tradição`,
     description: "Desde 1969 mantendo nosso foco no cuidado e educação infantil.",
     color: "bg-block-yellow/10 text-block-yellow",
   },

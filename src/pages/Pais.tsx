@@ -2,20 +2,8 @@ import Layout from "@/components/layout/Layout";
 import SectionHeader from "@/components/ui/SectionHeader";
 import { Clock, Calendar, Backpack, AlertCircle, Heart, Phone, Sparkles } from "lucide-react";
 import heroImage from "@/assets/hero-creche.jpg";
-
-const rotina = [
-  { hora: "7:00", atividade: "Recepção das crianças" },
-  { hora: "7:30", atividade: "Café da manhã" },
-  { hora: "8:30", atividade: "Atividades pedagógicas" },
-  { hora: "10:00", atividade: "Lanche da manhã" },
-  { hora: "10:30", atividade: "Atividades recreativas" },
-  { hora: "11:30", atividade: "Almoço" },
-  { hora: "12:30", atividade: "Higiene e descanso" },
-  { hora: "14:00", atividade: "Atividades pedagógicas" },
-  { hora: "15:30", atividade: "Lanche da tarde" },
-  { hora: "16:00", atividade: "Atividades livres" },
-  { hora: "17:00", atividade: "Saída" },
-];
+import { fetchInstitutionContent, initialRoutine, type RoutineItem } from "@/lib/team";
+import { useEffect, useState } from "react";
 
 const itensNecessarios = [
   "Mochila identificada com nome",
@@ -29,6 +17,16 @@ const itensNecessarios = [
 ];
 
 const Pais = () => {
+  const [rotina, setRotina] = useState<RoutineItem[]>(initialRoutine);
+
+  useEffect(() => {
+    fetchInstitutionContent()
+      .then((data) => {
+        if (data.rotina.length > 0) setRotina(data.rotina);
+      })
+      .catch(() => undefined);
+  }, []);
+
   return (
     <Layout>
       <section className="relative py-20 bg-primary/5 border-b border-primary/10">

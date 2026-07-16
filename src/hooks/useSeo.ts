@@ -9,6 +9,14 @@ interface SeoOptions {
 
 const SITE_NAME = "Creche Amélia";
 
+const toAbsoluteUrl = (value: string) => {
+  try {
+    return new URL(value, window.location.origin).href;
+  } catch {
+    return value;
+  }
+};
+
 const setMeta = (selector: string, attr: "name" | "property", key: string, content: string) => {
   let element = document.head.querySelector<HTMLMetaElement>(selector);
   if (!element) {
@@ -44,8 +52,10 @@ export const useSeo = ({ title, description, image, type = "website" }: SeoOptio
     }
 
     if (image) {
-      restorers.push(setMeta('meta[property="og:image"]', "property", "og:image", image));
-      restorers.push(setMeta('meta[name="twitter:image"]', "name", "twitter:image", image));
+      const absoluteImage = toAbsoluteUrl(image);
+      restorers.push(setMeta('meta[property="og:image"]', "property", "og:image", absoluteImage));
+      restorers.push(setMeta('meta[property="og:image:secure_url"]', "property", "og:image:secure_url", absoluteImage));
+      restorers.push(setMeta('meta[name="twitter:image"]', "name", "twitter:image", absoluteImage));
     }
 
     return () => {

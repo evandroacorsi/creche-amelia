@@ -3,6 +3,9 @@ import { DocumentsList } from "@/components/admin/DocumentsList";
 import { ImageLibraryManager } from "@/components/admin/ImageLibraryManager";
 import { NewsDialog } from "@/components/admin/NewsDialog";
 import { NewsList } from "@/components/admin/NewsList";
+import { UserManager } from "@/components/admin/UserManager";
+import { TeamManager } from "@/components/admin/TeamManager";
+import { RoutineManager } from "@/components/admin/RoutineManager";
 import { ThemeToggle } from "@/components/theme-toggle";
 import { Button } from "@/components/ui/button";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
@@ -13,7 +16,7 @@ import type { TransparencyDocument } from "@/lib/documents";
 import type { NewsPost } from "@/lib/news";
 import logo from "@/assets/logo-creche-amelia.png";
 import type { User } from "@supabase/supabase-js";
-import { AlertCircle, FileText, FolderOpen, Image as ImageIcon, LogOut, Plus } from "lucide-react";
+import { AlertCircle, CalendarClock, FileText, FolderOpen, Image as ImageIcon, LogOut, Plus, Users } from "lucide-react";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
@@ -155,7 +158,7 @@ export default function Admin() {
       <main className="container mx-auto px-4 py-8">
         <Tabs defaultValue="news" className="w-full">
           <div className="mb-6 flex flex-col items-start justify-between gap-4 md:flex-row md:items-center">
-            <TabsList className="bg-muted">
+            <TabsList className="h-auto flex-wrap justify-start bg-muted">
               <TabsTrigger value="news" className="gap-2">
                 <FileText className="h-4 w-4" /> Notícias
               </TabsTrigger>
@@ -164,6 +167,15 @@ export default function Admin() {
               </TabsTrigger>
               <TabsTrigger value="image-library" className="gap-2">
                 <ImageIcon className="h-4 w-4" /> Biblioteca de Imagens
+              </TabsTrigger>
+              <TabsTrigger value="team" className="gap-2">
+                <Users className="h-4 w-4" /> Equipe
+              </TabsTrigger>
+              <TabsTrigger value="routine" className="gap-2">
+                <CalendarClock className="h-4 w-4" /> Rotina
+              </TabsTrigger>
+              <TabsTrigger value="users" className="gap-2">
+                <Users className="h-4 w-4" /> Usuários
               </TabsTrigger>
             </TabsList>
           </div>
@@ -232,6 +244,39 @@ export default function Admin() {
 
             {isAdmin ? (
               <ImageLibraryManager />
+            ) : (
+              <div className="rounded-lg border border-destructive/30 bg-card p-8 text-center text-muted-foreground">
+                Esta conta está autenticada, mas não possui permissão de administrador.
+              </div>
+            )}
+          </TabsContent>
+
+          <TabsContent value="team">
+            <div className="mb-6">
+              <h2 className="text-3xl font-bold text-foreground">Gerenciar Equipe</h2>
+              <p className="mt-1 text-muted-foreground">Atualize os profissionais, cargos, áreas e fotos exibidos na página Sobre.</p>
+            </div>
+            {isAdmin ? <TeamManager /> : <div className="rounded-lg border border-destructive/30 bg-card p-8 text-center text-muted-foreground">Esta conta está autenticada, mas não possui permissão de administrador.</div>}
+          </TabsContent>
+
+          <TabsContent value="routine">
+            <div className="mb-6">
+              <h2 className="text-3xl font-bold text-foreground">Gerenciar Rotina</h2>
+              <p className="mt-1 text-muted-foreground">Atualize os horários e atividades exibidos na página de informações para pais.</p>
+            </div>
+            {isAdmin ? <RoutineManager /> : <div className="rounded-lg border border-destructive/30 bg-card p-8 text-center text-muted-foreground">Esta conta está autenticada, mas não possui permissão de administrador.</div>}
+          </TabsContent>
+
+          <TabsContent value="users">
+            <div className="mb-6">
+              <h2 className="text-3xl font-bold text-foreground">Controle de Usuários</h2>
+              <p className="mt-1 text-muted-foreground">
+                Crie contas e controle quem pode acessar o painel administrativo.
+              </p>
+            </div>
+
+            {isAdmin ? (
+              <UserManager />
             ) : (
               <div className="rounded-lg border border-destructive/30 bg-card p-8 text-center text-muted-foreground">
                 Esta conta está autenticada, mas não possui permissão de administrador.
